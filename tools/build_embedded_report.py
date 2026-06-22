@@ -235,7 +235,6 @@ def main() -> None:
   <header>
     <div class="wrap">
       <h1>VLM-NLA：用 Natural Language Autoencoder 解释 LVLM 内部视觉 activation</h1>
-      <p class="subtitle">一份面向 PhD 学生的开题报告式整理：研究动机、相关工作、初步实验设计、结果解读、局限与下一步方向。</p>
       <p class="meta">生成日期：2026-06-22。本文所有图片均以内嵌 base64 形式写入 HTML，可单文件打开。</p>
     </div>
   </header>
