@@ -1,0 +1,485 @@
+{
+  "av_parquet": "data/nla_style_L15_last_prompt_n512/av_sft.parquet",
+  "adapter": "outputs/av_lora_tiny_L15_last_prompt_512x2_fullrank_actadapter_8tok_dualcontrast/adapter",
+  "activation_adapter": "outputs/av_lora_tiny_L15_last_prompt_512x2_fullrank_actadapter_8tok_dualcontrast/activation_adapter.pt",
+  "model_id": "llava-hf/llava-1.5-7b-hf",
+  "num_queries": 64,
+  "num_candidates": 128,
+  "candidate_mode": "all",
+  "score_mode": "nll",
+  "injection_scale": 31.46,
+  "num_injection_tokens": 8,
+  "prompt_token_count": 92,
+  "injection_positions": [
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "mean_rank": 27.125,
+  "median_rank": 27.0,
+  "top1_accuracy": 0.03125,
+  "top3_accuracy": 0.109375,
+  "top5_accuracy": 0.15625,
+  "mean_margin_best_wrong_minus_correct": -0.04969346895813942,
+  "median_margin_best_wrong_minus_correct": -0.04831922799348831,
+  "mean_correct_nll": 0.2559144045226276,
+  "mean_correct_raw_nll": 0.2559144045226276,
+  "mean_correct_reference_nll": null,
+  "mean_all_nll": 0.36859700083732605,
+  "mean_all_raw_nll": 0.36859700083732605,
+  "examples": [
+    {
+      "query_index": 0,
+      "query_sample_id": "synthetic_00000",
+      "correct_rank": 23,
+      "correct_score": 0.20635132491588593,
+      "correct_raw_nll": 0.20635132491588593,
+      "correct_reference_nll": null,
+      "source_description": "The image shows a yellow circle on the left.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 110,
+          "sample_id": "synthetic_00110",
+          "score": 0.16031736135482788,
+          "raw_nll": 0.16031736135482788,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the right.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 109,
+          "sample_id": "synthetic_00109",
+          "score": 0.16234807670116425,
+          "raw_nll": 0.16234807670116425,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the center.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 67,
+          "sample_id": "synthetic_00067",
+          "score": 0.166732057929039,
+          "raw_nll": 0.166732057929039,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the bottom.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 49,
+          "sample_id": "synthetic_00049",
+          "score": 0.17190669476985931,
+          "raw_nll": 0.17190669476985931,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange square on the bottom.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 62,
+          "sample_id": "synthetic_00062",
+          "score": 0.17210498452186584,
+          "raw_nll": 0.17210498452186584,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange circle on the right.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 1,
+      "query_sample_id": "synthetic_00001",
+      "correct_rank": 8,
+      "correct_score": 0.18149429559707642,
+      "correct_raw_nll": 0.18149429559707642,
+      "correct_reference_nll": null,
+      "source_description": "The image shows a yellow triangle on the left.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 110,
+          "sample_id": "synthetic_00110",
+          "score": 0.15369723737239838,
+          "raw_nll": 0.15369723737239838,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the right.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 109,
+          "sample_id": "synthetic_00109",
+          "score": 0.1565232276916504,
+          "raw_nll": 0.1565232276916504,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the center.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 67,
+          "sample_id": "synthetic_00067",
+          "score": 0.16059818863868713,
+          "raw_nll": 0.16059818863868713,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the bottom.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 49,
+          "sample_id": "synthetic_00049",
+          "score": 0.17658324539661407,
+          "raw_nll": 0.17658324539661407,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange square on the bottom.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 62,
+          "sample_id": "synthetic_00062",
+          "score": 0.17701153457164764,
+          "raw_nll": 0.17701153457164764,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange circle on the right.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 2,
+      "query_sample_id": "synthetic_00002",
+      "correct_rank": 62,
+      "correct_score": 0.3208746314048767,
+      "correct_raw_nll": 0.3208746314048767,
+      "correct_reference_nll": null,
+      "source_description": "The image shows a green square on the top and a blue triangle on the left.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 100,
+          "sample_id": "synthetic_00100",
+          "score": 0.22313939034938812,
+          "raw_nll": 0.22313939034938812,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a purple triangle on the right and a yellow triangle on the bottom.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 51,
+          "sample_id": "synthetic_00051",
+          "score": 0.24023011326789856,
+          "raw_nll": 0.24023011326789856,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a yellow triangle on the right and a purple circle on the left.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 9,
+          "sample_id": "synthetic_00009",
+          "score": 0.24654263257980347,
+          "raw_nll": 0.24654263257980347,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a yellow triangle on the top and a purple circle on the left.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 122,
+          "sample_id": "synthetic_00122",
+          "score": 0.24830344319343567,
+          "raw_nll": 0.24830344319343567,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a yellow triangle on the left and a red circle on the bottom.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 36,
+          "sample_id": "synthetic_00036",
+          "score": 0.24831116199493408,
+          "raw_nll": 0.24831116199493408,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a purple triangle on the left and a green triangle on the top.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 3,
+      "query_sample_id": "synthetic_00003",
+      "correct_rank": 16,
+      "correct_score": 0.19560346007347107,
+      "correct_raw_nll": 0.19560346007347107,
+      "correct_reference_nll": null,
+      "source_description": "The image shows a green square on the right.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 110,
+          "sample_id": "synthetic_00110",
+          "score": 0.15659087896347046,
+          "raw_nll": 0.15659087896347046,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the right.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 67,
+          "sample_id": "synthetic_00067",
+          "score": 0.1629352569580078,
+          "raw_nll": 0.1629352569580078,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the bottom.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 109,
+          "sample_id": "synthetic_00109",
+          "score": 0.1642807424068451,
+          "raw_nll": 0.1642807424068451,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the center.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 49,
+          "sample_id": "synthetic_00049",
+          "score": 0.16948486864566803,
+          "raw_nll": 0.16948486864566803,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange square on the bottom.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 62,
+          "sample_id": "synthetic_00062",
+          "score": 0.17507193982601166,
+          "raw_nll": 0.17507193982601166,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange circle on the right.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 4,
+      "query_sample_id": "synthetic_00004",
+      "correct_rank": 43,
+      "correct_score": 0.30321258306503296,
+      "correct_raw_nll": 0.30321258306503296,
+      "correct_reference_nll": null,
+      "source_description": "The image shows a red square on the left and a blue triangle on the bottom.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 100,
+          "sample_id": "synthetic_00100",
+          "score": 0.218013733625412,
+          "raw_nll": 0.218013733625412,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a purple triangle on the right and a yellow triangle on the bottom.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 122,
+          "sample_id": "synthetic_00122",
+          "score": 0.23494555056095123,
+          "raw_nll": 0.23494555056095123,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a yellow triangle on the left and a red circle on the bottom.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 51,
+          "sample_id": "synthetic_00051",
+          "score": 0.2390936315059662,
+          "raw_nll": 0.2390936315059662,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a yellow triangle on the right and a purple circle on the left.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 36,
+          "sample_id": "synthetic_00036",
+          "score": 0.24550020694732666,
+          "raw_nll": 0.24550020694732666,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a purple triangle on the left and a green triangle on the top.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 9,
+          "sample_id": "synthetic_00009",
+          "score": 0.24683991074562073,
+          "raw_nll": 0.24683991074562073,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a yellow triangle on the top and a purple circle on the left.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 5,
+      "query_sample_id": "synthetic_00005",
+      "correct_rank": 34,
+      "correct_score": 0.2905937135219574,
+      "correct_raw_nll": 0.2905937135219574,
+      "correct_reference_nll": null,
+      "source_description": "The image shows a orange square on the left and a green square on the center.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 124,
+          "sample_id": "synthetic_00124",
+          "score": 0.24462929368019104,
+          "raw_nll": 0.24462929368019104,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the center and a orange circle on the bottom.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 120,
+          "sample_id": "synthetic_00120",
+          "score": 0.2475098967552185,
+          "raw_nll": 0.2475098967552185,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the top and a orange circle on the center.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 8,
+          "sample_id": "synthetic_00008",
+          "score": 0.259971022605896,
+          "raw_nll": 0.259971022605896,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a purple triangle on the bottom and a purple triangle on the right.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 100,
+          "sample_id": "synthetic_00100",
+          "score": 0.26513034105300903,
+          "raw_nll": 0.26513034105300903,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a purple triangle on the right and a yellow triangle on the bottom.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 119,
+          "sample_id": "synthetic_00119",
+          "score": 0.2656736671924591,
+          "raw_nll": 0.2656736671924591,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a yellow triangle on the right and a orange square on the center.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 6,
+      "query_sample_id": "synthetic_00006",
+      "correct_rank": 17,
+      "correct_score": 0.19940312206745148,
+      "correct_raw_nll": 0.19940312206745148,
+      "correct_reference_nll": null,
+      "source_description": "The image shows a purple circle on the bottom.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 110,
+          "sample_id": "synthetic_00110",
+          "score": 0.16129200160503387,
+          "raw_nll": 0.16129200160503387,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the right.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 67,
+          "sample_id": "synthetic_00067",
+          "score": 0.16250526905059814,
+          "raw_nll": 0.16250526905059814,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the bottom.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 109,
+          "sample_id": "synthetic_00109",
+          "score": 0.16354098916053772,
+          "raw_nll": 0.16354098916053772,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the center.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 49,
+          "sample_id": "synthetic_00049",
+          "score": 0.16791610419750214,
+          "raw_nll": 0.16791610419750214,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange square on the bottom.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 62,
+          "sample_id": "synthetic_00062",
+          "score": 0.16917197406291962,
+          "raw_nll": 0.16917197406291962,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange circle on the right.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 7,
+      "query_sample_id": "synthetic_00007",
+      "correct_rank": 29,
+      "correct_score": 0.21619711816310883,
+      "correct_raw_nll": 0.21619711816310883,
+      "correct_reference_nll": null,
+      "source_description": "The image shows a blue circle on the left.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 110,
+          "sample_id": "synthetic_00110",
+          "score": 0.1633993238210678,
+          "raw_nll": 0.1633993238210678,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the right.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 109,
+          "sample_id": "synthetic_00109",
+          "score": 0.1656489372253418,
+          "raw_nll": 0.1656489372253418,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the center.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 67,
+          "sample_id": "synthetic_00067",
+          "score": 0.1697239875793457,
+          "raw_nll": 0.1697239875793457,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange triangle on the bottom.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 62,
+          "sample_id": "synthetic_00062",
+          "score": 0.16982439160346985,
+          "raw_nll": 0.16982439160346985,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange circle on the right.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 49,
+          "sample_id": "synthetic_00049",
+          "score": 0.17388008534908295,
+          "raw_nll": 0.17388008534908295,
+          "is_correct": false,
+          "response": "<explanation>\nThe image shows a orange square on the bottom.\n</explanation>"
+        }
+      ]
+    }
+  ]
+}

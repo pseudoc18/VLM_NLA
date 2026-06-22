@@ -1,0 +1,109 @@
+{
+  "av_parquet": "data/qwen3vl_coco_L15_object_bbox_mean_short_heldout_n64_seed3031/qwen3vl_coco_L15_object_bbox_mean_short_av_sft.parquet",
+  "adapter": "outputs/qwen3vl_coco_av_lora_L15_object_bbox_mean_short_128x2_actadapter_8tok_dualcontrast/adapter",
+  "activation_adapter": "outputs/qwen3vl_coco_av_lora_L15_object_bbox_mean_short_128x2_actadapter_8tok_dualcontrast/activation_adapter.pt",
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "num_rows": 64,
+  "injection_scale": 68.24,
+  "num_injection_tokens": 8,
+  "prompt_token_count": 64,
+  "injection_positions": [
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37
+  ],
+  "matched_mean_nll": 0.13540787994861603,
+  "shifted_mean_nll": 0.5641783475875854,
+  "shuffled_mean_nll": 0.5474636554718018,
+  "shifted_minus_matched_mean": 0.4287704825401306,
+  "shuffled_minus_matched_mean": 0.4120557904243469,
+  "shifted_match_better_fraction": 0.984375,
+  "shuffled_match_better_fraction": 0.984375,
+  "examples": [
+    {
+      "index": 0,
+      "sample_id": "coco_000000042563_172991",
+      "source_description": "These image tokens represent a train in the bottom region of the image.",
+      "matched_nll": 0.05118804797530174,
+      "shifted_nll": 0.5047832727432251,
+      "shuffled_nll": 0.511704683303833,
+      "shifted_minus_matched": 0.45359522104263306,
+      "shuffled_minus_matched": 0.46051663160324097
+    },
+    {
+      "index": 1,
+      "sample_id": "coco_000000287959_310751",
+      "source_description": "These image tokens represent a sandwich in the center region of the image.",
+      "matched_nll": 0.4913351535797119,
+      "shifted_nll": 0.5773574113845825,
+      "shuffled_nll": 0.5020385384559631,
+      "shifted_minus_matched": 0.0860222578048706,
+      "shuffled_minus_matched": 0.01070338487625122
+    },
+    {
+      "index": 2,
+      "sample_id": "coco_000000407825_2111404",
+      "source_description": "These image tokens represent an apple in the center region of the image.",
+      "matched_nll": 0.3442862629890442,
+      "shifted_nll": 0.39823034405708313,
+      "shuffled_nll": 0.7910262942314148,
+      "shifted_minus_matched": 0.05394408106803894,
+      "shuffled_minus_matched": 0.4467400312423706
+    },
+    {
+      "index": 3,
+      "sample_id": "coco_000000140203_394593",
+      "source_description": "These image tokens represent a truck in the center region of the image.",
+      "matched_nll": 0.30818432569503784,
+      "shifted_nll": 0.5243277549743652,
+      "shuffled_nll": 0.7480966448783875,
+      "shifted_minus_matched": 0.2161434292793274,
+      "shuffled_minus_matched": 0.4399123191833496
+    },
+    {
+      "index": 4,
+      "sample_id": "coco_000000152686_426491",
+      "source_description": "These image tokens represent a person in the center region of the image.",
+      "matched_nll": 0.04544048756361008,
+      "shifted_nll": 0.0735015869140625,
+      "shuffled_nll": 0.6704133749008179,
+      "shifted_minus_matched": 0.028061099350452423,
+      "shuffled_minus_matched": 0.6249728798866272
+    },
+    {
+      "index": 5,
+      "sample_id": "coco_000000393469_421984",
+      "source_description": "These image tokens represent a person in the bottom region of the image.",
+      "matched_nll": 0.032844360917806625,
+      "shifted_nll": 0.5768927335739136,
+      "shuffled_nll": 0.5627665519714355,
+      "shifted_minus_matched": 0.5440483689308167,
+      "shuffled_minus_matched": 0.5299221873283386
+    },
+    {
+      "index": 6,
+      "sample_id": "coco_000000107087_105597",
+      "source_description": "These image tokens represent a chair in the center region of the image.",
+      "matched_nll": 0.18728043138980865,
+      "shifted_nll": 0.3731834292411804,
+      "shuffled_nll": 0.788622260093689,
+      "shifted_minus_matched": 0.18590299785137177,
+      "shuffled_minus_matched": 0.6013418436050415
+    },
+    {
+      "index": 7,
+      "sample_id": "coco_000000147338_416505",
+      "source_description": "These image tokens represent a fire hydrant in the center region of the image.",
+      "matched_nll": 0.2753579020500183,
+      "shifted_nll": 0.42112258076667786,
+      "shuffled_nll": 0.31926092505455017,
+      "shifted_minus_matched": 0.14576467871665955,
+      "shuffled_minus_matched": 0.04390302300453186
+    }
+  ]
+}

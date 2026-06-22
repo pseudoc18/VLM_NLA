@@ -1,0 +1,485 @@
+{
+  "av_parquet": "data/qwen3vl_coco_L15_object_center_short_heldout_n64_seed3031/qwen3vl_coco_L15_object_center_short_av_sft.parquet",
+  "adapter": "outputs/qwen3vl_coco_av_lora_L15_object_center_short_128x2_actadapter_8tok_dualcontrast/adapter",
+  "activation_adapter": "outputs/qwen3vl_coco_av_lora_L15_object_center_short_128x2_actadapter_8tok_dualcontrast/activation_adapter.pt",
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "num_queries": 32,
+  "num_candidates": 64,
+  "candidate_mode": "all",
+  "score_mode": "nll",
+  "injection_scale": 80.2,
+  "num_injection_tokens": 8,
+  "prompt_token_count": 64,
+  "injection_positions": [
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37
+  ],
+  "mean_rank": 11.3125,
+  "median_rank": 5.0,
+  "top1_accuracy": 0.25,
+  "top3_accuracy": 0.40625,
+  "top5_accuracy": 0.53125,
+  "mean_margin_best_wrong_minus_correct": -0.07774323888588697,
+  "median_margin_best_wrong_minus_correct": -0.042160991579294205,
+  "mean_correct_nll": 0.22340216755401343,
+  "mean_correct_raw_nll": 0.22340216755401343,
+  "mean_correct_reference_nll": null,
+  "mean_all_nll": 0.38090604543685913,
+  "mean_all_raw_nll": 0.38090604543685913,
+  "examples": [
+    {
+      "query_index": 0,
+      "query_sample_id": "coco_000000042563_172991",
+      "correct_rank": 1,
+      "correct_score": 0.1142597422003746,
+      "correct_raw_nll": 0.1142597422003746,
+      "correct_reference_nll": null,
+      "source_description": "This image token represents a train in the bottom region of the image.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 0,
+          "sample_id": "coco_000000042563_172991",
+          "score": 0.1142597422003746,
+          "raw_nll": 0.1142597422003746,
+          "is_correct": true,
+          "response": "<explanation>\nThis image token represents a train in the bottom region of the image.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 11,
+          "sample_id": "coco_000000270297_2171667",
+          "score": 0.13740473985671997,
+          "raw_nll": 0.13740473985671997,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a train in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 37,
+          "sample_id": "coco_000000086220_1795872",
+          "score": 0.13740473985671997,
+          "raw_nll": 0.13740473985671997,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a train in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 3,
+          "sample_id": "coco_000000140203_394593",
+          "score": 0.19811969995498657,
+          "raw_nll": 0.19811969995498657,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a truck in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 31,
+          "sample_id": "coco_000000335529_574456",
+          "score": 0.2833210825920105,
+          "raw_nll": 0.2833210825920105,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a bench in the bottom region of the image.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 1,
+      "query_sample_id": "coco_000000287959_310751",
+      "correct_rank": 28,
+      "correct_score": 0.39164987206459045,
+      "correct_raw_nll": 0.39164987206459045,
+      "correct_reference_nll": null,
+      "source_description": "This image token represents a sandwich in the center region of the image.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 15,
+          "sample_id": "coco_000000173371_1622051",
+          "score": 0.13577060401439667,
+          "raw_nll": 0.13577060401439667,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a dining table in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 31,
+          "sample_id": "coco_000000335529_574456",
+          "score": 0.22605498135089874,
+          "raw_nll": 0.22605498135089874,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a bench in the bottom region of the image.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 17,
+          "sample_id": "coco_000000459153_575689",
+          "score": 0.25762253999710083,
+          "raw_nll": 0.25762253999710083,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a bench in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 41,
+          "sample_id": "coco_000000417043_578890",
+          "score": 0.25931426882743835,
+          "raw_nll": 0.25931426882743835,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a bench in the bottom-left region of the image.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 56,
+          "sample_id": "coco_000000547144_28780",
+          "score": 0.3092358708381653,
+          "raw_nll": 0.3092358708381653,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a tv in the center region of the image.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 2,
+      "query_sample_id": "coco_000000407825_2111404",
+      "correct_rank": 49,
+      "correct_score": 0.422039270401001,
+      "correct_raw_nll": 0.422039270401001,
+      "correct_reference_nll": null,
+      "source_description": "This image token represents an apple in the center region of the image.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 49,
+          "sample_id": "coco_000000218362_1666610",
+          "score": 0.09700120985507965,
+          "raw_nll": 0.09700120985507965,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a clock in the bottom region of the image.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 29,
+          "sample_id": "coco_000000145591_334181",
+          "score": 0.12527495622634888,
+          "raw_nll": 0.12527495622634888,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a clock in the right region of the image.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 15,
+          "sample_id": "coco_000000173371_1622051",
+          "score": 0.1979248970746994,
+          "raw_nll": 0.1979248970746994,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a dining table in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 46,
+          "sample_id": "coco_000000502737_1084421",
+          "score": 0.27646610140800476,
+          "raw_nll": 0.27646610140800476,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a cake in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 23,
+          "sample_id": "coco_000000355240_2193197",
+          "score": 0.27937036752700806,
+          "raw_nll": 0.27937036752700806,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a couch in the bottom region of the image.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 3,
+      "query_sample_id": "coco_000000140203_394593",
+      "correct_rank": 41,
+      "correct_score": 0.5154476165771484,
+      "correct_raw_nll": 0.5154476165771484,
+      "correct_reference_nll": null,
+      "source_description": "This image token represents a truck in the center region of the image.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 59,
+          "sample_id": "coco_000000104803_1094207",
+          "score": 0.34437304735183716,
+          "raw_nll": 0.34437304735183716,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a toilet in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 15,
+          "sample_id": "coco_000000173371_1622051",
+          "score": 0.35047170519828796,
+          "raw_nll": 0.35047170519828796,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a dining table in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 56,
+          "sample_id": "coco_000000547144_28780",
+          "score": 0.3637692928314209,
+          "raw_nll": 0.3637692928314209,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a tv in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 52,
+          "sample_id": "coco_000000175438_1338655",
+          "score": 0.38440054655075073,
+          "raw_nll": 0.38440054655075073,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a car in the right region of the image.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 20,
+          "sample_id": "coco_000000364636_9000",
+          "score": 0.39541617035865784,
+          "raw_nll": 0.39541617035865784,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a dog in the center region of the image.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 4,
+      "query_sample_id": "coco_000000152686_426491",
+      "correct_rank": 6,
+      "correct_score": 0.17428402602672577,
+      "correct_raw_nll": 0.17428402602672577,
+      "correct_reference_nll": null,
+      "source_description": "This image token represents a person in the center region of the image.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 22,
+          "sample_id": "coco_000000177065_1709501",
+          "score": 0.11470815539360046,
+          "raw_nll": 0.11470815539360046,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the left region of the image.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 44,
+          "sample_id": "coco_000000053626_541723",
+          "score": 0.11470815539360046,
+          "raw_nll": 0.11470815539360046,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the left region of the image.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 5,
+          "sample_id": "coco_000000393469_421984",
+          "score": 0.1404106169939041,
+          "raw_nll": 0.1404106169939041,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the bottom region of the image.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 19,
+          "sample_id": "coco_000000431545_428916",
+          "score": 0.17428402602672577,
+          "raw_nll": 0.17428402602672577,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 14,
+          "sample_id": "coco_000000314709_434786",
+          "score": 0.17428402602672577,
+          "raw_nll": 0.17428402602672577,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the center region of the image.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 5,
+      "query_sample_id": "coco_000000393469_421984",
+      "correct_rank": 5,
+      "correct_score": 0.2248639613389969,
+      "correct_raw_nll": 0.2248639613389969,
+      "correct_reference_nll": null,
+      "source_description": "This image token represents a person in the bottom region of the image.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 20,
+          "sample_id": "coco_000000364636_9000",
+          "score": 0.1316390484571457,
+          "raw_nll": 0.1316390484571457,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a dog in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 33,
+          "sample_id": "coco_000000575357_9911",
+          "score": 0.14869648218154907,
+          "raw_nll": 0.14869648218154907,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a dog in the right region of the image.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 22,
+          "sample_id": "coco_000000177065_1709501",
+          "score": 0.20969010889530182,
+          "raw_nll": 0.20969010889530182,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the left region of the image.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 44,
+          "sample_id": "coco_000000053626_541723",
+          "score": 0.20969010889530182,
+          "raw_nll": 0.20969010889530182,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the left region of the image.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 5,
+          "sample_id": "coco_000000393469_421984",
+          "score": 0.2248639613389969,
+          "raw_nll": 0.2248639613389969,
+          "is_correct": true,
+          "response": "<explanation>\nThis image token represents a person in the bottom region of the image.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 6,
+      "query_sample_id": "coco_000000107087_105597",
+      "correct_rank": 9,
+      "correct_score": 0.33265650272369385,
+      "correct_raw_nll": 0.33265650272369385,
+      "correct_reference_nll": null,
+      "source_description": "This image token represents a chair in the center region of the image.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 15,
+          "sample_id": "coco_000000173371_1622051",
+          "score": 0.245169535279274,
+          "raw_nll": 0.245169535279274,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a dining table in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 52,
+          "sample_id": "coco_000000175438_1338655",
+          "score": 0.2622296214103699,
+          "raw_nll": 0.2622296214103699,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a car in the right region of the image.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 37,
+          "sample_id": "coco_000000086220_1795872",
+          "score": 0.2717934846878052,
+          "raw_nll": 0.2717934846878052,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a train in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 11,
+          "sample_id": "coco_000000270297_2171667",
+          "score": 0.2717934846878052,
+          "raw_nll": 0.2717934846878052,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a train in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 0,
+          "sample_id": "coco_000000042563_172991",
+          "score": 0.2737914025783539,
+          "raw_nll": 0.2737914025783539,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a train in the bottom region of the image.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 7,
+      "query_sample_id": "coco_000000147338_416505",
+      "correct_rank": 5,
+      "correct_score": 0.20206664502620697,
+      "correct_raw_nll": 0.20206664502620697,
+      "correct_reference_nll": null,
+      "source_description": "This image token represents a fire hydrant in the center region of the image.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 0,
+          "sample_id": "coco_000000042563_172991",
+          "score": 0.1462690830230713,
+          "raw_nll": 0.1462690830230713,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a train in the bottom region of the image.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 37,
+          "sample_id": "coco_000000086220_1795872",
+          "score": 0.1579444408416748,
+          "raw_nll": 0.1579444408416748,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a train in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 11,
+          "sample_id": "coco_000000270297_2171667",
+          "score": 0.1579444408416748,
+          "raw_nll": 0.1579444408416748,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a train in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 3,
+          "sample_id": "coco_000000140203_394593",
+          "score": 0.19588465988636017,
+          "raw_nll": 0.19588465988636017,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a truck in the center region of the image.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 7,
+          "sample_id": "coco_000000147338_416505",
+          "score": 0.20206664502620697,
+          "raw_nll": 0.20206664502620697,
+          "is_correct": true,
+          "response": "<explanation>\nThis image token represents a fire hydrant in the center region of the image.\n</explanation>"
+        }
+      ]
+    }
+  ]
+}

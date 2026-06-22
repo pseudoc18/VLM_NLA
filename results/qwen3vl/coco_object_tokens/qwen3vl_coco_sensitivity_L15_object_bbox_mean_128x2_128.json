@@ -1,0 +1,109 @@
+{
+  "av_parquet": "data/qwen3vl_coco_L15_object_bbox_mean_n128_seed2027/qwen3vl_coco_L15_object_bbox_mean_av_sft.parquet",
+  "adapter": "outputs/qwen3vl_coco_av_lora_L15_object_bbox_mean_128x2_actadapter_8tok_dualcontrast/adapter",
+  "activation_adapter": "outputs/qwen3vl_coco_av_lora_L15_object_bbox_mean_128x2_actadapter_8tok_dualcontrast/activation_adapter.pt",
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "num_rows": 128,
+  "injection_scale": 68.24,
+  "num_injection_tokens": 8,
+  "prompt_token_count": 64,
+  "injection_positions": [
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37
+  ],
+  "matched_mean_nll": 0.49046456813812256,
+  "shifted_mean_nll": 1.0548738241195679,
+  "shuffled_mean_nll": 1.0257537364959717,
+  "shifted_minus_matched_mean": 0.5644092559814453,
+  "shuffled_minus_matched_mean": 0.5352891087532043,
+  "shifted_match_better_fraction": 1.0,
+  "shuffled_match_better_fraction": 0.9921875,
+  "examples": [
+    {
+      "index": 0,
+      "sample_id": "coco_000000474021_445486",
+      "source_description": "These image tokens represent a person in the right region of the image. The full COCO caption is: A couple of guys playing on the nintendo wii at a gathering.",
+      "matched_nll": 0.7092590928077698,
+      "shifted_nll": 1.232621431350708,
+      "shuffled_nll": 1.253730297088623,
+      "shifted_minus_matched": 0.5233623385429382,
+      "shuffled_minus_matched": 0.5444712042808533
+    },
+    {
+      "index": 1,
+      "sample_id": "coco_000000455981_1093311",
+      "source_description": "These image tokens represent a toilet in the center region of the image. The full COCO caption is: A white toilet that does not have it's seat down.",
+      "matched_nll": 0.36463403701782227,
+      "shifted_nll": 1.0823085308074951,
+      "shuffled_nll": 0.9128815531730652,
+      "shifted_minus_matched": 0.7176744937896729,
+      "shuffled_minus_matched": 0.5482475161552429
+    },
+    {
+      "index": 2,
+      "sample_id": "coco_000000153797_1710500",
+      "source_description": "These image tokens represent a person in the right region of the image. The full COCO caption is: A baseball player throwing a pitch onto the field",
+      "matched_nll": 0.3083096146583557,
+      "shifted_nll": 0.5470797419548035,
+      "shuffled_nll": 1.0144312381744385,
+      "shifted_minus_matched": 0.23877012729644775,
+      "shuffled_minus_matched": 0.7061216235160828
+    },
+    {
+      "index": 3,
+      "sample_id": "coco_000000182155_437595",
+      "source_description": "These image tokens represent a person in the center region of the image. The full COCO caption is: Two teenage girls paying a video game together.",
+      "matched_nll": 0.5352000594139099,
+      "shifted_nll": 0.715573787689209,
+      "shuffled_nll": 1.1738373041152954,
+      "shifted_minus_matched": 0.18037372827529907,
+      "shuffled_minus_matched": 0.6386372447013855
+    },
+    {
+      "index": 4,
+      "sample_id": "coco_000000328030_1162145",
+      "source_description": "These image tokens represent a teddy bear in the center region of the image. The full COCO caption is: the teddy bear is holding a hockey stick",
+      "matched_nll": 0.5185564160346985,
+      "shifted_nll": 1.0215476751327515,
+      "shuffled_nll": 1.1005381345748901,
+      "shifted_minus_matched": 0.502991259098053,
+      "shuffled_minus_matched": 0.5819817185401917
+    },
+    {
+      "index": 5,
+      "sample_id": "coco_000000047585_447745",
+      "source_description": "These image tokens represent a person in the center region of the image. The full COCO caption is: A man holds an umbrella for a new bride",
+      "matched_nll": 0.6194483637809753,
+      "shifted_nll": 1.1477406024932861,
+      "shuffled_nll": 0.8480636477470398,
+      "shifted_minus_matched": 0.5282922387123108,
+      "shuffled_minus_matched": 0.22861528396606445
+    },
+    {
+      "index": 6,
+      "sample_id": "coco_000000485130_1086663",
+      "source_description": "These image tokens represent a cake in the center region of the image. The full COCO caption is: A cake made to look like a wrestling ring.",
+      "matched_nll": 0.35054272413253784,
+      "shifted_nll": 0.6169416308403015,
+      "shuffled_nll": 0.7648115158081055,
+      "shifted_minus_matched": 0.26639890670776367,
+      "shuffled_minus_matched": 0.4142687916755676
+    },
+    {
+      "index": 7,
+      "sample_id": "coco_000000192904_2129983",
+      "source_description": "These image tokens represent a bed in the center region of the image. The full COCO caption is: The tray on the bed has a pastry and two mugs on it.",
+      "matched_nll": 0.6176269054412842,
+      "shifted_nll": 1.1426316499710083,
+      "shuffled_nll": 0.9623726606369019,
+      "shifted_minus_matched": 0.5250047445297241,
+      "shuffled_minus_matched": 0.3447457551956177
+    }
+  ]
+}

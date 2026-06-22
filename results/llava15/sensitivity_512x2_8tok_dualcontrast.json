@@ -1,0 +1,109 @@
+{
+  "av_parquet": "data/nla_style_L15_last_prompt_n512/av_sft.parquet",
+  "adapter": "outputs/av_lora_tiny_L15_last_prompt_512x2_fullrank_actadapter_8tok_dualcontrast/adapter",
+  "activation_adapter": "outputs/av_lora_tiny_L15_last_prompt_512x2_fullrank_actadapter_8tok_dualcontrast/activation_adapter.pt",
+  "model_id": "llava-hf/llava-1.5-7b-hf",
+  "num_rows": 512,
+  "injection_scale": 31.46,
+  "num_injection_tokens": 8,
+  "prompt_token_count": 92,
+  "injection_positions": [
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "matched_mean_nll": 0.2729448974132538,
+  "shifted_mean_nll": 0.3495931625366211,
+  "shuffled_mean_nll": 0.351942777633667,
+  "shifted_minus_matched_mean": 0.0766482949256897,
+  "shuffled_minus_matched_mean": 0.0789979100227356,
+  "shifted_match_better_fraction": 0.9296875,
+  "shuffled_match_better_fraction": 0.916015625,
+  "examples": [
+    {
+      "index": 0,
+      "sample_id": "synthetic_00000",
+      "source_description": "The image shows a yellow circle on the left.",
+      "matched_nll": 0.2040816992521286,
+      "shifted_nll": 0.21362744271755219,
+      "shuffled_nll": 0.5148733258247375,
+      "shifted_minus_matched": 0.009545743465423584,
+      "shuffled_minus_matched": 0.31079161167144775
+    },
+    {
+      "index": 1,
+      "sample_id": "synthetic_00001",
+      "source_description": "The image shows a yellow triangle on the left.",
+      "matched_nll": 0.1815006583929062,
+      "shifted_nll": 0.5872560739517212,
+      "shuffled_nll": 0.5884798169136047,
+      "shifted_minus_matched": 0.4057554006576538,
+      "shuffled_minus_matched": 0.40697914361953735
+    },
+    {
+      "index": 2,
+      "sample_id": "synthetic_00002",
+      "source_description": "The image shows a green square on the top and a blue triangle on the left.",
+      "matched_nll": 0.31846216320991516,
+      "shifted_nll": 0.4527517259120941,
+      "shuffled_nll": 0.3164214491844177,
+      "shifted_minus_matched": 0.13428956270217896,
+      "shuffled_minus_matched": -0.0020407140254974365
+    },
+    {
+      "index": 3,
+      "sample_id": "synthetic_00003",
+      "source_description": "The image shows a green square on the right.",
+      "matched_nll": 0.19552263617515564,
+      "shifted_nll": 0.6512357592582703,
+      "shuffled_nll": 0.25631532073020935,
+      "shifted_minus_matched": 0.4557131230831146,
+      "shuffled_minus_matched": 0.06079268455505371
+    },
+    {
+      "index": 4,
+      "sample_id": "synthetic_00004",
+      "source_description": "The image shows a red square on the left and a blue triangle on the bottom.",
+      "matched_nll": 0.2990923225879669,
+      "shifted_nll": 0.3342341184616089,
+      "shuffled_nll": 0.4569059908390045,
+      "shifted_minus_matched": 0.03514179587364197,
+      "shuffled_minus_matched": 0.1578136682510376
+    },
+    {
+      "index": 5,
+      "sample_id": "synthetic_00005",
+      "source_description": "The image shows a orange square on the left and a green square on the center.",
+      "matched_nll": 0.2920507788658142,
+      "shifted_nll": 0.3629259765148163,
+      "shuffled_nll": 0.33186206221580505,
+      "shifted_minus_matched": 0.07087519764900208,
+      "shuffled_minus_matched": 0.039811283349990845
+    },
+    {
+      "index": 6,
+      "sample_id": "synthetic_00006",
+      "source_description": "The image shows a purple circle on the bottom.",
+      "matched_nll": 0.19913345575332642,
+      "shifted_nll": 0.2020195722579956,
+      "shuffled_nll": 0.5623185038566589,
+      "shifted_minus_matched": 0.0028861165046691895,
+      "shuffled_minus_matched": 0.3631850481033325
+    },
+    {
+      "index": 7,
+      "sample_id": "synthetic_00007",
+      "source_description": "The image shows a blue circle on the left.",
+      "matched_nll": 0.21788299083709717,
+      "shifted_nll": 0.41099539399147034,
+      "shuffled_nll": 0.5871456265449524,
+      "shifted_minus_matched": 0.19311240315437317,
+      "shuffled_minus_matched": 0.3692626357078552
+    }
+  ]
+}

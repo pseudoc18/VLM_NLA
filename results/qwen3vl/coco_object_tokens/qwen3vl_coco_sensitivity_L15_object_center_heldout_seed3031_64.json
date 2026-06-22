@@ -1,0 +1,109 @@
+{
+  "av_parquet": "data/qwen3vl_coco_L15_object_center_heldout_n64_seed3031/qwen3vl_coco_L15_object_center_av_sft.parquet",
+  "adapter": "outputs/qwen3vl_coco_av_lora_L15_object_center_128x2_actadapter_8tok_dualcontrast/adapter",
+  "activation_adapter": "outputs/qwen3vl_coco_av_lora_L15_object_center_128x2_actadapter_8tok_dualcontrast/activation_adapter.pt",
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "num_rows": 64,
+  "injection_scale": 80.2,
+  "num_injection_tokens": 8,
+  "prompt_token_count": 64,
+  "injection_positions": [
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37
+  ],
+  "matched_mean_nll": 0.8339298367500305,
+  "shifted_mean_nll": 1.028620719909668,
+  "shuffled_mean_nll": 1.0282387733459473,
+  "shifted_minus_matched_mean": 0.19469085335731506,
+  "shuffled_minus_matched_mean": 0.19430893659591675,
+  "shifted_match_better_fraction": 0.90625,
+  "shuffled_match_better_fraction": 0.921875,
+  "examples": [
+    {
+      "index": 0,
+      "sample_id": "coco_000000042563_172991",
+      "source_description": "This image token represents a train in the bottom region of the image. The full COCO caption is: Railway car on snow covered tracks approaching urban area.",
+      "matched_nll": 1.0261595249176025,
+      "shifted_nll": 1.301285743713379,
+      "shuffled_nll": 1.290063500404358,
+      "shifted_minus_matched": 0.27512621879577637,
+      "shuffled_minus_matched": 0.26390397548675537
+    },
+    {
+      "index": 1,
+      "sample_id": "coco_000000287959_310751",
+      "source_description": "This image token represents a sandwich in the center region of the image. The full COCO caption is: a sandwich that has something green and red in it",
+      "matched_nll": 0.8384848833084106,
+      "shifted_nll": 0.9722429513931274,
+      "shuffled_nll": 0.9195125102996826,
+      "shifted_minus_matched": 0.1337580680847168,
+      "shuffled_minus_matched": 0.08102762699127197
+    },
+    {
+      "index": 2,
+      "sample_id": "coco_000000407825_2111404",
+      "source_description": "This image token represents a apple in the center region of the image. The full COCO caption is: A red apple with a clock inside of it.",
+      "matched_nll": 0.8635077476501465,
+      "shifted_nll": 1.0316262245178223,
+      "shuffled_nll": 1.0968914031982422,
+      "shifted_minus_matched": 0.16811847686767578,
+      "shuffled_minus_matched": 0.2333836555480957
+    },
+    {
+      "index": 3,
+      "sample_id": "coco_000000140203_394593",
+      "source_description": "This image token represents a truck in the center region of the image. The full COCO caption is: A vehicle displays a customized license plate and milk advertisements.",
+      "matched_nll": 1.520643711090088,
+      "shifted_nll": 1.51546049118042,
+      "shuffled_nll": 1.505105972290039,
+      "shifted_minus_matched": -0.005183219909667969,
+      "shuffled_minus_matched": -0.015537738800048828
+    },
+    {
+      "index": 4,
+      "sample_id": "coco_000000152686_426491",
+      "source_description": "This image token represents a person in the center region of the image. The full COCO caption is: Tennis player serving a tennis ball on a clay court",
+      "matched_nll": 0.5831575393676758,
+      "shifted_nll": 0.647195041179657,
+      "shuffled_nll": 0.8868343830108643,
+      "shifted_minus_matched": 0.0640375018119812,
+      "shuffled_minus_matched": 0.3036768436431885
+    },
+    {
+      "index": 5,
+      "sample_id": "coco_000000393469_421984",
+      "source_description": "This image token represents a person in the bottom region of the image. The full COCO caption is: A man knees down on the side of a snow filled mountainside.",
+      "matched_nll": 1.0599515438079834,
+      "shifted_nll": 1.3611955642700195,
+      "shuffled_nll": 1.2652884721755981,
+      "shifted_minus_matched": 0.30124402046203613,
+      "shuffled_minus_matched": 0.20533692836761475
+    },
+    {
+      "index": 6,
+      "sample_id": "coco_000000107087_105597",
+      "source_description": "This image token represents a chair in the center region of the image. The full COCO caption is: A black cat sits in a car and looks out.",
+      "matched_nll": 0.8414708375930786,
+      "shifted_nll": 0.9787572622299194,
+      "shuffled_nll": 1.0544310808181763,
+      "shifted_minus_matched": 0.13728642463684082,
+      "shuffled_minus_matched": 0.21296024322509766
+    },
+    {
+      "index": 7,
+      "sample_id": "coco_000000147338_416505",
+      "source_description": "This image token represents a fire hydrant in the center region of the image. The full COCO caption is: A yellow fire hydrant with a cartoon face drawn on it.",
+      "matched_nll": 0.5986229181289673,
+      "shifted_nll": 0.6339905858039856,
+      "shuffled_nll": 0.6846444010734558,
+      "shifted_minus_matched": 0.03536766767501831,
+      "shuffled_minus_matched": 0.08602148294448853
+    }
+  ]
+}

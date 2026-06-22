@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Local experiment products
+data/
+outputs/
+checkpoints/
+adapter/
+*.pt
+*.pth
+*.safetensors
+*.parquet
+*.arrow
+*.bin
+
+# Large downloaded datasets
+coco/
+annotations/
+val2017/
+train2017/
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+

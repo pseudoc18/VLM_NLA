@@ -1,0 +1,109 @@
+{
+  "av_parquet": "data/qwen3vl_coco_L15_object_center_short_heldout_n64_seed3031/qwen3vl_coco_L15_object_center_short_av_sft.parquet",
+  "adapter": "outputs/qwen3vl_coco_av_lora_L15_object_center_short_128x2_actadapter_8tok_dualcontrast/adapter",
+  "activation_adapter": "outputs/qwen3vl_coco_av_lora_L15_object_center_short_128x2_actadapter_8tok_dualcontrast/activation_adapter.pt",
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "num_rows": 64,
+  "injection_scale": 80.2,
+  "num_injection_tokens": 8,
+  "prompt_token_count": 64,
+  "injection_positions": [
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37
+  ],
+  "matched_mean_nll": 0.23574405908584595,
+  "shifted_mean_nll": 0.39130300283432007,
+  "shuffled_mean_nll": 0.39199867844581604,
+  "shifted_minus_matched_mean": 0.15555894374847412,
+  "shuffled_minus_matched_mean": 0.1562546044588089,
+  "shifted_match_better_fraction": 0.859375,
+  "shuffled_match_better_fraction": 0.90625,
+  "examples": [
+    {
+      "index": 0,
+      "sample_id": "coco_000000042563_172991",
+      "source_description": "This image token represents a train in the bottom region of the image.",
+      "matched_nll": 0.1142597422003746,
+      "shifted_nll": 0.32893994450569153,
+      "shuffled_nll": 0.46912965178489685,
+      "shifted_minus_matched": 0.21468019485473633,
+      "shuffled_minus_matched": 0.35486990213394165
+    },
+    {
+      "index": 1,
+      "sample_id": "coco_000000287959_310751",
+      "source_description": "This image token represents a sandwich in the center region of the image.",
+      "matched_nll": 0.39164987206459045,
+      "shifted_nll": 0.41923341155052185,
+      "shuffled_nll": 0.4994497299194336,
+      "shifted_minus_matched": 0.027583539485931396,
+      "shuffled_minus_matched": 0.10779985785484314
+    },
+    {
+      "index": 2,
+      "sample_id": "coco_000000407825_2111404",
+      "source_description": "This image token represents an apple in the center region of the image.",
+      "matched_nll": 0.422039270401001,
+      "shifted_nll": 0.5246843099594116,
+      "shuffled_nll": 0.6808129549026489,
+      "shifted_minus_matched": 0.10264503955841064,
+      "shuffled_minus_matched": 0.25877368450164795
+    },
+    {
+      "index": 3,
+      "sample_id": "coco_000000140203_394593",
+      "source_description": "This image token represents a truck in the center region of the image.",
+      "matched_nll": 0.5154476165771484,
+      "shifted_nll": 0.3837103247642517,
+      "shuffled_nll": 0.5023082494735718,
+      "shifted_minus_matched": -0.13173729181289673,
+      "shuffled_minus_matched": -0.01313936710357666
+    },
+    {
+      "index": 4,
+      "sample_id": "coco_000000152686_426491",
+      "source_description": "This image token represents a person in the center region of the image.",
+      "matched_nll": 0.17428402602672577,
+      "shifted_nll": 0.23647256195545197,
+      "shuffled_nll": 0.5124348998069763,
+      "shifted_minus_matched": 0.062188535928726196,
+      "shuffled_minus_matched": 0.33815085887908936
+    },
+    {
+      "index": 5,
+      "sample_id": "coco_000000393469_421984",
+      "source_description": "This image token represents a person in the bottom region of the image.",
+      "matched_nll": 0.2248639613389969,
+      "shifted_nll": 0.4482443332672119,
+      "shuffled_nll": 0.3545300364494324,
+      "shifted_minus_matched": 0.22338037192821503,
+      "shuffled_minus_matched": 0.12966607511043549
+    },
+    {
+      "index": 6,
+      "sample_id": "coco_000000107087_105597",
+      "source_description": "This image token represents a chair in the center region of the image.",
+      "matched_nll": 0.33265650272369385,
+      "shifted_nll": 0.3023197054862976,
+      "shuffled_nll": 0.45730578899383545,
+      "shifted_minus_matched": -0.03033679723739624,
+      "shuffled_minus_matched": 0.1246492862701416
+    },
+    {
+      "index": 7,
+      "sample_id": "coco_000000147338_416505",
+      "source_description": "This image token represents a fire hydrant in the center region of the image.",
+      "matched_nll": 0.20206664502620697,
+      "shifted_nll": 0.3460419476032257,
+      "shuffled_nll": 0.3324351906776428,
+      "shifted_minus_matched": 0.14397530257701874,
+      "shuffled_minus_matched": 0.13036854565143585
+    }
+  ]
+}

@@ -1,0 +1,485 @@
+{
+  "av_parquet": "data/qwen3vl_coco_L15_object_bbox_mean_heldout_n64_seed3031/qwen3vl_coco_L15_object_bbox_mean_av_sft.parquet",
+  "adapter": "outputs/qwen3vl_coco_av_lora_L15_object_bbox_mean_128x2_actadapter_8tok_dualcontrast/adapter",
+  "activation_adapter": "outputs/qwen3vl_coco_av_lora_L15_object_bbox_mean_128x2_actadapter_8tok_dualcontrast/activation_adapter.pt",
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "num_queries": 32,
+  "num_candidates": 64,
+  "candidate_mode": "all",
+  "score_mode": "nll",
+  "injection_scale": 68.24,
+  "num_injection_tokens": 8,
+  "prompt_token_count": 64,
+  "injection_positions": [
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37
+  ],
+  "mean_rank": 9.90625,
+  "median_rank": 4.5,
+  "top1_accuracy": 0.25,
+  "top3_accuracy": 0.46875,
+  "top5_accuracy": 0.5625,
+  "mean_margin_best_wrong_minus_correct": -0.17232416197657585,
+  "median_margin_best_wrong_minus_correct": -0.1652713418006897,
+  "mean_correct_nll": 0.7741336300969124,
+  "mean_correct_raw_nll": 0.7741336300969124,
+  "mean_correct_reference_nll": null,
+  "mean_all_nll": 1.1653518676757812,
+  "mean_all_raw_nll": 1.1653518676757812,
+  "examples": [
+    {
+      "query_index": 0,
+      "query_sample_id": "coco_000000042563_172991",
+      "correct_rank": 13,
+      "correct_score": 1.048973798751831,
+      "correct_raw_nll": 1.048973798751831,
+      "correct_reference_nll": null,
+      "source_description": "These image tokens represent a train in the bottom region of the image. The full COCO caption is: Railway car on snow covered tracks approaching urban area.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 11,
+          "sample_id": "coco_000000270297_2171667",
+          "score": 0.6315165758132935,
+          "raw_nll": 0.6315165758132935,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a train in the center region of the image. The full COCO caption is: A small train going down a steel track.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 21,
+          "sample_id": "coco_000000442822_1377509",
+          "score": 0.7376512885093689,
+          "raw_nll": 0.7376512885093689,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a boat in the bottom region of the image. The full COCO caption is: Several rows of boats docked on a body of water.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 37,
+          "sample_id": "coco_000000086220_1795872",
+          "score": 0.8126434683799744,
+          "raw_nll": 0.8126434683799744,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a train in the center region of the image. The full COCO caption is: A car and a public transit vehicle on a road.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 18,
+          "sample_id": "coco_000000463849_1377705",
+          "score": 0.8602979779243469,
+          "raw_nll": 0.8602979779243469,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a boat in the left region of the image. The full COCO caption is: Many boats are parked in the middle of a city.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 31,
+          "sample_id": "coco_000000335529_574456",
+          "score": 0.879550576210022,
+          "raw_nll": 0.879550576210022,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a bench in the bottom region of the image. The full COCO caption is: A wooden bench sitting next to a large body of water.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 1,
+      "query_sample_id": "coco_000000287959_310751",
+      "correct_rank": 8,
+      "correct_score": 0.8219060301780701,
+      "correct_raw_nll": 0.8219060301780701,
+      "correct_reference_nll": null,
+      "source_description": "These image tokens represent a sandwich in the center region of the image. The full COCO caption is: a sandwich that has something green and red in it",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 31,
+          "sample_id": "coco_000000335529_574456",
+          "score": 0.6471266150474548,
+          "raw_nll": 0.6471266150474548,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a bench in the bottom region of the image. The full COCO caption is: A wooden bench sitting next to a large body of water.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 41,
+          "sample_id": "coco_000000417043_578890",
+          "score": 0.6953528523445129,
+          "raw_nll": 0.6953528523445129,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a bench in the bottom-left region of the image. The full COCO caption is: A bench sitting on the side of a road.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 45,
+          "sample_id": "coco_000000414795_1409580",
+          "score": 0.7045443654060364,
+          "raw_nll": 0.7045443654060364,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a elephant in the left region of the image. The full COCO caption is: A herd of elephants walking into a large body of water.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 44,
+          "sample_id": "coco_000000053626_541723",
+          "score": 0.7133746147155762,
+          "raw_nll": 0.7133746147155762,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a person in the left region of the image. The full COCO caption is: A group of people standing on ski's in the snow.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 13,
+          "sample_id": "coco_000000462643_322436",
+          "score": 0.7341287732124329,
+          "raw_nll": 0.7341287732124329,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a cell phone in the center region of the image. The full COCO caption is: A person holding a broken up cell phone.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 2,
+      "query_sample_id": "coco_000000407825_2111404",
+      "correct_rank": 3,
+      "correct_score": 0.7890459895133972,
+      "correct_raw_nll": 0.7890459895133972,
+      "correct_reference_nll": null,
+      "source_description": "These image tokens represent a apple in the center region of the image. The full COCO caption is: A red apple with a clock inside of it.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 49,
+          "sample_id": "coco_000000218362_1666610",
+          "score": 0.6559773683547974,
+          "raw_nll": 0.6559773683547974,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a clock in the bottom region of the image. The full COCO caption is: A large digital clock mounted to a wall.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 7,
+          "sample_id": "coco_000000147338_416505",
+          "score": 0.6605446934700012,
+          "raw_nll": 0.6605446934700012,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a fire hydrant in the center region of the image. The full COCO caption is: A yellow fire hydrant with a cartoon face drawn on it.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 2,
+          "sample_id": "coco_000000407825_2111404",
+          "score": 0.7890459895133972,
+          "raw_nll": 0.7890459895133972,
+          "is_correct": true,
+          "response": "<explanation>\nThese image tokens represent a apple in the center region of the image. The full COCO caption is: A red apple with a clock inside of it.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 31,
+          "sample_id": "coco_000000335529_574456",
+          "score": 0.8074620366096497,
+          "raw_nll": 0.8074620366096497,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a bench in the bottom region of the image. The full COCO caption is: A wooden bench sitting next to a large body of water.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 57,
+          "sample_id": "coco_000000192716_269191",
+          "score": 0.8102685809135437,
+          "raw_nll": 0.8102685809135437,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a stop sign in the center region of the image. The full COCO caption is: a street sign attached to a wooden pole\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 3,
+      "query_sample_id": "coco_000000140203_394593",
+      "correct_rank": 57,
+      "correct_score": 1.4327492713928223,
+      "correct_raw_nll": 1.4327492713928223,
+      "correct_reference_nll": null,
+      "source_description": "These image tokens represent a truck in the center region of the image. The full COCO caption is: A vehicle displays a customized license plate and milk advertisements.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 11,
+          "sample_id": "coco_000000270297_2171667",
+          "score": 0.5518414378166199,
+          "raw_nll": 0.5518414378166199,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a train in the center region of the image. The full COCO caption is: A small train going down a steel track.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 37,
+          "sample_id": "coco_000000086220_1795872",
+          "score": 0.7092623710632324,
+          "raw_nll": 0.7092623710632324,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a train in the center region of the image. The full COCO caption is: A car and a public transit vehicle on a road.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 45,
+          "sample_id": "coco_000000414795_1409580",
+          "score": 0.7590783834457397,
+          "raw_nll": 0.7590783834457397,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a elephant in the left region of the image. The full COCO caption is: A herd of elephants walking into a large body of water.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 7,
+          "sample_id": "coco_000000147338_416505",
+          "score": 0.7877665758132935,
+          "raw_nll": 0.7877665758132935,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a fire hydrant in the center region of the image. The full COCO caption is: A yellow fire hydrant with a cartoon face drawn on it.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 31,
+          "sample_id": "coco_000000335529_574456",
+          "score": 0.7930110692977905,
+          "raw_nll": 0.7930110692977905,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a bench in the bottom region of the image. The full COCO caption is: A wooden bench sitting next to a large body of water.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 4,
+      "query_sample_id": "coco_000000152686_426491",
+      "correct_rank": 1,
+      "correct_score": 0.40884363651275635,
+      "correct_raw_nll": 0.40884363651275635,
+      "correct_reference_nll": null,
+      "source_description": "These image tokens represent a person in the center region of the image. The full COCO caption is: Tennis player serving a tennis ball on a clay court",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 4,
+          "sample_id": "coco_000000152686_426491",
+          "score": 0.40884363651275635,
+          "raw_nll": 0.40884363651275635,
+          "is_correct": true,
+          "response": "<explanation>\nThese image tokens represent a person in the center region of the image. The full COCO caption is: Tennis player serving a tennis ball on a clay court\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 14,
+          "sample_id": "coco_000000314709_434786",
+          "score": 0.5031406879425049,
+          "raw_nll": 0.5031406879425049,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a person in the center region of the image. The full COCO caption is: a person riding skis on a snowy slope\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 44,
+          "sample_id": "coco_000000053626_541723",
+          "score": 0.548773467540741,
+          "raw_nll": 0.548773467540741,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a person in the left region of the image. The full COCO caption is: A group of people standing on ski's in the snow.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 54,
+          "sample_id": "coco_000000352582_460450",
+          "score": 0.6049898266792297,
+          "raw_nll": 0.6049898266792297,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a person in the center region of the image. The full COCO caption is: A man in a suit tossing a frisbee\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 22,
+          "sample_id": "coco_000000177065_1709501",
+          "score": 0.6087646484375,
+          "raw_nll": 0.6087646484375,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a person in the left region of the image. The full COCO caption is: Children and an adult on a tennis court.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 5,
+      "query_sample_id": "coco_000000393469_421984",
+      "correct_rank": 9,
+      "correct_score": 0.8400893807411194,
+      "correct_raw_nll": 0.8400893807411194,
+      "correct_reference_nll": null,
+      "source_description": "These image tokens represent a person in the bottom region of the image. The full COCO caption is: A man knees down on the side of a snow filled mountainside.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 14,
+          "sample_id": "coco_000000314709_434786",
+          "score": 0.5339970588684082,
+          "raw_nll": 0.5339970588684082,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a person in the center region of the image. The full COCO caption is: a person riding skis on a snowy slope\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 44,
+          "sample_id": "coco_000000053626_541723",
+          "score": 0.54481041431427,
+          "raw_nll": 0.54481041431427,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a person in the left region of the image. The full COCO caption is: A group of people standing on ski's in the snow.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 4,
+          "sample_id": "coco_000000152686_426491",
+          "score": 0.6213510036468506,
+          "raw_nll": 0.6213510036468506,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a person in the center region of the image. The full COCO caption is: Tennis player serving a tennis ball on a clay court\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 54,
+          "sample_id": "coco_000000352582_460450",
+          "score": 0.6591901779174805,
+          "raw_nll": 0.6591901779174805,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a person in the center region of the image. The full COCO caption is: A man in a suit tossing a frisbee\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 36,
+          "sample_id": "coco_000000172946_1719710",
+          "score": 0.702159583568573,
+          "raw_nll": 0.702159583568573,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a person in the right region of the image. The full COCO caption is: A group of people standing around holding Nintendo Wii controllers.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 6,
+      "query_sample_id": "coco_000000107087_105597",
+      "correct_rank": 8,
+      "correct_score": 0.7993789315223694,
+      "correct_raw_nll": 0.7993789315223694,
+      "correct_reference_nll": null,
+      "source_description": "These image tokens represent a chair in the center region of the image. The full COCO caption is: A black cat sits in a car and looks out.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 45,
+          "sample_id": "coco_000000414795_1409580",
+          "score": 0.6125141978263855,
+          "raw_nll": 0.6125141978263855,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a elephant in the left region of the image. The full COCO caption is: A herd of elephants walking into a large body of water.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 31,
+          "sample_id": "coco_000000335529_574456",
+          "score": 0.6461294293403625,
+          "raw_nll": 0.6461294293403625,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a bench in the bottom region of the image. The full COCO caption is: A wooden bench sitting next to a large body of water.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 9,
+          "sample_id": "coco_000000262895_294372",
+          "score": 0.7042860388755798,
+          "raw_nll": 0.7042860388755798,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a tie in the bottom region of the image. The full COCO caption is: A man wearing a tie, jacket and white shirt.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 49,
+          "sample_id": "coco_000000218362_1666610",
+          "score": 0.718532919883728,
+          "raw_nll": 0.718532919883728,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a clock in the bottom region of the image. The full COCO caption is: A large digital clock mounted to a wall.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 27,
+          "sample_id": "coco_000000166478_97919",
+          "score": 0.7427690029144287,
+          "raw_nll": 0.7427690029144287,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a couch in the bottom region of the image. The full COCO caption is: A young guy using his computer and talking on his phone.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 7,
+      "query_sample_id": "coco_000000147338_416505",
+      "correct_rank": 2,
+      "correct_score": 0.5679347515106201,
+      "correct_raw_nll": 0.5679347515106201,
+      "correct_reference_nll": null,
+      "source_description": "These image tokens represent a fire hydrant in the center region of the image. The full COCO caption is: A yellow fire hydrant with a cartoon face drawn on it.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 11,
+          "sample_id": "coco_000000270297_2171667",
+          "score": 0.549665093421936,
+          "raw_nll": 0.549665093421936,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a train in the center region of the image. The full COCO caption is: A small train going down a steel track.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 7,
+          "sample_id": "coco_000000147338_416505",
+          "score": 0.5679347515106201,
+          "raw_nll": 0.5679347515106201,
+          "is_correct": true,
+          "response": "<explanation>\nThese image tokens represent a fire hydrant in the center region of the image. The full COCO caption is: A yellow fire hydrant with a cartoon face drawn on it.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 57,
+          "sample_id": "coco_000000192716_269191",
+          "score": 0.6708842515945435,
+          "raw_nll": 0.6708842515945435,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a stop sign in the center region of the image. The full COCO caption is: a street sign attached to a wooden pole\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 49,
+          "sample_id": "coco_000000218362_1666610",
+          "score": 0.6898897886276245,
+          "raw_nll": 0.6898897886276245,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a clock in the bottom region of the image. The full COCO caption is: A large digital clock mounted to a wall.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 9,
+          "sample_id": "coco_000000262895_294372",
+          "score": 0.6902211904525757,
+          "raw_nll": 0.6902211904525757,
+          "is_correct": false,
+          "response": "<explanation>\nThese image tokens represent a tie in the bottom region of the image. The full COCO caption is: A man wearing a tie, jacket and white shirt.\n</explanation>"
+        }
+      ]
+    }
+  ]
+}

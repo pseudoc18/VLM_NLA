@@ -1,0 +1,109 @@
+{
+  "av_parquet": "data/qwen3vl_coco_L15_object_bbox_mean_short_n128_seed2027/qwen3vl_coco_L15_object_bbox_mean_short_av_sft.parquet",
+  "adapter": "outputs/qwen3vl_coco_av_lora_L15_object_bbox_mean_short_128x2_actadapter_8tok_dualcontrast/adapter",
+  "activation_adapter": "outputs/qwen3vl_coco_av_lora_L15_object_bbox_mean_short_128x2_actadapter_8tok_dualcontrast/activation_adapter.pt",
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "num_rows": 128,
+  "injection_scale": 68.24,
+  "num_injection_tokens": 8,
+  "prompt_token_count": 64,
+  "injection_positions": [
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37
+  ],
+  "matched_mean_nll": 0.04106045141816139,
+  "shifted_mean_nll": 0.6152095794677734,
+  "shuffled_mean_nll": 0.5878261923789978,
+  "shifted_minus_matched_mean": 0.5741490721702576,
+  "shuffled_minus_matched_mean": 0.5467658042907715,
+  "shifted_match_better_fraction": 1.0,
+  "shuffled_match_better_fraction": 0.9921875,
+  "examples": [
+    {
+      "index": 0,
+      "sample_id": "coco_000000474021_445486",
+      "source_description": "These image tokens represent a person in the right region of the image.",
+      "matched_nll": 0.015116811729967594,
+      "shifted_nll": 0.8771634101867676,
+      "shuffled_nll": 0.6720629334449768,
+      "shifted_minus_matched": 0.8620465993881226,
+      "shuffled_minus_matched": 0.6569461226463318
+    },
+    {
+      "index": 1,
+      "sample_id": "coco_000000455981_1093311",
+      "source_description": "These image tokens represent a toilet in the center region of the image.",
+      "matched_nll": 0.021582473069429398,
+      "shifted_nll": 0.5084697604179382,
+      "shuffled_nll": 0.3262089788913727,
+      "shifted_minus_matched": 0.48688727617263794,
+      "shuffled_minus_matched": 0.3046264946460724
+    },
+    {
+      "index": 2,
+      "sample_id": "coco_000000153797_1710500",
+      "source_description": "These image tokens represent a person in the right region of the image.",
+      "matched_nll": 0.029179168865084648,
+      "shifted_nll": 0.21195945143699646,
+      "shuffled_nll": 0.7974773645401001,
+      "shifted_minus_matched": 0.18278028070926666,
+      "shuffled_minus_matched": 0.7682982087135315
+    },
+    {
+      "index": 3,
+      "sample_id": "coco_000000182155_437595",
+      "source_description": "These image tokens represent a person in the center region of the image.",
+      "matched_nll": 0.016186367720365524,
+      "shifted_nll": 0.536995530128479,
+      "shuffled_nll": 0.5445135831832886,
+      "shifted_minus_matched": 0.5208091735839844,
+      "shuffled_minus_matched": 0.528327226638794
+    },
+    {
+      "index": 4,
+      "sample_id": "coco_000000328030_1162145",
+      "source_description": "These image tokens represent a teddy bear in the center region of the image.",
+      "matched_nll": 0.01298436988145113,
+      "shifted_nll": 0.3198607563972473,
+      "shuffled_nll": 0.6706550121307373,
+      "shifted_minus_matched": 0.30687639117240906,
+      "shuffled_minus_matched": 0.6576706171035767
+    },
+    {
+      "index": 5,
+      "sample_id": "coco_000000047585_447745",
+      "source_description": "These image tokens represent a person in the center region of the image.",
+      "matched_nll": 0.033162545412778854,
+      "shifted_nll": 0.6728872656822205,
+      "shuffled_nll": 0.03998439759016037,
+      "shifted_minus_matched": 0.6397247314453125,
+      "shuffled_minus_matched": 0.0068218521773815155
+    },
+    {
+      "index": 6,
+      "sample_id": "coco_000000485130_1086663",
+      "source_description": "These image tokens represent a cake in the center region of the image.",
+      "matched_nll": 0.020367708057165146,
+      "shifted_nll": 0.37169915437698364,
+      "shuffled_nll": 0.4572145342826843,
+      "shifted_minus_matched": 0.3513314425945282,
+      "shuffled_minus_matched": 0.4368468225002289
+    },
+    {
+      "index": 7,
+      "sample_id": "coco_000000192904_2129983",
+      "source_description": "These image tokens represent a bed in the center region of the image.",
+      "matched_nll": 0.04229718819260597,
+      "shifted_nll": 0.6026473045349121,
+      "shuffled_nll": 0.34360313415527344,
+      "shifted_minus_matched": 0.5603501200675964,
+      "shuffled_minus_matched": 0.30130594968795776
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+numpy
+pillow
+pyarrow
+pyyaml
+torch
+transformers
+peft
+matplotlib
+

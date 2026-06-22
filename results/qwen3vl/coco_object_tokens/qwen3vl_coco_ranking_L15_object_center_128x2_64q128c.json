@@ -1,0 +1,485 @@
+{
+  "av_parquet": "data/qwen3vl_coco_L15_object_center_n128_seed2027/qwen3vl_coco_L15_object_center_av_sft.parquet",
+  "adapter": "outputs/qwen3vl_coco_av_lora_L15_object_center_128x2_actadapter_8tok_dualcontrast/adapter",
+  "activation_adapter": "outputs/qwen3vl_coco_av_lora_L15_object_center_128x2_actadapter_8tok_dualcontrast/activation_adapter.pt",
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "num_queries": 64,
+  "num_candidates": 128,
+  "candidate_mode": "all",
+  "score_mode": "nll",
+  "injection_scale": 80.2,
+  "num_injection_tokens": 8,
+  "prompt_token_count": 64,
+  "injection_positions": [
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37
+  ],
+  "mean_rank": 10.640625,
+  "median_rank": 3.0,
+  "top1_accuracy": 0.3125,
+  "top3_accuracy": 0.53125,
+  "top5_accuracy": 0.578125,
+  "mean_margin_best_wrong_minus_correct": -0.08044667774811387,
+  "median_margin_best_wrong_minus_correct": -0.05791962146759033,
+  "mean_correct_nll": 0.5536787058226764,
+  "mean_correct_raw_nll": 0.5536787058226764,
+  "mean_correct_reference_nll": null,
+  "mean_all_nll": 0.89815354347229,
+  "mean_all_raw_nll": 0.89815354347229,
+  "examples": [
+    {
+      "query_index": 0,
+      "query_sample_id": "coco_000000474021_445486",
+      "correct_rank": 19,
+      "correct_score": 0.6312968134880066,
+      "correct_raw_nll": 0.6312968134880066,
+      "correct_reference_nll": null,
+      "source_description": "This image token represents a person in the right region of the image. The full COCO caption is: A couple of guys playing on the nintendo wii at a gathering.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 2,
+          "sample_id": "coco_000000153797_1710500",
+          "score": 0.4382920265197754,
+          "raw_nll": 0.4382920265197754,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the right region of the image. The full COCO caption is: A baseball player throwing a pitch onto the field\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 116,
+          "sample_id": "coco_000000334483_1712045",
+          "score": 0.4763108789920807,
+          "raw_nll": 0.4763108789920807,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the left region of the image. The full COCO caption is: A group of women standing around a cake cutting slices.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 85,
+          "sample_id": "coco_000000388056_1229463",
+          "score": 0.4953993558883667,
+          "raw_nll": 0.4953993558883667,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the left region of the image. The full COCO caption is: A baseball player holding a bat and getting ready for the pitch.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 17,
+          "sample_id": "coco_000000581317_460897",
+          "score": 0.49822187423706055,
+          "raw_nll": 0.49822187423706055,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the right region of the image. The full COCO caption is: A woman holding a small item in a field.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 102,
+          "sample_id": "coco_000000327617_660765",
+          "score": 0.5052424073219299,
+          "raw_nll": 0.5052424073219299,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a tennis racket in the center region of the image. The full COCO caption is: an old black and white photo of a tennis player\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 1,
+      "query_sample_id": "coco_000000455981_1093311",
+      "correct_rank": 1,
+      "correct_score": 0.4518802762031555,
+      "correct_raw_nll": 0.4518802762031555,
+      "correct_reference_nll": null,
+      "source_description": "This image token represents a toilet in the center region of the image. The full COCO caption is: A white toilet that does not have it's seat down.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 1,
+          "sample_id": "coco_000000455981_1093311",
+          "score": 0.4518802762031555,
+          "raw_nll": 0.4518802762031555,
+          "is_correct": true,
+          "response": "<explanation>\nThis image token represents a toilet in the center region of the image. The full COCO caption is: A white toilet that does not have it's seat down.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 20,
+          "sample_id": "coco_000000458054_1967478",
+          "score": 0.5299808382987976,
+          "raw_nll": 0.5299808382987976,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a toilet in the left region of the image. The full COCO caption is: A row of white toilets sitting on top of a dirt ground.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 26,
+          "sample_id": "coco_000000560279_1093007",
+          "score": 0.5314372777938843,
+          "raw_nll": 0.5314372777938843,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a toilet in the center region of the image. The full COCO caption is: Colorful lights reflect off the items inside this bathroom stall\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 104,
+          "sample_id": "coco_000000365642_1623687",
+          "score": 0.5734379887580872,
+          "raw_nll": 0.5734379887580872,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a toilet in the bottom region of the image. The full COCO caption is: A young attractive woman sitting on a toilette on the side of a street.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 54,
+          "sample_id": "coco_000000267903_1646266",
+          "score": 0.5861424207687378,
+          "raw_nll": 0.5861424207687378,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a sink in the top-left region of the image. The full COCO caption is: A very old toilet and sink in an old room.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 2,
+      "query_sample_id": "coco_000000153797_1710500",
+      "correct_rank": 1,
+      "correct_score": 0.38828331232070923,
+      "correct_raw_nll": 0.38828331232070923,
+      "correct_reference_nll": null,
+      "source_description": "This image token represents a person in the right region of the image. The full COCO caption is: A baseball player throwing a pitch onto the field",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 2,
+          "sample_id": "coco_000000153797_1710500",
+          "score": 0.38828331232070923,
+          "raw_nll": 0.38828331232070923,
+          "is_correct": true,
+          "response": "<explanation>\nThis image token represents a person in the right region of the image. The full COCO caption is: A baseball player throwing a pitch onto the field\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 85,
+          "sample_id": "coco_000000388056_1229463",
+          "score": 0.428606778383255,
+          "raw_nll": 0.428606778383255,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the left region of the image. The full COCO caption is: A baseball player holding a bat and getting ready for the pitch.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 102,
+          "sample_id": "coco_000000327617_660765",
+          "score": 0.43329837918281555,
+          "raw_nll": 0.43329837918281555,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a tennis racket in the center region of the image. The full COCO caption is: an old black and white photo of a tennis player\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 116,
+          "sample_id": "coco_000000334483_1712045",
+          "score": 0.4942662715911865,
+          "raw_nll": 0.4942662715911865,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the left region of the image. The full COCO caption is: A group of women standing around a cake cutting slices.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 17,
+          "sample_id": "coco_000000581317_460897",
+          "score": 0.5212048292160034,
+          "raw_nll": 0.5212048292160034,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the right region of the image. The full COCO caption is: A woman holding a small item in a field.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 3,
+      "query_sample_id": "coco_000000182155_437595",
+      "correct_rank": 1,
+      "correct_score": 0.42877769470214844,
+      "correct_raw_nll": 0.42877769470214844,
+      "correct_reference_nll": null,
+      "source_description": "This image token represents a person in the center region of the image. The full COCO caption is: Two teenage girls paying a video game together.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 3,
+          "sample_id": "coco_000000182155_437595",
+          "score": 0.42877769470214844,
+          "raw_nll": 0.42877769470214844,
+          "is_correct": true,
+          "response": "<explanation>\nThis image token represents a person in the center region of the image. The full COCO caption is: Two teenage girls paying a video game together.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 116,
+          "sample_id": "coco_000000334483_1712045",
+          "score": 0.44461432099342346,
+          "raw_nll": 0.44461432099342346,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the left region of the image. The full COCO caption is: A group of women standing around a cake cutting slices.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 2,
+          "sample_id": "coco_000000153797_1710500",
+          "score": 0.5618694424629211,
+          "raw_nll": 0.5618694424629211,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the right region of the image. The full COCO caption is: A baseball player throwing a pitch onto the field\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 126,
+          "sample_id": "coco_000000229216_484075",
+          "score": 0.5786320567131042,
+          "raw_nll": 0.5786320567131042,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the center region of the image. The full COCO caption is: Two women sitting on ledge looking at a cellphone.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 118,
+          "sample_id": "coco_000000329456_439354",
+          "score": 0.579501211643219,
+          "raw_nll": 0.579501211643219,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the center region of the image. The full COCO caption is: A group of people walking down a mountain road.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 4,
+      "query_sample_id": "coco_000000328030_1162145",
+      "correct_rank": 6,
+      "correct_score": 0.5370908379554749,
+      "correct_raw_nll": 0.5370908379554749,
+      "correct_reference_nll": null,
+      "source_description": "This image token represents a teddy bear in the center region of the image. The full COCO caption is: the teddy bear is holding a hockey stick",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 2,
+          "sample_id": "coco_000000153797_1710500",
+          "score": 0.4322955012321472,
+          "raw_nll": 0.4322955012321472,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the right region of the image. The full COCO caption is: A baseball player throwing a pitch onto the field\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 85,
+          "sample_id": "coco_000000388056_1229463",
+          "score": 0.45766860246658325,
+          "raw_nll": 0.45766860246658325,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the left region of the image. The full COCO caption is: A baseball player holding a bat and getting ready for the pitch.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 102,
+          "sample_id": "coco_000000327617_660765",
+          "score": 0.46802592277526855,
+          "raw_nll": 0.46802592277526855,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a tennis racket in the center region of the image. The full COCO caption is: an old black and white photo of a tennis player\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 116,
+          "sample_id": "coco_000000334483_1712045",
+          "score": 0.5015062689781189,
+          "raw_nll": 0.5015062689781189,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the left region of the image. The full COCO caption is: A group of women standing around a cake cutting slices.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 61,
+          "sample_id": "coco_000000007977_449523",
+          "score": 0.5022546052932739,
+          "raw_nll": 0.5022546052932739,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the center region of the image. The full COCO caption is: A young man performing tricks on a skateboard.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 5,
+      "query_sample_id": "coco_000000047585_447745",
+      "correct_rank": 16,
+      "correct_score": 0.6558452844619751,
+      "correct_raw_nll": 0.6558452844619751,
+      "correct_reference_nll": null,
+      "source_description": "This image token represents a person in the center region of the image. The full COCO caption is: A man holds an umbrella for a new bride",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 116,
+          "sample_id": "coco_000000334483_1712045",
+          "score": 0.4136615991592407,
+          "raw_nll": 0.4136615991592407,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the left region of the image. The full COCO caption is: A group of women standing around a cake cutting slices.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 102,
+          "sample_id": "coco_000000327617_660765",
+          "score": 0.4552043676376343,
+          "raw_nll": 0.4552043676376343,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a tennis racket in the center region of the image. The full COCO caption is: an old black and white photo of a tennis player\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 2,
+          "sample_id": "coco_000000153797_1710500",
+          "score": 0.5143992304801941,
+          "raw_nll": 0.5143992304801941,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the right region of the image. The full COCO caption is: A baseball player throwing a pitch onto the field\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 122,
+          "sample_id": "coco_000000257865_495566",
+          "score": 0.5398457050323486,
+          "raw_nll": 0.5398457050323486,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the center region of the image. The full COCO caption is: A man with a tennis racquet is dressed in white.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 85,
+          "sample_id": "coco_000000388056_1229463",
+          "score": 0.5426704287528992,
+          "raw_nll": 0.5426704287528992,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a person in the left region of the image. The full COCO caption is: A baseball player holding a bat and getting ready for the pitch.\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 6,
+      "query_sample_id": "coco_000000485130_1086663",
+      "correct_rank": 1,
+      "correct_score": 0.4012618064880371,
+      "correct_raw_nll": 0.4012618064880371,
+      "correct_reference_nll": null,
+      "source_description": "This image token represents a cake in the center region of the image. The full COCO caption is: A cake made to look like a wrestling ring.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 6,
+          "sample_id": "coco_000000485130_1086663",
+          "score": 0.4012618064880371,
+          "raw_nll": 0.4012618064880371,
+          "is_correct": true,
+          "response": "<explanation>\nThis image token represents a cake in the center region of the image. The full COCO caption is: A cake made to look like a wrestling ring.\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 58,
+          "sample_id": "coco_000000482275_1088498",
+          "score": 0.6618231534957886,
+          "raw_nll": 0.6618231534957886,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a cake in the right region of the image. The full COCO caption is: A man and woman cutting a slice of cake by trees.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 112,
+          "sample_id": "coco_000000341973_1078137",
+          "score": 0.7129629254341125,
+          "raw_nll": 0.7129629254341125,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a donut in the bottom region of the image. The full COCO caption is: Two girls pose for a photo holding doughnuts.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 89,
+          "sample_id": "coco_000000338905_1425011",
+          "score": 0.7212235331535339,
+          "raw_nll": 0.7212235331535339,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a umbrella in the top region of the image. The full COCO caption is: A group of people sitting at a table eating food.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 94,
+          "sample_id": "coco_000000394940_1926897",
+          "score": 0.7274101972579956,
+          "raw_nll": 0.7274101972579956,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a cake in the bottom region of the image. The full COCO caption is: a kid eating a cake on table looking around\n</explanation>"
+        }
+      ]
+    },
+    {
+      "query_index": 7,
+      "query_sample_id": "coco_000000192904_2129983",
+      "correct_rank": 52,
+      "correct_score": 0.7803745865821838,
+      "correct_raw_nll": 0.7803745865821838,
+      "correct_reference_nll": null,
+      "source_description": "This image token represents a bed in the center region of the image. The full COCO caption is: The tray on the bed has a pastry and two mugs on it.",
+      "top5": [
+        {
+          "rank": 1,
+          "candidate_index": 102,
+          "sample_id": "coco_000000327617_660765",
+          "score": 0.5096699595451355,
+          "raw_nll": 0.5096699595451355,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a tennis racket in the center region of the image. The full COCO caption is: an old black and white photo of a tennis player\n</explanation>"
+        },
+        {
+          "rank": 2,
+          "candidate_index": 38,
+          "sample_id": "coco_000000222825_1125562",
+          "score": 0.5376861095428467,
+          "raw_nll": 0.5376861095428467,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a oven in the bottom-right region of the image. The full COCO caption is: A kitchen with a stove top oven next to a white fridge.\n</explanation>"
+        },
+        {
+          "rank": 3,
+          "candidate_index": 77,
+          "sample_id": "coco_000000209753_1969896",
+          "score": 0.5425791144371033,
+          "raw_nll": 0.5425791144371033,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a tv in the right region of the image. The full COCO caption is: A woman with large black tear drop earrings and a black dress looks at her cell phone.\n</explanation>"
+        },
+        {
+          "rank": 4,
+          "candidate_index": 29,
+          "sample_id": "coco_000000066771_118634",
+          "score": 0.5463228821754456,
+          "raw_nll": 0.5463228821754456,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a dining table in the bottom region of the image. The full COCO caption is: A woman holding a smart phone at a table.\n</explanation>"
+        },
+        {
+          "rank": 5,
+          "candidate_index": 125,
+          "sample_id": "coco_000000517687_330273",
+          "score": 0.5646685361862183,
+          "raw_nll": 0.5646685361862183,
+          "is_correct": false,
+          "response": "<explanation>\nThis image token represents a cell phone in the center region of the image. The full COCO caption is: a close up of two cell phones near one another\n</explanation>"
+        }
+      ]
+    }
+  ]
+}

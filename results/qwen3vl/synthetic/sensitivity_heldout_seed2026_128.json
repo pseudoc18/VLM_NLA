@@ -1,0 +1,109 @@
+{
+  "av_parquet": "data/qwen3vl_L15_image_mean_heldout_n128_seed2026/qwen3vl_L15_image_mean_av_sft.parquet",
+  "adapter": "outputs/qwen3vl_av_lora_tiny_L15_image_mean_512x2_actadapter_8tok_dualcontrast/adapter",
+  "activation_adapter": "outputs/qwen3vl_av_lora_tiny_L15_image_mean_512x2_actadapter_8tok_dualcontrast/activation_adapter.pt",
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "num_rows": 128,
+  "injection_scale": 57.58,
+  "num_injection_tokens": 8,
+  "prompt_token_count": 56,
+  "injection_positions": [
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
+  ],
+  "matched_mean_nll": 0.07098659873008728,
+  "shifted_mean_nll": 1.1983898878097534,
+  "shuffled_mean_nll": 1.2206809520721436,
+  "shifted_minus_matched_mean": 1.1274033784866333,
+  "shuffled_minus_matched_mean": 1.1496942043304443,
+  "shifted_match_better_fraction": 1.0,
+  "shuffled_match_better_fraction": 1.0,
+  "examples": [
+    {
+      "index": 0,
+      "sample_id": "synthetic_00000",
+      "source_description": "The image shows a purple triangle on the center.",
+      "matched_nll": 0.01334670465439558,
+      "shifted_nll": 1.200135350227356,
+      "shuffled_nll": 1.5668364763259888,
+      "shifted_minus_matched": 1.1867886781692505,
+      "shuffled_minus_matched": 1.5534898042678833
+    },
+    {
+      "index": 1,
+      "sample_id": "synthetic_00001",
+      "source_description": "The image shows a purple triangle on the left and a purple circle on the right.",
+      "matched_nll": 0.1658000946044922,
+      "shifted_nll": 1.363179326057434,
+      "shuffled_nll": 0.5166884660720825,
+      "shifted_minus_matched": 1.197379231452942,
+      "shuffled_minus_matched": 0.35088837146759033
+    },
+    {
+      "index": 2,
+      "sample_id": "synthetic_00002",
+      "source_description": "The image shows a purple circle on the center and a green square on the bottom.",
+      "matched_nll": 0.09772424399852753,
+      "shifted_nll": 1.3896865844726562,
+      "shuffled_nll": 2.0296971797943115,
+      "shifted_minus_matched": 1.2919623851776123,
+      "shuffled_minus_matched": 1.9319729804992676
+    },
+    {
+      "index": 3,
+      "sample_id": "synthetic_00003",
+      "source_description": "The image shows a red circle on the left and a red triangle on the top.",
+      "matched_nll": 0.1087028905749321,
+      "shifted_nll": 1.2716740369796753,
+      "shuffled_nll": 0.8664162158966064,
+      "shifted_minus_matched": 1.1629711389541626,
+      "shuffled_minus_matched": 0.7577133178710938
+    },
+    {
+      "index": 4,
+      "sample_id": "synthetic_00004",
+      "source_description": "The image shows a yellow circle on the top and a blue circle on the right.",
+      "matched_nll": 0.05188706889748573,
+      "shifted_nll": 1.2048373222351074,
+      "shuffled_nll": 1.2889015674591064,
+      "shifted_minus_matched": 1.1529502868652344,
+      "shuffled_minus_matched": 1.2370145320892334
+    },
+    {
+      "index": 5,
+      "sample_id": "synthetic_00005",
+      "source_description": "The image shows a orange circle on the center and a red triangle on the left.",
+      "matched_nll": 0.11481869220733643,
+      "shifted_nll": 1.299246907234192,
+      "shuffled_nll": 1.4664376974105835,
+      "shifted_minus_matched": 1.1844282150268555,
+      "shuffled_minus_matched": 1.351619005203247
+    },
+    {
+      "index": 6,
+      "sample_id": "synthetic_00006",
+      "source_description": "The image shows a green triangle on the top and a orange triangle on the bottom.",
+      "matched_nll": 0.08628737181425095,
+      "shifted_nll": 1.377868413925171,
+      "shuffled_nll": 0.3183794319629669,
+      "shifted_minus_matched": 1.2915810346603394,
+      "shuffled_minus_matched": 0.23209205269813538
+    },
+    {
+      "index": 7,
+      "sample_id": "synthetic_00007",
+      "source_description": "The image shows a blue circle on the left and a yellow square on the top.",
+      "matched_nll": 0.1125742644071579,
+      "shifted_nll": 1.2915698289871216,
+      "shuffled_nll": 2.0899388790130615,
+      "shifted_minus_matched": 1.1789956092834473,
+      "shuffled_minus_matched": 1.9773646593093872
+    }
+  ]
+}
