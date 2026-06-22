@@ -9,6 +9,27 @@ ROOT = Path(__file__).resolve().parents[1]
 FIG_ROOT = ROOT / "assets" / "figures"
 OUT_PATH = ROOT / "reports" / "vlm_nla_research_proposal_preliminary_results.html"
 
+NLA_URL = "https://transformer-circuits.pub/2026/nla/index.html"
+LOGIT_LENS_URL = "https://www.lesswrong.com/posts/AcKRB8wDpdaN6v6ru/interpreting-gpt-the-logit-lens"
+TUNED_LENS_URL = "https://arxiv.org/abs/2303.08112"
+ATTENTION_LENS_URL = "https://arxiv.org/abs/2310.16270"
+HEADLENS_URL = "https://arxiv.org/abs/2603.18523"
+SAE_URL = "https://transformer-circuits.pub/2023/monosemantic-features/index.html"
+EAZY_URL = "https://openaccess.thecvf.com/content/ICCV2025/papers/Che_Hallucinatory_Image_Tokens_A_Training-free_EAZY_Approach_to_Detecting_and_ICCV_2025_paper.pdf"
+VLM_SHORTCUT_URL = "https://openreview.net/forum?id=ZPQU4uGMBA"
+VLM_CIRCUIT_TRACING_URL = "https://arxiv.org/abs/2602.20330"
+
+NLA = f'<a href="{NLA_URL}">NLA</a>'
+NLA_FULL = f'<a href="{NLA_URL}">Natural Language Autoencoder</a>'
+LOGIT_LENS = f'<a href="{LOGIT_LENS_URL}">Logit Lens</a>'
+TUNED_LENS = f'<a href="{TUNED_LENS_URL}">Tuned Lens</a>'
+ATTENTION_LENS = f'<a href="{ATTENTION_LENS_URL}">Attention Lens</a>'
+HEADLENS = f'<a href="{HEADLENS_URL}">HeadLens</a>'
+SAE = f'<a href="{SAE_URL}">SAE</a>'
+SPARSE_AUTOENCODER = f'<a href="{SAE_URL}">Sparse Autoencoder</a>'
+EAZY = f'<a href="{EAZY_URL}">EAZY</a>'
+HALLUCINATORY_IMAGE_TOKENS = f'<a href="{EAZY_URL}">Hallucinatory Image Tokens</a>'
+
 
 CAPTIONS = {
     "experiment4_metric_comparison.png": "LLaVA-1.5 baseline 的汇总图。这里的 1tok/4tok/8tok 表示 AV prompt 里放了几个用于注入 activation 的 special tokens；512 表示训练样本数；dualcontrast 表示训练时同时使用 activation-shuffle contrastive loss 和 response-contrastive loss。图的核心信息是：8 tokens 比 4 tokens 更依赖 activation，但整体 ranking 仍然弱，说明机制通了，性能还不够。",
@@ -48,6 +69,25 @@ def data_uri(path: Path) -> str:
     return f"data:image/png;base64,{encoded}"
 
 
+def link_methods(text: str) -> str:
+    escaped = html.escape(text)
+    replacements = [
+        ("Hallucinatory Image Tokens", HALLUCINATORY_IMAGE_TOKENS),
+        ("Sparse Autoencoder", SPARSE_AUTOENCODER),
+        ("Natural Language Autoencoder", NLA_FULL),
+        ("Attention Lens", ATTENTION_LENS),
+        ("Tuned Lens", TUNED_LENS),
+        ("Logit Lens", LOGIT_LENS),
+        ("HeadLens", HEADLENS),
+        ("EAZY", EAZY),
+        ("SAE", SAE),
+        ("NLA", NLA),
+    ]
+    for needle, repl in replacements:
+        escaped = escaped.replace(needle, repl)
+    return escaped
+
+
 def figure_html(path: Path) -> str:
     caption = CAPTIONS.get(path.name, path.name.replace("_", " ").replace(".png", ""))
     rel = path.relative_to(ROOT)
@@ -55,7 +95,7 @@ def figure_html(path: Path) -> str:
       <figure>
         <img src="{data_uri(path)}" alt="{html.escape(path.stem)}">
         <figcaption>
-          {html.escape(caption)}<br>
+          {link_methods(caption)}<br>
           <code>{html.escape(str(rel))}</code>
         </figcaption>
       </figure>
@@ -234,7 +274,7 @@ def main() -> None:
 <body>
   <header>
     <div class="wrap">
-      <h1>VLM-NLA：用 Natural Language Autoencoder 解释 LVLM 内部视觉 activation</h1>
+      <h1>VLM-{NLA}：用 {NLA_FULL} 解释 LVLM 内部视觉 activation</h1>
       <p class="meta">生成日期：2026-06-22。本文所有图片均以内嵌 base64 形式写入 HTML，可单文件打开。</p>
     </div>
   </header>
@@ -243,9 +283,9 @@ def main() -> None:
       <h2>1. 摘要</h2>
       <div class="abstract">
         <p>大型视觉语言模型（LVLM，例如 LLaVA、Qwen-VL）已经可以把图片和文本联合起来回答问题，但它们的内部视觉表征仍然很难被人直接理解。模型说“图里有一辆火车”时，我们通常只能看到最终 answer，却不知道是哪几个 image tokens 支持了这个判断，也不知道模型是否真的看到了火车、是否被背景知识 shortcut 诱导、是否有少数 high-impact image tokens 推动了 hallucination。这个问题对于 VLM hallucination、visual grounding、multimodal reasoning 和模型安全都很关键。</p>
-        <p>本项目尝试把 Natural Language Autoencoder（NLA）从 text-only LLM activation 扩展到 LVLM activation。NLA 的基本思想是训练一个 activation verbalizer（AV）把 activation vector 转成自然语言解释，再训练一个 activation reconstructor（AR）从解释文本重构 activation。原始 NLA 主要解释 text model 的 residual-stream activation；本项目的核心问题是：LVLM 中由图像输入产生的 internal activation，尤其是某个 image token 或某个 object region 内的一组 image tokens，能不能也被 AV 用自然语言解释出来？如果可以，这种解释是否能帮助我们研究 hallucination、shortcut 和视觉 grounding？</p>
-        <p>作为开题阶段的 preliminary study，本项目完成了三组实验。第一组用 LLaVA-1.5 验证机制可行性：HF 实现里 image features 经过 projector 后替换 <code>&lt;image&gt;</code> token embedding，再进入 language model，这和 NLA 的 <code>inputs_embeds</code> injection 机制非常接近。实验说明 LLaVA 上可以做多 token activation injection，但 AV 性能较弱。第二组切换到 Qwen3-VL，用 layer-15 的 <code>image_mean</code> activation 训练 8-token AV，在 synthetic visual concepts 上达到很强的 candidate ranking 和 matched-vs-shuffled sensitivity。第三组进一步使用真实 COCO 图片，不再只解释全图 <code>image_mean</code>，而是解释 single object-center image token 和 object bbox 内 4-8 个 local image tokens 的平均 activation。结果显示：single image token 有语义信号，但噪声较大；object bbox 内的 local token group 更稳定，held-out short-label top5 从 53.1% 提升到 65.6%，sensitivity delta 从 +0.156 提升到 +0.412。</p>
-        <p>这些结果支持一个谨慎但有价值的结论：NLA-style activation-to-language 方法可以迁移到 LVLM；Qwen3-VL 比 LLaVA-1.5 更适合作为后续主线；解释 specific image token/group 是可行方向，但真正稳定的解释很可能需要 local token group、多层 activation、AR 闭环、hard-negative evaluation，以及与 hallucination/shortcut 数据集结合的 causal intervention。</p>
+        <p>本项目尝试把 {NLA_FULL}（{NLA}）从 text-only LLM activation 扩展到 LVLM activation。{NLA} 的基本思想是训练一个 activation verbalizer（AV）把 activation vector 转成自然语言解释，再训练一个 activation reconstructor（AR）从解释文本重构 activation。原始 {NLA} 主要解释 text model 的 residual-stream activation；本项目的核心问题是：LVLM 中由图像输入产生的 internal activation，尤其是某个 image token 或某个 object region 内的一组 image tokens，能不能也被 AV 用自然语言解释出来？如果可以，这种解释是否能帮助我们研究 hallucination、shortcut 和视觉 grounding？</p>
+        <p>作为开题阶段的 preliminary study，本项目完成了三组实验。第一组用 LLaVA-1.5 验证机制可行性：HF 实现里 image features 经过 projector 后替换 <code>&lt;image&gt;</code> token embedding，再进入 language model，这和 {NLA} 的 <code>inputs_embeds</code> injection 机制非常接近。实验说明 LLaVA 上可以做多 token activation injection，但 AV 性能较弱。第二组切换到 Qwen3-VL，用 layer-15 的 <code>image_mean</code> activation 训练 8-token AV，在 synthetic visual concepts 上达到很强的 candidate ranking 和 matched-vs-shuffled sensitivity。第三组进一步使用真实 COCO 图片，不再只解释全图 <code>image_mean</code>，而是解释 single object-center image token 和 object bbox 内 4-8 个 local image tokens 的平均 activation。结果显示：single image token 有语义信号，但噪声较大；object bbox 内的 local token group 更稳定，held-out short-label top5 从 53.1% 提升到 65.6%，sensitivity delta 从 +0.156 提升到 +0.412。</p>
+        <p>这些结果支持一个谨慎但有价值的结论：{NLA}-style activation-to-language 方法可以迁移到 LVLM；Qwen3-VL 比 LLaVA-1.5 更适合作为后续主线；解释 specific image token/group 是可行方向，但真正稳定的解释很可能需要 local token group、多层 activation、AR 闭环、hard-negative evaluation，以及与 hallucination/shortcut 数据集结合的 causal intervention。</p>
       </div>
     </section>
 
@@ -255,20 +295,20 @@ def main() -> None:
       <p>LVLM 的最终输出是一个高度压缩后的结果。一个回答可能正确，但内部可能用了错误的视觉证据；一个回答可能 hallucinate，但 hallucination 可能来自 language prior，也可能来自少数异常 image tokens。只看 final answer，无法区分这些情况。为了研究模型是否真正 grounded in image，我们需要把分析粒度从 output text 往前推进到 internal activation，尤其是视觉 token 对应的 activation。</p>
       <p>这个项目关心的问题不是“让模型再解释一遍自己的答案”，而是“让某个内部 activation 本身被解释”。这两者差别很大。前者容易变成 post-hoc rationalization；后者更接近 mechanistic interpretability：我们固定一个 activation，把它注入 AV，让 AV 说出这个 activation 最支持什么语义，再用 matched-vs-shuffled 或 AR reconstruction 检验这段解释是否真的依赖该 activation。</p>
 
-      <h3>2.2 从 Logit Lens 到 Tuned Lens：把隐藏状态投影成可读信息</h3>
-      <p>Logit Lens 是早期很直观的一类方法：把 transformer 中间层 hidden state 直接乘以最终 unembedding matrix，看它在词表上偏向哪些 token。它的优点是简单、零训练、容易画出每层预测如何演化；缺点是中间层 hidden state 未必已经处在最终 unembedding 可直接读取的空间，因此解释可能偏粗。</p>
-      <p>Tuned Lens 在这个思路上加了一层训练出来的 affine translator，让每一层 hidden state 先被校准到更接近最终输出空间，再读出 token distribution。它比 raw Logit Lens 更稳，但解释对象仍然主要是“下一 token prediction”，而不是“这个 activation 对应的自然语言概念”。</p>
+      <h3>2.2 从 {LOGIT_LENS} 到 {TUNED_LENS}：把隐藏状态投影成可读信息</h3>
+      <p>{LOGIT_LENS} 是早期很直观的一类方法：把 transformer 中间层 hidden state 直接乘以最终 unembedding matrix，看它在词表上偏向哪些 token。它的优点是简单、零训练、容易画出每层预测如何演化；缺点是中间层 hidden state 未必已经处在最终 unembedding 可直接读取的空间，因此解释可能偏粗。</p>
+      <p>{TUNED_LENS} 在这个思路上加了一层训练出来的 affine translator，让每一层 hidden state 先被校准到更接近最终输出空间，再读出 token distribution。它比 raw {LOGIT_LENS} 更稳，但解释对象仍然主要是“下一 token prediction”，而不是“这个 activation 对应的自然语言概念”。</p>
 
-      <h3>2.3 从 HeadLens 到 SAE：从部件贡献到特征字典</h3>
-      <p>attention-head lens / HeadLens 类方法把 attention head 的输出或贡献单独拿出来分析，问某个 head 在某个位置推动了哪些 token 或语义。这类方法有助于定位模型内部的局部计算部件，但通常仍然需要人为解释每个 head 的功能。</p>
-      <p>Sparse Autoencoder（SAE）则走另一条路线：把 dense activation 分解成稀疏 feature dictionary。一个 activation 可以被表示成少量 feature 的组合，feature 往往比原始 neuron 更接近人类可理解的概念。SAE 的优势是可以做大规模 feature discovery 和 circuit tracing；局限是每个 feature 仍需要命名、聚合和语义验证，而且对 multimodal image tokens 的解释还需要结合视觉区域。</p>
+      <h3>2.3 从 {ATTENTION_LENS}/{HEADLENS} 到 {SAE}：从部件贡献到特征字典</h3>
+      <p>{ATTENTION_LENS} 和 {HEADLENS} 类方法把 attention head 的输出或贡献单独拿出来分析，问某个 head 在某个位置推动了哪些 token 或语义。这类方法有助于定位模型内部的局部计算部件，但通常仍然需要人为解释每个 head 的功能。</p>
+      <p>{SPARSE_AUTOENCODER}（{SAE}）则走另一条路线：把 dense activation 分解成稀疏 feature dictionary。一个 activation 可以被表示成少量 feature 的组合，feature 往往比原始 neuron 更接近人类可理解的概念。{SAE} 的优势是可以做大规模 feature discovery 和 circuit tracing；局限是每个 feature 仍需要命名、聚合和语义验证，而且对 multimodal image tokens 的解释还需要结合视觉区域。</p>
 
-      <h3>2.4 NLA 的位置：让 activation 用自然语言表达自己</h3>
-      <p>NLA 可以看作上述路线的补充。Logit Lens/Tuned Lens 更像“把 hidden state 投影到词表”；SAE 更像“把 activation 拆成 feature”；NLA 则尝试直接学习 <code>activation -> explanation text -> activation</code> 的 autoencoder。AV 负责把 activation verbalize 成 explanation；AR 负责从 explanation reconstruct activation。解释质量不只靠人读起来像不像，而要看 explanation 是否能保留足够信息让 AR 找回原 activation。</p>
-      <p>把 NLA 迁移到 LVLM 后，最吸引人的问题是：我们能否让某个 image token 或 object region 的 activation 说出“我在模型内部像什么”？如果可以，就能把 NLA 接到 hallucination image tokens、shortcut circuits、object grounding、OCR regions 等具体研究问题上。</p>
+      <h3>2.4 {NLA} 的位置：让 activation 用自然语言表达自己</h3>
+      <p>{NLA} 可以看作上述路线的补充。{LOGIT_LENS}/{TUNED_LENS} 更像“把 hidden state 投影到词表”；{SAE} 更像“把 activation 拆成 feature”；{NLA} 则尝试直接学习 <code>activation -> explanation text -> activation</code> 的 autoencoder。AV 负责把 activation verbalize 成 explanation；AR 负责从 explanation reconstruct activation。解释质量不只靠人读起来像不像，而要看 explanation 是否能保留足够信息让 AR 找回原 activation。</p>
+      <p>把 {NLA} 迁移到 LVLM 后，最吸引人的问题是：我们能否让某个 image token 或 object region 的 activation 说出“我在模型内部像什么”？如果可以，就能把 {NLA} 接到 hallucination image tokens、shortcut circuits、object grounding、OCR regions 等具体研究问题上。</p>
 
       <h3>2.5 与 hallucination 和 shortcut 文献的连接</h3>
-      <p>EAZY / Hallucinatory Image Tokens 一类工作提示我们：LVLM hallucination 可能不是全图均匀导致的，而是少数 image tokens 对最终回答有不成比例的影响。如果 VLM-NLA 能解释这些 high-impact image tokens，就可以进一步问：它们是否 verbalize 成了不存在的物体？zero-out 前后它们的解释是否变化？</p>
+      <p>{EAZY} / {HALLUCINATORY_IMAGE_TOKENS} 一类工作提示我们：LVLM hallucination 可能不是全图均匀导致的，而是少数 image tokens 对最终回答有不成比例的影响。如果 VLM-{NLA} 能解释这些 high-impact image tokens，就可以进一步问：它们是否 verbalize 成了不存在的物体？zero-out 前后它们的解释是否变化？</p>
       <p>VLM shortcut 相关工作则提醒我们：模型在 diagram reasoning、visual relation、spatial reasoning 中可能靠背景知识或语言 prior 得分，而不是读懂图像本身。VLM-NLA 可以提供一个中间层检查工具：当我们对图片做 counterfactual edit 时，object-token activation 的解释是否跟着 visual evidence 改变，还是仍然停留在 shortcut prior 上？</p>
     </section>
 
@@ -277,13 +317,13 @@ def main() -> None:
       <h3>3.1 开题阶段要回答的两个问题</h3>
       <p>这组实验不是最终系统，而是为了回答两个 feasibility questions。</p>
       <ul>
-        <li><strong>问题一：NLA 能不能迁移到 LVLM？</strong> 也就是，能否从 LVLM 内部取出由图像输入产生的 activation，把它通过 special token embedding 注入语言模型，并训练 AV 输出解释文本。</li>
-        <li><strong>问题二：AV special token 能不能有多个？</strong> 原始 NLA 常见设定是把一个 activation 注入一个 marker token。本项目测试把一个 activation 通过 adapter 展开到多个连续 special tokens，观察是否能缓解 one-token bottleneck，并为未来多层 activation 同时优化做准备。</li>
+        <li><strong>问题一：{NLA} 能不能迁移到 LVLM？</strong> 也就是，能否从 LVLM 内部取出由图像输入产生的 activation，把它通过 special token embedding 注入语言模型，并训练 AV 输出解释文本。</li>
+        <li><strong>问题二：AV special token 能不能有多个？</strong> 原始 {NLA} 常见设定是把一个 activation 注入一个 marker token。本项目测试把一个 activation 通过 adapter 展开到多个连续 special tokens，观察是否能缓解 one-token bottleneck，并为未来多层 activation 同时优化做准备。</li>
       </ul>
 
       <h3>3.2 测试的 LVLM 及结构差异</h3>
       <table>
-        <tr><th>模型</th><th>为什么选它</th><th>和 NLA injection 的关系</th><th>实验中的经验结论</th></tr>
+        <tr><th>模型</th><th>为什么选它</th><th>和 {NLA} injection 的关系</th><th>实验中的经验结论</th></tr>
         <tr><td>LLaVA-1.5 7B</td><td>结构简单，HF forward path 清楚，适合 first feasibility test。</td><td>图像经过 vision tower 和 projector 后，替换文本序列里的 <code>&lt;image&gt;</code> embeddings，再送入 language model。重复 <code>&lt;image&gt;</code> 可以得到多个 injection positions。</td><td>机制可行，但 AV ranking 较弱。适合作 baseline，不适合继续作为主力冲性能。</td></tr>
         <tr><td>Qwen3-VL 8B Instruct</td><td>视觉能力更强，image-token 机制更丰富，更适合研究 visual token representation。</td><td>使用 <code>&lt;|vision_start|&gt;</code>、<code>&lt;|image_pad|&gt;</code>、<code>&lt;|vision_end|&gt;</code> 作为视觉占位。AV prompt 中把一个 <code>&lt;|image_pad|&gt;</code> 扩展成 8 个连续 tokens。</td><td>synthetic image_mean 上效果很强；COCO object-token 上 local token group 有可靠信号。</td></tr>
       </table>
@@ -362,7 +402,7 @@ Explain the visual concept encoded by this activation inside &lt;explanation&gt;
         <tr><th>run</th><th>target</th><th>AV tokens</th><th>sensitivity delta</th><th>mean rank</th><th>top1</th><th>top5</th></tr>
         <tr><td>LLaVA-1.5 best</td><td>L15 <code>last_prompt</code></td><td>8</td><td>+0.0790</td><td>27.13 / 128</td><td>3.1%</td><td>15.6%</td></tr>
       </table>
-      <p>LLaVA 的结论要分开看。机制层面，它非常适合验证 NLA migration：<code>&lt;image&gt;</code> 是单 token marker，重复它就可以构造多个 injection positions，activation adapter 也能把一个 layer-15 activation 展开到 4 或 8 个 embeddings。实验上，8 tokens 比 4 tokens 更好，matched-vs-shuffled gap 变大，说明模型确实开始依赖 injected activation。</p>
+      <p>LLaVA 的结论要分开看。机制层面，它非常适合验证 {NLA} migration：<code>&lt;image&gt;</code> 是单 token marker，重复它就可以构造多个 injection positions，activation adapter 也能把一个 layer-15 activation 展开到 4 或 8 个 embeddings。实验上，8 tokens 比 4 tokens 更好，matched-vs-shuffled gap 变大，说明模型确实开始依赖 injected activation。</p>
       <p>但性能层面，LLaVA 离“可靠解释 activation”还很远。top1 只有 3.1%，top5 只有 15.6%，mean rank 仍是 27.13/128。这说明 LLaVA AV 虽然感知 activation，但 candidate selection 仍受 response language prior 和模板偏好影响。这个结果验证了多 token AV 的方向，但也暴露出 LLaVA-1.5 不是最合适的主模型。</p>
       {figures_for("llava15")}
 
@@ -373,7 +413,7 @@ Explain the visual concept encoded by this activation inside &lt;explanation&gt;
         <tr><td>held-out seed</td><td>L15 <code>image_mean</code></td><td>8</td><td>+1.1497</td><td>1.06 / 128</td><td>93.8%</td><td>100.0%</td></tr>
       </table>
       <p>Qwen3-VL 的 synthetic 结果非常强。train pool 上，matched NLL 大约 0.066，而 shuffled NLL 大约 1.175，delta 超过 +1.10。直观理解是：正确 activation 让正确 explanation 非常容易预测；一旦 activation 被换错，response 的 NLL 立刻升高很多。candidate ranking 里正确 response 几乎总是排第 1 或第 2。</p>
-      <p>held-out seed 的结果也很强，top1 93.8%，top5 100%。这说明模型不是只背训练样本，而是学到了 synthetic visual activation 与 explanation 之间的映射。当然，<code>image_mean</code> 是所有 image tokens 的平均，更像全图 summary，不是最终最想要的 local interpretability target。它的意义是证明 Qwen3-VL 上 NLA-style AV 确实可行，而且明显强于 LLaVA。</p>
+      <p>held-out seed 的结果也很强，top1 93.8%，top5 100%。这说明模型不是只背训练样本，而是学到了 synthetic visual activation 与 explanation 之间的映射。当然，<code>image_mean</code> 是所有 image tokens 的平均，更像全图 summary，不是最终最想要的 local interpretability target。它的意义是证明 Qwen3-VL 上 {NLA}-style AV 确实可行，而且明显强于 LLaVA。</p>
       {figures_for("qwen3vl_synthetic")}
 
       <h3>5.3 Qwen3-VL COCO：specific image token 和 local token group</h3>
@@ -390,11 +430,11 @@ Explain the visual concept encoded by this activation inside &lt;explanation&gt;
 
     <section>
       <h2>6. 阶段性结论：现在到底说明了什么</h2>
-      <p>第一，NLA-style AV 可以迁移到 LVLM。LLaVA-1.5 和 Qwen3-VL 都支持通过 <code>inputs_embeds</code> 或等价路径把 activation-derived embeddings 注入 language model。重复 special token 并用 adapter 输出多个 injected embeddings 是可行的。</p>
+      <p>第一，{NLA}-style AV 可以迁移到 LVLM。LLaVA-1.5 和 Qwen3-VL 都支持通过 <code>inputs_embeds</code> 或等价路径把 activation-derived embeddings 注入 language model。重复 special token 并用 adapter 输出多个 injected embeddings 是可行的。</p>
       <p>第二，模型选择很关键。LLaVA-1.5 的结构最方便，但视觉表征和 decoder 行为导致 AV ranking 很弱。Qwen3-VL 的 image-token representation 更适合这条线，尤其是 <code>image_mean</code> 和 object bbox local token group。</p>
       <p>第三，多 token AV 不是 cosmetic change。它让一个 activation 不必被挤进一个 embedding，而是被展开成一小段 token-level information channel。LLaVA 中 8 tokens 优于 4 tokens；Qwen3-VL 中 8-token AV 已经可以取得很强 synthetic performance。</p>
       <p>第四，解释 single image token 是可行但噪声较大。COCO 结果显示 single center token 有语义信号，但 local bbox token group 更稳。这对于后续研究很重要：如果目标是解释模型对一个 object 的内部理解，应该优先解释 object-region token group，再逐步细化到 individual token。</p>
-      <p>第五，目前的 evaluation 已经能区分“模型只是会说模板”和“模型真的用了 activation”。matched-vs-shuffled delta、candidate ranking、activation-gain diagnostic 共同说明 Qwen3-VL AV 确实依赖 activation。但完整 NLA 还需要 AR 闭环，目前 Qwen3-VL local token 的 AR 尚未完成。</p>
+      <p>第五，目前的 evaluation 已经能区分“模型只是会说模板”和“模型真的用了 activation”。matched-vs-shuffled delta、candidate ranking、activation-gain diagnostic 共同说明 Qwen3-VL AV 确实依赖 activation。但完整 {NLA} 还需要 AR 闭环，目前 Qwen3-VL local token 的 AR 尚未完成。</p>
     </section>
 
     <section>
@@ -412,38 +452,38 @@ Explain the visual concept encoded by this activation inside &lt;explanation&gt;
       <p>第一版 COCO response 中加入 “The full COCO caption is...” 是为了测试更严格的局部 token 到全图 caption 映射，但这个目标不够纯。局部 image tokens 不应该被要求恢复完整 caption。后续主线应使用 short label、object attributes、region description、或者人工/模型辅助生成的局部描述。</p>
 
       <h3>7.5 还缺少完整 AR 与 causal intervention</h3>
-      <p>当前主要是 AV evaluation。要更接近原始 NLA，需要训练 Qwen3-VL local-token AR，让 explanation text 可以 reconstruct 原 activation，并报告 round-trip error。除此之外，解释本身还需要和 causal intervention 结合，例如 patch/zero-out 对应 image tokens 后观察 answer 和 explanation 是否同步变化。</p>
+      <p>当前主要是 AV evaluation。要更接近原始 {NLA}，需要训练 Qwen3-VL local-token AR，让 explanation text 可以 reconstruct 原 activation，并报告 round-trip error。除此之外，解释本身还需要和 causal intervention 结合，例如 patch/zero-out 对应 image tokens 后观察 answer 和 explanation 是否同步变化。</p>
     </section>
 
     <section>
       <h2>8. 后续研究方向</h2>
-      <h3>方向 A：Hallucinatory Image Tokens + VLM-NLA</h3>
-      <p>基于 EAZY / Hallucinatory Image Tokens 的思路，先定位对 hallucinated object 有高影响的 image tokens，再用 VLM-NLA 解释这些 tokens。关键问题包括：这些 tokens 的 AV explanation 是否提到了不存在的物体？zero-out 或 patch 这些 tokens 后，hallucination 是否下降？解释文本是否随 intervention 改变？</p>
+      <h3>方向 A：{HALLUCINATORY_IMAGE_TOKENS} + VLM-{NLA}</h3>
+      <p>基于 {EAZY} / {HALLUCINATORY_IMAGE_TOKENS} 的思路，先定位对 hallucinated object 有高影响的 image tokens，再用 VLM-{NLA} 解释这些 tokens。关键问题包括：这些 tokens 的 AV explanation 是否提到了不存在的物体？zero-out 或 patch 这些 tokens 后，hallucination 是否下降？解释文本是否随 intervention 改变？</p>
 
       <h3>方向 B：VLM shortcut analysis</h3>
-      <p>构造 visual evidence 与 background prior 冲突的图片，例如 diagram、spatial relation、counterfactual object layout。比较 original / counterfactual / patched image 下 object-token activation 的 NLA explanation。如果模型输出没变、activation explanation 也不跟着视觉证据变，就可能说明模型依赖 shortcut。</p>
+      <p>构造 visual evidence 与 background prior 冲突的图片，例如 diagram、spatial relation、counterfactual object layout。比较 original / counterfactual / patched image 下 object-token activation 的 {NLA} explanation。如果模型输出没变、activation explanation 也不跟着视觉证据变，就可能说明模型依赖 shortcut。</p>
 
-      <h3>方向 C：Multi-layer local-token NLA</h3>
+      <h3>方向 C：Multi-layer local-token {NLA}</h3>
       <p>把 target 从单层 activation 扩展到多层 tuple，例如 <code>L10 object_bbox_mean</code>、<code>L15 object_bbox_mean</code>、<code>L20 object_bbox_mean</code>。每层分配一组 AV tokens 或一个 layer-specific adapter，观察不同层分别编码 object identity、position、context、answer bias 的程度。AR 端也可以为每层设置 readout head，报告 per-layer reconstruction。</p>
 
       <h3>方向 D：更公平的 semantic evaluation</h3>
       <p>对 COCO short-label 做 unique-label ranking，把重复 label 合并；把 response 拆成 object category、region、attribute 三部分分别算 accuracy；引入 hard negatives，例如同类 object 不同位置、同位置不同 object、视觉相似但语义不同的 object。这会比现在的 random candidate pool 更能测试解释是否精细。</p>
 
       <h3>方向 E：从 region token 到 circuit</h3>
-      <p>VLM-NLA 可以和 SAE/circuit tracing 结合。先用 NLA 给某个 region activation 生成自然语言摘要，再用 SAE 或 attribution graph 找到支撑这个摘要的 features 和 attention paths。这样可以把“这个 token group 代表 train/bottom region”进一步拆成“哪些 feature、哪些 layer、哪些 head 支撑了这个表示”。</p>
+      <p>VLM-{NLA} 可以和 {SAE}/<a href="{VLM_CIRCUIT_TRACING_URL}">circuit tracing</a> 结合。先用 {NLA} 给某个 region activation 生成自然语言摘要，再用 {SAE} 或 attribution graph 找到支撑这个摘要的 features 和 attention paths。这样可以把“这个 token group 代表 train/bottom region”进一步拆成“哪些 feature、哪些 layer、哪些 head 支撑了这个表示”。</p>
     </section>
 
     <section>
       <h2>9. 相关工作与阅读路线</h2>
       <ul>
-        <li><a href="https://transformer-circuits.pub/2026/nla/index.html">Natural Language Autoencoders</a>：本项目的直接出发点，提供 AV/AR 框架。</li>
-        <li><a href="https://www.lesswrong.com/posts/AcKRB8wDpdaN6v6ru/interpreting-gpt-the-logit-lens">Logit Lens</a>：把中间 hidden state 直接投影到词表，适合理解预测如何逐层演化。</li>
-        <li><a href="https://arxiv.org/abs/2303.08112">Tuned Lens</a>：为每层训练 translator，使中间层预测更可读、更校准。</li>
-        <li><a href="https://arxiv.org/abs/2409.03646">Attention Lens / HeadLens family</a>：分析 attention head 或局部部件对输出 token 的贡献。</li>
-        <li><a href="https://transformer-circuits.pub/2023/monosemantic-features/index.html">Sparse Autoencoder / Monosemanticity</a>：把 dense activation 分解成稀疏 feature dictionary，是 circuit-level analysis 的重要工具。</li>
-        <li><a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Che_Hallucinatory_Image_Tokens_A_Training-free_EAZY_Approach_to_Detecting_and_ICCV_2025_paper.pdf">Hallucinatory Image Tokens / EAZY</a>：提示 hallucination 可能与少数 image tokens 强相关，是 VLM-NLA 很自然的下游方向。</li>
-        <li><a href="https://openreview.net/forum?id=ZPQU4uGMBA">Do Vision-Language Models Really Understand Visual Language?</a>：强调 VLM 可能依赖 background knowledge shortcut，而非真正视觉理解。</li>
-        <li><a href="https://arxiv.org/abs/2602.20330">Circuit Tracing in Vision-Language Models</a>：展示 VLM circuit tracing 的更底层路线，可与 NLA 的自然语言解释互补。</li>
+        <li><a href="{NLA_URL}">Natural Language Autoencoders</a>：本项目的直接出发点，提供 AV/AR 框架。</li>
+        <li><a href="{LOGIT_LENS_URL}">Logit Lens</a>：把中间 hidden state 直接投影到词表，适合理解预测如何逐层演化。</li>
+        <li><a href="{TUNED_LENS_URL}">Tuned Lens</a>：为每层训练 translator，使中间层预测更可读、更校准。</li>
+        <li><a href="{ATTENTION_LENS_URL}">Attention Lens</a> / <a href="{HEADLENS_URL}">HeadLens</a>：分析 attention head 或局部部件对输出 token 的贡献；HeadLens 在 LVLM counting circuits 场景中提出。</li>
+        <li><a href="{SAE_URL}">Sparse Autoencoder / Monosemanticity</a>：把 dense activation 分解成稀疏 feature dictionary，是 circuit-level analysis 的重要工具。</li>
+        <li><a href="{EAZY_URL}">Hallucinatory Image Tokens / EAZY</a>：提示 hallucination 可能与少数 image tokens 强相关，是 VLM-{NLA} 很自然的下游方向。</li>
+        <li><a href="{VLM_SHORTCUT_URL}">Do Vision-Language Models Really Understand Visual Language?</a>：强调 VLM 可能依赖 background knowledge shortcut，而非真正视觉理解。</li>
+        <li><a href="{VLM_CIRCUIT_TRACING_URL}">Circuit Tracing in Vision-Language Models</a>：展示 VLM circuit tracing 的更底层路线，可与 {NLA} 的自然语言解释互补。</li>
       </ul>
     </section>
 
