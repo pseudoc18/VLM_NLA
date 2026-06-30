@@ -97,6 +97,22 @@ def build_description(mode: str, category: str, position: str, caption: str) -> 
     )
 
 
+def load_image_id_list(path: Path, key: str) -> list[int]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if isinstance(payload, list):
+        values = payload
+    elif isinstance(payload, dict):
+        if key in payload:
+            values = payload[key]
+        elif "splits" in payload and key in payload["splits"]:
+            values = payload["splits"][key]
+        else:
+            raise KeyError(f"{path} does not contain key {key!r} or splits.{key}")
+    else:
+        raise TypeError(f"unsupported image-id manifest format: {type(payload).__name__}")
+    return [int(x) for x in values]
+
+
 def load_samples(
     *,
     coco_root: Path,
@@ -105,6 +121,7 @@ def load_samples(
     seed: int,
     min_area_frac: float,
     target_mode: str,
+    image_ids: list[int] | None = None,
 ) -> list[CocoObjectSample]:
     instances_path, captions_path, image_dir = ensure_coco(coco_root)
     image_dir.mkdir(parents=True, exist_ok=True)
@@ -129,7 +146,10 @@ def load_samples(
         captions_by_image[int(cap["image_id"])].append(" ".join(str(cap["caption"]).split()))
 
     rng = random.Random(seed)
-    candidate_image_ids = list(anns_by_image)
+    if image_ids is None:
+        candidate_image_ids = list(anns_by_image)
+    else:
+        candidate_image_ids = [image_id for image_id in image_ids if image_id in anns_by_image]
     rng.shuffle(candidate_image_ids)
     samples: list[CocoObjectSample] = []
     used_categories = Counter()
@@ -276,11 +296,14 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=2027)
     parser.add_argument("--min-area-frac", type=float, default=0.015)
     parser.add_argument("--max-bbox-tokens", type=int, default=8)
+    parser.add_argument("--image-ids-json", default=None, help="Optional JSON list or split manifest for fixed image IDs.")
+    parser.add_argument("--image-ids-key", default="train", help="Key to read when --image-ids-json is a split manifest.")
     parser.add_argument("--local-files-only", action=argparse.BooleanOptionalAction, default=True)
     args = parser.parse_args()
 
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
+    image_ids = load_image_id_list(Path(args.image_ids_json), args.image_ids_key) if args.image_ids_json else None
     samples = load_samples(
         coco_root=Path(args.coco_root),
         out_dir=out_dir,
@@ -288,6 +311,7 @@ def main() -> None:
         seed=args.seed,
         min_area_frac=args.min_area_frac,
         target_mode=args.target_token,
+        image_ids=image_ids,
     )
 
     processor = AutoProcessor.from_pretrained(
@@ -408,6 +432,8 @@ def main() -> None:
         "model_id": args.model_id,
         "layer_index": args.layer_index,
         "target_token": args.target_token,
+        "image_ids_json": args.image_ids_json,
+        "image_ids_key": args.image_ids_key if args.image_ids_json else None,
         "tokens": {
             "injection_token": "<|image_pad|>",
             "injection_token_id": image_pad_id,
@@ -429,6 +455,8 @@ def main() -> None:
         "d_model": d_model,
         "layer_index": args.layer_index,
         "target_token": args.target_token,
+        "image_ids_json": args.image_ids_json,
+        "image_ids_key": args.image_ids_key if args.image_ids_json else None,
         "parquet_path": str(out_path),
         "activation_norm_mean": float(norms.mean()),
         "activation_norm_std": float(norms.std()),

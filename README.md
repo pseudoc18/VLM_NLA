@@ -124,7 +124,7 @@ Greedy generation is useful for qualitative inspection, but it is not the primar
 ```text
 scripts/
   llava15/        LLaVA extraction, AV training, AR-lite probes, and evaluation
-  qwen3vl/        Qwen3-VL extraction, AV training, COCO object-token extraction, and evaluation
+  qwen3vl/        Qwen3-VL extraction, AV training, COCO split manifests, object-token extraction, and evaluation
 
 results/
   llava15/        lightweight JSON metrics for the best LLaVA baseline
@@ -140,11 +140,21 @@ assets/figures/
 reports/
   *.md            experiment notes copied from the exploratory run
   vlm_nla_research_proposal_preliminary_results.html
-                  bilingual proposal + preliminary-results report with all figures embedded
+                  Chinese proposal + preliminary-results report with all figures embedded
 
 docs/
   nla_to_vlm_multilayer_design.md
                   design notes for migrating NLA to VLMs and multi-layer/multi-token targets
+  hypothesis_validation_experiments*.md
+                  next-stage hypothesis validation protocols
+
+experiments/
+  registry.csv    planned run matrix and run status tracking
+  templates/      config and run-record templates
+
+tools/
+  init_experiment_run.py
+                  initialize traceable run folders with environment and Git snapshots
 ```
 
 Large artifacts are intentionally excluded from Git:
@@ -224,6 +234,26 @@ Then train/evaluate with the same Qwen3-VL AV trainer and evaluator, using the g
 4. **Local token groups are better than single tokens.** For COCO, bbox-local image-token groups are much more reliable than a single object-center image token.
 5. **The next step is not just more training.** Better evaluation and harder negatives are needed: unique-label ranking, semantic match metrics, hard-negative mining, and multi-layer/local-token targets.
 
+## Next Experiment Protocol
+
+The next-stage hypothesis-validation plan is in:
+
+```text
+docs/hypothesis_validation_experiments.md
+docs/hypothesis_validation_experiments_zh.md
+```
+
+Run tracking templates are in:
+
+```text
+experiments/
+  registry.csv
+  templates/config_template.yaml
+  templates/run_record_template.md
+```
+
+Use these for future runs so that data splits, seeds, model revisions, commands, metrics, qualitative panels, and failure cases are traceable.
+
 ## Related Work and Directions
 
 - **Natural Language Autoencoders:** the original AV/AR framing for text-only LLM activations.
@@ -240,4 +270,4 @@ The most complete human-readable writeup is:
 reports/vlm_nla_research_proposal_preliminary_results.html
 ```
 
-It is bilingual English/Chinese, written as a research proposal plus preliminary-results report. All figures are embedded into the HTML file as base64 data URIs, so the file can be opened standalone.
+It is a Chinese research proposal plus preliminary-results report. All figures are embedded into the HTML file as base64 data URIs, so the file can be opened standalone.

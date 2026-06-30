@@ -1,0 +1,30 @@
+run_id,hypothesis,study,status,model_id,layers,target,train_split,val_split,test_split,seed,git_commit,config_path,run_record_path,primary_metric,primary_result,notes
+H1_A1_Q3VL_COCO_L15_CENTER_SEED4201,H1,A,planned,Qwen/Qwen3-VL-8B-Instruct,15,object_center,train1024_seed4201,val256_seed4202,test512_seed4203,4201,,,,sensitivity_delta,,single-token baseline
+H1_A3_Q3VL_COCO_L15_BBOX4_SEED4201,H1,A,planned,Qwen/Qwen3-VL-8B-Instruct,15,object_bbox_mean_max4,train1024_seed4201,val256_seed4202,test512_seed4203,4201,,,,sensitivity_delta,,supported by current extractor
+H1_A4_Q3VL_COCO_L15_BBOX8_SEED4201,H1,A,planned,Qwen/Qwen3-VL-8B-Instruct,15,object_bbox_mean_max8,train1024_seed4201,val256_seed4202,test512_seed4203,4201,,,,sensitivity_delta,,current best local-token baseline
+H1_A5_Q3VL_COCO_L15_BBOX16_SEED4201,H1,A,planned,Qwen/Qwen3-VL-8B-Instruct,15,object_bbox_mean_max16,train1024_seed4201,val256_seed4202,test512_seed4203,4201,,,,sensitivity_delta,,tests semantic dilution from larger region
+H1_A8_Q3VL_COCO_L15_IMAGEMEAN_SEED4201,H1,A,planned,Qwen/Qwen3-VL-8B-Instruct,15,image_mean,train1024_seed4201,val256_seed4202,test512_seed4203,4201,,,,unique_label_top5,,global upper-bound not local explanation
+H1_A2_Q3VL_COCO_L15_CENTER2X2_SEED4201,H1,A,planned,Qwen/Qwen3-VL-8B-Instruct,15,center_2x2_mean,train1024_seed4201,val256_seed4202,test512_seed4203,4201,,,,sensitivity_delta,,requires extractor update
+H1_A6_Q3VL_COCO_L15_MASKMEAN_SEED4201,H1,A,planned,Qwen/Qwen3-VL-8B-Instruct,15,segmentation_mask_mean,train1024_seed4201,val256_seed4202,test512_seed4203,4201,,,,semantic_object_acc,,requires mask-token extractor
+H1_A7_Q3VL_COCO_L15_RANDOMAREA_SEED4201,H1,A,planned,Qwen/Qwen3-VL-8B-Instruct,15,random_same_area_region_mean,train1024_seed4201,val256_seed4202,test512_seed4203,4201,,,,sensitivity_delta,,negative spatial control requires extractor update
+H2_SCAN_Q3VL_COCO_L06_BBOX8_SEED4301,H2,B,planned,Qwen/Qwen3-VL-8B-Instruct,6,object_bbox_mean_max8,train1024_seed4201,val256_seed4202,test512_seed4203,4301,,,,semantic_object_acc,,single-layer scan
+H2_SCAN_Q3VL_COCO_L10_BBOX8_SEED4301,H2,B,planned,Qwen/Qwen3-VL-8B-Instruct,10,object_bbox_mean_max8,train1024_seed4201,val256_seed4202,test512_seed4203,4301,,,,semantic_object_acc,,single-layer scan
+H2_B1_Q3VL_COCO_L15_BBOX8_SEED4301,H2,B,planned,Qwen/Qwen3-VL-8B-Instruct,15,object_bbox_mean_max8,train1024_seed4201,val256_seed4202,test512_seed4203,4301,,,,unique_label_top5,,single-layer baseline
+H2_SCAN_Q3VL_COCO_L20_BBOX8_SEED4301,H2,B,planned,Qwen/Qwen3-VL-8B-Instruct,20,object_bbox_mean_max8,train1024_seed4201,val256_seed4202,test512_seed4203,4301,,,,semantic_object_acc,,single-layer scan
+H2_SCAN_Q3VL_COCO_L28_BBOX8_SEED4301,H2,B,planned,Qwen/Qwen3-VL-8B-Instruct,28,object_bbox_mean_max8,train1024_seed4201,val256_seed4202,test512_seed4203,4301,,,,semantic_object_acc,,single-layer scan
+H2_SCAN_Q3VL_COCO_L34_BBOX8_SEED4301,H2,B,planned,Qwen/Qwen3-VL-8B-Instruct,34,object_bbox_mean_max8,train1024_seed4201,val256_seed4202,test512_seed4203,4301,,,,semantic_object_acc,,single-layer scan
+H2_B2_Q3VL_COCO_L10L15L20_BBOX8_8TOKTOTAL_SEED4301,H2,B,planned,Qwen/Qwen3-VL-8B-Instruct,10;15;20,object_bbox_mean_max8,train1024_seed4201,val256_seed4202,test512_seed4203,4301,,,,unique_label_top5,,requires multi-layer trainer
+H2_B3_Q3VL_COCO_L10L15L20_BBOX8_4TOKPERLAYER_SEED4301,H2,B,planned,Qwen/Qwen3-VL-8B-Instruct,10;15;20,object_bbox_mean_max8,train1024_seed4201,val256_seed4202,test512_seed4203,4301,,,,unique_label_top5,,requires multi-layer trainer
+H2_B4_Q3VL_COCO_L06L15L28_BBOX8_4TOKPERLAYER_SEED4301,H2,B,planned,Qwen/Qwen3-VL-8B-Instruct,6;15;28,object_bbox_mean_max8,train1024_seed4201,val256_seed4202,test512_seed4203,4301,,,,unique_label_top5,,requires multi-layer trainer
+H2_B5_Q3VL_COCO_L15_BBOX8_12TOK_SEED4301,H2,B,planned,Qwen/Qwen3-VL-8B-Instruct,15,object_bbox_mean_max8,train1024_seed4201,val256_seed4202,test512_seed4203,4301,,,,unique_label_top5,,capacity-matched control
+H3_C1_Q3VL_AR_RIDGE_L15_BBOX8_SEED4401,H3,C,planned,Qwen/Qwen3-VL-8B-Instruct,15,object_bbox_mean_max8,train1024_seed4201,val256_seed4202,test512_seed4203,4401,,,,fve_vs_mean,,ridge AR lower-bound
+H3_C2_Q3VL_AR_LORA_L15_BBOX8_SEED4401,H3,C,planned,Qwen/Qwen3-VL-8B-Instruct,15,object_bbox_mean_max8,train1024_seed4201,val256_seed4202,test512_seed4203,4401,,,,fve_vs_mean,,main AR baseline requires Qwen3-VL AR script
+H3_C3_Q3VL_AR_MULTILAYER_L10L15L20_BBOX8_SEED4401,H3,C,planned,Qwen/Qwen3-VL-8B-Instruct,10;15;20,object_bbox_mean_max8,train1024_seed4201,val256_seed4202,test512_seed4203,4401,,,,fve_vs_mean,,multi-layer AR if H2 succeeds
+H3_C4_Q3VL_AR_SHUFFLETEXT_L15_BBOX8_SEED4401,H3,C,planned,Qwen/Qwen3-VL-8B-Instruct,15,object_bbox_mean_max8,train1024_seed4201,val256_seed4202,test512_seed4203,4401,,,,fve_vs_shuffle,,negative text control
+H4_D1_Q3VL_POPE_HIGHIMPACT_SEED4501,H4,D,planned,Qwen/Qwen3-VL-8B-Instruct,15,high_impact_hallucination_tokens,tbd,tbd,tbd,4501,,,,hallucination_token_score,,requires intervention pipeline
+H4_D2_Q3VL_POPE_HIGHATTENTION_SEED4501,H4,D,planned,Qwen/Qwen3-VL-8B-Instruct,15,high_attention_hallucination_tokens,tbd,tbd,tbd,4501,,,,hallucination_token_score,,cheaper diagnostic baseline
+H4_D3_Q3VL_COCO_TRUEOBJECT_SEED4501,H4,D,planned,Qwen/Qwen3-VL-8B-Instruct,15,true_object_bbox_tokens,tbd,tbd,tbd,4501,,,,semantic_object_acc,,grounded positive control
+H4_D4_Q3VL_COCO_RANDOMBACKGROUND_SEED4501,H4,D,planned,Qwen/Qwen3-VL-8B-Instruct,15,random_background_tokens,tbd,tbd,tbd,4501,,,,hallucination_token_score,,negative control
+H5_E1_Q3VL_COUNTERFACTUAL_SHAPES_SEED4601,H5,E,planned,Qwen/Qwen3-VL-8B-Instruct,15,counterfactual_object_region_tokens,tbd,tbd,tbd,4601,,,,explanation_flip_accuracy,,synthetic shape pairs
+H5_E2_Q3VL_COUNTERFACTUAL_DIAGRAMS_SEED4601,H5,E,planned,Qwen/Qwen3-VL-8B-Instruct,15,counterfactual_relation_tokens,tbd,tbd,tbd,4601,,,,explanation_flip_accuracy,,diagram relation pairs
+H5_E3_Q3VL_COUNTERFACTUAL_COCOEDIT_SEED4601,H5,E,planned,Qwen/Qwen3-VL-8B-Instruct,15,coco_edited_object_region_tokens,tbd,tbd,tbd,4601,,,,shortcut_score,,COCO edit pairs
