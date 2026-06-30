@@ -1,0 +1,109 @@
+{
+  "av_parquet": "outputs/H2_PILOT_Q3VL_COCO_L34_BBOX8_N128_SEED4301/test_short_labels/qwen3vl_coco_L34_object_bbox_mean_short_av_sft.parquet",
+  "adapter": "outputs/H2_PILOT_Q3VL_COCO_L34_BBOX8_N128_SEED4301/adapter/adapter",
+  "activation_adapter": "outputs/H2_PILOT_Q3VL_COCO_L34_BBOX8_N128_SEED4301/adapter/activation_adapter.pt",
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "num_rows": 64,
+  "injection_scale": 57.75,
+  "num_injection_tokens": 8,
+  "prompt_token_count": 64,
+  "injection_positions": [
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37
+  ],
+  "matched_mean_nll": 0.294225811958313,
+  "shifted_mean_nll": 0.2947826087474823,
+  "shuffled_mean_nll": 0.294188529253006,
+  "shifted_minus_matched_mean": 0.0005567942280322313,
+  "shuffled_minus_matched_mean": -3.729481250047684e-05,
+  "shifted_match_better_fraction": 0.53125,
+  "shuffled_match_better_fraction": 0.40625,
+  "examples": [
+    {
+      "index": 0,
+      "sample_id": "coco_000000313783_688951",
+      "source_description": "These image tokens represent a fork in the top-right region of the image.",
+      "matched_nll": 0.4748426675796509,
+      "shifted_nll": 0.4723646640777588,
+      "shuffled_nll": 0.47432050108909607,
+      "shifted_minus_matched": -0.00247800350189209,
+      "shuffled_minus_matched": -0.0005221664905548096
+    },
+    {
+      "index": 1,
+      "sample_id": "coco_000000251119_2221191",
+      "source_description": "These image tokens represent a hot dog in the center region of the image.",
+      "matched_nll": 0.27916383743286133,
+      "shifted_nll": 0.28108423948287964,
+      "shuffled_nll": 0.28053948283195496,
+      "shifted_minus_matched": 0.0019204020500183105,
+      "shuffled_minus_matched": 0.001375645399093628
+    },
+    {
+      "index": 2,
+      "sample_id": "coco_000000365385_2215046",
+      "source_description": "These image tokens represent a cup in the bottom-left region of the image.",
+      "matched_nll": 0.33264440298080444,
+      "shifted_nll": 0.33603808283805847,
+      "shuffled_nll": 0.332540363073349,
+      "shifted_minus_matched": 0.0033936798572540283,
+      "shuffled_minus_matched": -0.00010403990745544434
+    },
+    {
+      "index": 3,
+      "sample_id": "coco_000000372260_138362",
+      "source_description": "These image tokens represent a car in the left region of the image.",
+      "matched_nll": 0.29022017121315,
+      "shifted_nll": 0.28693464398384094,
+      "shuffled_nll": 0.2892375588417053,
+      "shifted_minus_matched": -0.003285527229309082,
+      "shuffled_minus_matched": -0.0009826123714447021
+    },
+    {
+      "index": 4,
+      "sample_id": "coco_000000403584_647430",
+      "source_description": "These image tokens represent a surfboard in the center region of the image.",
+      "matched_nll": 0.29125937819480896,
+      "shifted_nll": 0.2945908010005951,
+      "shuffled_nll": 0.2903607189655304,
+      "shifted_minus_matched": 0.003331422805786133,
+      "shuffled_minus_matched": -0.0008986592292785645
+    },
+    {
+      "index": 5,
+      "sample_id": "coco_000000283412_9178",
+      "source_description": "These image tokens represent a dog in the center region of the image.",
+      "matched_nll": 0.25536319613456726,
+      "shifted_nll": 0.2546166479587555,
+      "shuffled_nll": 0.2545722723007202,
+      "shifted_minus_matched": -0.0007465481758117676,
+      "shuffled_minus_matched": -0.0007909238338470459
+    },
+    {
+      "index": 6,
+      "sample_id": "coco_000000294831_1072465",
+      "source_description": "These image tokens represent a pizza in the center region of the image.",
+      "matched_nll": 0.2687342166900635,
+      "shifted_nll": 0.27101173996925354,
+      "shuffled_nll": 0.27141261100769043,
+      "shifted_minus_matched": 0.0022775232791900635,
+      "shuffled_minus_matched": 0.002678394317626953
+    },
+    {
+      "index": 7,
+      "sample_id": "coco_000000217753_1557564",
+      "source_description": "These image tokens represent an orange in the bottom-right region of the image.",
+      "matched_nll": 0.26157718896865845,
+      "shifted_nll": 0.2607429623603821,
+      "shuffled_nll": 0.25760334730148315,
+      "shifted_minus_matched": -0.0008342266082763672,
+      "shuffled_minus_matched": -0.003973841667175293
+    }
+  ]
+}

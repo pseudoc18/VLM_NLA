@@ -1,0 +1,34 @@
+{
+  "run_id": "H3_PILOT_AR_RIDGE_Q3VL_L15_BBOX16_N128_SEED4401",
+  "created_utc": "2026-06-30T05:55:25.858191+00:00",
+  "repo": "/common/users/lc1279/Projects/VLM_NLA",
+  "hostname": "seqamgpu02.cs.rutgers.edu",
+  "platform": "Linux-5.15.0-173-generic-x86_64-with-glibc2.35",
+  "python": {
+    "executable": "/common/home/lc1279/miniforge3/bin/python",
+    "version": "3.12.5 | packaged by conda-forge | (main, Aug  8 2024, 18:36:51) [GCC 12.4.0]"
+  },
+  "git": {
+    "commit": "36c335a2423fc831fbc841a0848af0f39de2a4e5",
+    "branch": "main",
+    "status_short": "?? experiments/runs/\n?? logs/",
+    "remote": "origin\thttps://github.com/pseudoc18/VLM_NLA.git (fetch)\norigin\thttps://github.com/pseudoc18/VLM_NLA.git (push)"
+  },
+  "packages": {
+    "numpy": "2.1.1",
+    "pillow": "11.3.0",
+    "pyarrow": "23.0.1",
+    "pyyaml": "6.0.2",
+    "torch": "2.8.0",
+    "transformers": "5.6.0.dev0",
+    "peft": "0.18.1",
+    "matplotlib": "3.10.6"
+  },
+  "cuda": {
+    "nvidia_smi": {
+      "returncode": 0,
+      "stdout": "NVIDIA RTX A6000, 46068 MiB, 535.161.08\nNVIDIA RTX A6000, 46068 MiB, 535.161.08\nNVIDIA RTX A6000, 46068 MiB, 535.161.08\nNVIDIA RTX A6000, 46068 MiB, 535.161.08\nNVIDIA RTX A6000, 46068 MiB, 535.161.08\nNVIDIA RTX A6000, 46068 MiB, 535.161.08\nNVIDIA RTX A6000, 46068 MiB, 535.161.08\nNVIDIA RTX A6000, 46068 MiB, 535.161.08",
+      "stderr": ""
+    }
+  }
+}

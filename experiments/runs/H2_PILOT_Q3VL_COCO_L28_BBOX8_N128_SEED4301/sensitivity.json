@@ -1,0 +1,109 @@
+{
+  "av_parquet": "outputs/H2_PILOT_Q3VL_COCO_L28_BBOX8_N128_SEED4301/test_short_labels/qwen3vl_coco_L28_object_bbox_mean_short_av_sft.parquet",
+  "adapter": "outputs/H2_PILOT_Q3VL_COCO_L28_BBOX8_N128_SEED4301/adapter/adapter",
+  "activation_adapter": "outputs/H2_PILOT_Q3VL_COCO_L28_BBOX8_N128_SEED4301/adapter/activation_adapter.pt",
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "num_rows": 64,
+  "injection_scale": 57.75,
+  "num_injection_tokens": 8,
+  "prompt_token_count": 64,
+  "injection_positions": [
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37
+  ],
+  "matched_mean_nll": 0.1920681744813919,
+  "shifted_mean_nll": 0.3449086546897888,
+  "shuffled_mean_nll": 0.3685094714164734,
+  "shifted_minus_matched_mean": 0.1528404951095581,
+  "shuffled_minus_matched_mean": 0.17644129693508148,
+  "shifted_match_better_fraction": 0.953125,
+  "shuffled_match_better_fraction": 0.984375,
+  "examples": [
+    {
+      "index": 0,
+      "sample_id": "coco_000000313783_688951",
+      "source_description": "These image tokens represent a fork in the top-right region of the image.",
+      "matched_nll": 0.20563481748104095,
+      "shifted_nll": 0.4328594207763672,
+      "shuffled_nll": 0.3751566410064697,
+      "shifted_minus_matched": 0.22722460329532623,
+      "shuffled_minus_matched": 0.16952182352542877
+    },
+    {
+      "index": 1,
+      "sample_id": "coco_000000251119_2221191",
+      "source_description": "These image tokens represent a hot dog in the center region of the image.",
+      "matched_nll": 0.17868416011333466,
+      "shifted_nll": 0.21242623031139374,
+      "shuffled_nll": 0.17378365993499756,
+      "shifted_minus_matched": 0.03374207019805908,
+      "shuffled_minus_matched": -0.004900500178337097
+    },
+    {
+      "index": 2,
+      "sample_id": "coco_000000365385_2215046",
+      "source_description": "These image tokens represent a cup in the bottom-left region of the image.",
+      "matched_nll": 0.34575188159942627,
+      "shifted_nll": 0.4251164495944977,
+      "shuffled_nll": 0.4184001684188843,
+      "shifted_minus_matched": 0.07936456799507141,
+      "shuffled_minus_matched": 0.07264828681945801
+    },
+    {
+      "index": 3,
+      "sample_id": "coco_000000372260_138362",
+      "source_description": "These image tokens represent a car in the left region of the image.",
+      "matched_nll": 0.12711846828460693,
+      "shifted_nll": 0.2972233295440674,
+      "shuffled_nll": 0.29643121361732483,
+      "shifted_minus_matched": 0.17010486125946045,
+      "shuffled_minus_matched": 0.1693127453327179
+    },
+    {
+      "index": 4,
+      "sample_id": "coco_000000403584_647430",
+      "source_description": "These image tokens represent a surfboard in the center region of the image.",
+      "matched_nll": 0.21892310678958893,
+      "shifted_nll": 0.36000001430511475,
+      "shuffled_nll": 0.27556508779525757,
+      "shifted_minus_matched": 0.14107690751552582,
+      "shuffled_minus_matched": 0.05664198100566864
+    },
+    {
+      "index": 5,
+      "sample_id": "coco_000000283412_9178",
+      "source_description": "These image tokens represent a dog in the center region of the image.",
+      "matched_nll": 0.08882083743810654,
+      "shifted_nll": 0.418920636177063,
+      "shuffled_nll": 0.3126525282859802,
+      "shifted_minus_matched": 0.33009979128837585,
+      "shuffled_minus_matched": 0.2238316833972931
+    },
+    {
+      "index": 6,
+      "sample_id": "coco_000000294831_1072465",
+      "source_description": "These image tokens represent a pizza in the center region of the image.",
+      "matched_nll": 0.06653564423322678,
+      "shifted_nll": 0.26838645339012146,
+      "shuffled_nll": 0.2550026476383209,
+      "shifted_minus_matched": 0.2018508017063141,
+      "shuffled_minus_matched": 0.18846699595451355
+    },
+    {
+      "index": 7,
+      "sample_id": "coco_000000217753_1557564",
+      "source_description": "These image tokens represent an orange in the bottom-right region of the image.",
+      "matched_nll": 0.11235108226537704,
+      "shifted_nll": 0.4494311809539795,
+      "shuffled_nll": 0.4050767123699188,
+      "shifted_minus_matched": 0.33708009123802185,
+      "shuffled_minus_matched": 0.2927256226539612
+    }
+  ]
+}

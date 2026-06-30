@@ -1,0 +1,113 @@
+{
+  "av_parquet": "outputs/H2_PILOT_Q3VL_COCO_L15_BBOX8_12TOK_N128_SEED4301/test_short_labels/qwen3vl_coco_L15_object_bbox_mean_short_av_sft.parquet",
+  "adapter": "outputs/H2_PILOT_Q3VL_COCO_L15_BBOX8_12TOK_N128_SEED4301/adapter/adapter",
+  "activation_adapter": "outputs/H2_PILOT_Q3VL_COCO_L15_BBOX8_12TOK_N128_SEED4301/adapter/activation_adapter.pt",
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "num_rows": 64,
+  "injection_scale": 57.75,
+  "num_injection_tokens": 12,
+  "prompt_token_count": 68,
+  "injection_positions": [
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41
+  ],
+  "matched_mean_nll": 0.19506385922431946,
+  "shifted_mean_nll": 0.5264045000076294,
+  "shuffled_mean_nll": 0.5463011264801025,
+  "shifted_minus_matched_mean": 0.3313406705856323,
+  "shuffled_minus_matched_mean": 0.3512372374534607,
+  "shifted_match_better_fraction": 0.984375,
+  "shuffled_match_better_fraction": 0.953125,
+  "examples": [
+    {
+      "index": 0,
+      "sample_id": "coco_000000313783_688951",
+      "source_description": "These image tokens represent a fork in the top-right region of the image.",
+      "matched_nll": 0.16978734731674194,
+      "shifted_nll": 0.9859867095947266,
+      "shuffled_nll": 0.5732223391532898,
+      "shifted_minus_matched": 0.8161993622779846,
+      "shuffled_minus_matched": 0.40343499183654785
+    },
+    {
+      "index": 1,
+      "sample_id": "coco_000000251119_2221191",
+      "source_description": "These image tokens represent a hot dog in the center region of the image.",
+      "matched_nll": 0.1552964150905609,
+      "shifted_nll": 0.28467121720314026,
+      "shuffled_nll": 0.11039778590202332,
+      "shifted_minus_matched": 0.12937480211257935,
+      "shuffled_minus_matched": -0.0448986291885376
+    },
+    {
+      "index": 2,
+      "sample_id": "coco_000000365385_2215046",
+      "source_description": "These image tokens represent a cup in the bottom-left region of the image.",
+      "matched_nll": 0.48638859391212463,
+      "shifted_nll": 0.5011467337608337,
+      "shuffled_nll": 0.729304313659668,
+      "shifted_minus_matched": 0.014758139848709106,
+      "shuffled_minus_matched": 0.24291571974754333
+    },
+    {
+      "index": 3,
+      "sample_id": "coco_000000372260_138362",
+      "source_description": "These image tokens represent a car in the left region of the image.",
+      "matched_nll": 0.14189377427101135,
+      "shifted_nll": 0.4450959861278534,
+      "shuffled_nll": 0.47174355387687683,
+      "shifted_minus_matched": 0.30320221185684204,
+      "shuffled_minus_matched": 0.3298497796058655
+    },
+    {
+      "index": 4,
+      "sample_id": "coco_000000403584_647430",
+      "source_description": "These image tokens represent a surfboard in the center region of the image.",
+      "matched_nll": 0.2381920963525772,
+      "shifted_nll": 0.5739575028419495,
+      "shuffled_nll": 0.46346279978752136,
+      "shifted_minus_matched": 0.33576542139053345,
+      "shuffled_minus_matched": 0.22527070343494415
+    },
+    {
+      "index": 5,
+      "sample_id": "coco_000000283412_9178",
+      "source_description": "These image tokens represent a dog in the center region of the image.",
+      "matched_nll": 0.032722149044275284,
+      "shifted_nll": 0.42651793360710144,
+      "shuffled_nll": 0.20073255896568298,
+      "shifted_minus_matched": 0.39379578828811646,
+      "shuffled_minus_matched": 0.168010413646698
+    },
+    {
+      "index": 6,
+      "sample_id": "coco_000000294831_1072465",
+      "source_description": "These image tokens represent a pizza in the center region of the image.",
+      "matched_nll": 0.007176459301263094,
+      "shifted_nll": 0.3097100555896759,
+      "shuffled_nll": 0.4697149991989136,
+      "shifted_minus_matched": 0.3025335967540741,
+      "shuffled_minus_matched": 0.46253854036331177
+    },
+    {
+      "index": 7,
+      "sample_id": "coco_000000217753_1557564",
+      "source_description": "These image tokens represent an orange in the bottom-right region of the image.",
+      "matched_nll": 0.14775998890399933,
+      "shifted_nll": 0.6850209832191467,
+      "shuffled_nll": 0.6727377772331238,
+      "shifted_minus_matched": 0.5372610092163086,
+      "shuffled_minus_matched": 0.5249778032302856
+    }
+  ]
+}

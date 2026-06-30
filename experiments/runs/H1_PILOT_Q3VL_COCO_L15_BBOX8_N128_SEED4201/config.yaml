@@ -1,0 +1,116 @@
+run_id: "H1_PILOT_Q3VL_COCO_L15_BBOX8_N128_SEED4201"
+hypothesis: "H1"
+study: "A"
+status: "running"
+notes: ""
+
+model:
+  model_id: Qwen/Qwen3-VL-8B-Instruct
+  model_revision_or_path: ""
+  local_files_only: true
+  dtype: bfloat16
+
+environment:
+  hostname: ""
+  gpu: ""
+  python_version: ""
+  torch_version: ""
+  transformers_version: ""
+  peft_version: ""
+  cuda_version: ""
+
+data:
+  dataset: mscoco_val2017
+  coco_root: data/coco2017
+  split_policy: image_disjoint_category_stratified
+  split_manifest: ""
+  train:
+    num_images: 1024
+    seed: 4201
+    image_ids_path: ""
+  val:
+    num_images: 256
+    seed: 4202
+    image_ids_path: ""
+  test:
+    num_images: 512
+    seed: 4203
+    image_ids_path: ""
+  label_variant: category_region_short
+  label_policy: "Use object category plus coarse region only; do not include full COCO captions in the primary local-token benchmark."
+  min_area_frac: 0.015
+  leakage_checks:
+    image_disjoint: true
+    category_stratified: true
+    duplicate_semantic_labels_tracked: true
+
+activation:
+  layer_indices: [15]
+  target_token: object_bbox_mean
+  max_bbox_tokens: 8
+  pooling: mean
+  random_control: false
+  token_selection_rule: "COCO bbox token centers, nearest to bbox center when truncated by max_bbox_tokens."
+  requires_new_extractor: false
+
+av_training:
+  script: scripts/qwen3vl/train_qwen3vl_av_lora_tiny.py
+  num_injection_tokens: 8
+  injection_scale: 57.75
+  epochs: 2
+  grad_accum: 8
+  lr: 0.0003
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.0
+  target_modules: q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj
+  train_activation_adapter: true
+  activation_adapter_lr: 0.0001
+  contrastive_shuffle_weight: 1.0
+  contrastive_margin: 0.02
+  response_contrastive_weight: 1.0
+  response_contrastive_margin: 0.02
+  seed: 4201
+
+evaluation:
+  sensitivity:
+    script: scripts/qwen3vl/eval_qwen3vl_av_activation_sensitivity.py
+    max_rows: null
+    batch_size: 8
+    shuffled_seed: 123
+  ranking:
+    script: scripts/qwen3vl/eval_qwen3vl_av_candidate_ranking.py
+    num_queries: 128
+    num_candidates: 128
+    candidate_mode: all
+    score_modes: [nll, activation_gain]
+    hard_negative_policy: "Same COCO supercategory and/or same coarse region when available."
+  semantic:
+    unique_label_ranking: true
+    parse_object_region: true
+    object_synonym_policy: "COCO category exact match for primary metric; synonym grouping only as secondary analysis."
+  statistics:
+    bootstrap_samples: 10000
+    confidence_level: 0.95
+    paired_tests: true
+    seeds_required_for_confirmatory_claim: 3
+
+artifacts:
+  run_dir: experiments/runs/H1_PILOT_Q3VL_COCO_L15_BBOX8_N128_SEED4201
+  large_artifact_root: outputs/H1_PILOT_Q3VL_COCO_L15_BBOX8_N128_SEED4201
+  save_qualitative_panels: true
+  save_failure_cases: true
+  checksums:
+    train_parquet_sha256: ""
+    val_parquet_sha256: ""
+    test_parquet_sha256: ""
+    adapter_sha256: ""
+
+commands:
+  extraction: ""
+  short_label_rewrite: ""
+  training: ""
+  sensitivity_eval: ""
+  ranking_eval_nll: ""
+  ranking_eval_activation_gain: ""
+  visualization: ""

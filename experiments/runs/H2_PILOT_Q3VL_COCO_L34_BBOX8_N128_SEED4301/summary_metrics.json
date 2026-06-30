@@ -1,0 +1,19 @@
+{
+  "run_id": "H2_PILOT_Q3VL_COCO_L34_BBOX8_N128_SEED4301",
+  "target_token": "object_bbox_mean",
+  "max_bbox_tokens": 8,
+  "train_size": 128,
+  "test_size": 64,
+  "matched_mean_nll": 0.294225811958313,
+  "shuffled_mean_nll": 0.294188529253006,
+  "sensitivity_delta": -3.729481250047684e-05,
+  "matched_better_fraction": 0.40625,
+  "nll_top1": 0.015625,
+  "nll_top5": 0.078125,
+  "nll_unique_top1": 0.015625,
+  "nll_unique_top5": 0.078125,
+  "gain_top1": 0.015625,
+  "gain_top5": 0.109375,
+  "gain_unique_top1": 0.015625,
+  "gain_unique_top5": 0.109375
+}
