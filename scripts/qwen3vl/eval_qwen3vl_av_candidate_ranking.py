@@ -72,9 +72,18 @@ def load_activation_adapter(
         adapter_path = adapter_path / "activation_adapter.pt"
     ckpt = torch.load(adapter_path, map_location=device)
     state_dict = ckpt["state_dict"] if isinstance(ckpt, dict) and "state_dict" in ckpt else ckpt
+    weight = state_dict["weight"]
+    in_features = int(weight.shape[1])
+    out_features = int(weight.shape[0])
+    if out_features % num_injection_tokens != 0:
+        raise RuntimeError(
+            f"activation adapter out_features={out_features} is not divisible by {num_injection_tokens} tokens"
+        )
+    if in_features != d_model:
+        raise RuntimeError(f"activation dim mismatch: parquet has {d_model}, adapter expects {in_features}")
     adapter = torch.nn.Linear(
-        d_model,
-        d_model * num_injection_tokens,
+        in_features,
+        out_features,
         bias=True,
         device=device,
         dtype=torch.float32,

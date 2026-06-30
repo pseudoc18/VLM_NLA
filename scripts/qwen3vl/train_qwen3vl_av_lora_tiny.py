@@ -117,24 +117,47 @@ def map_activation(
     return mapped.to(device, dtype)
 
 
-def build_activation_adapter(d_model: int, num_injection_tokens: int, device: torch.device) -> torch.nn.Linear:
-    adapter = torch.nn.Linear(d_model, d_model * num_injection_tokens, bias=True, device=device, dtype=torch.float32)
+def initial_adapter_weight(activation_dim: int, hidden_size: int, num_injection_tokens: int) -> torch.Tensor:
+    weight = torch.zeros((hidden_size * num_injection_tokens, activation_dim), dtype=torch.float32)
+    token_scale = 1.0 / math.sqrt(num_injection_tokens)
+    if activation_dim % hidden_size == 0:
+        num_blocks = activation_dim // hidden_size
+        eye = torch.eye(hidden_size, dtype=torch.float32) * (token_scale / max(1, num_blocks))
+        for token_idx in range(num_injection_tokens):
+            row0 = token_idx * hidden_size
+            for block_idx in range(num_blocks):
+                col0 = block_idx * hidden_size
+                weight[row0 : row0 + hidden_size, col0 : col0 + hidden_size].copy_(eye)
+    else:
+        cols = min(activation_dim, hidden_size)
+        eye = torch.eye(hidden_size, cols, dtype=torch.float32) * token_scale
+        for token_idx in range(num_injection_tokens):
+            row0 = token_idx * hidden_size
+            weight[row0 : row0 + hidden_size, :cols].copy_(eye)
+    return weight
+
+
+def build_activation_adapter(
+    activation_dim: int,
+    hidden_size: int,
+    num_injection_tokens: int,
+    device: torch.device,
+) -> torch.nn.Linear:
+    adapter = torch.nn.Linear(
+        activation_dim,
+        hidden_size * num_injection_tokens,
+        bias=True,
+        device=device,
+        dtype=torch.float32,
+    )
     with torch.no_grad():
-        adapter.weight.zero_()
-        scale = 1.0 / math.sqrt(num_injection_tokens)
-        eye = torch.eye(d_model, device=device, dtype=torch.float32) * scale
-        for i in range(num_injection_tokens):
-            adapter.weight[i * d_model : (i + 1) * d_model].copy_(eye)
+        adapter.weight.copy_(initial_adapter_weight(activation_dim, hidden_size, num_injection_tokens).to(device))
         adapter.bias.zero_()
     return adapter
 
 
-def expected_adapter_weight(d_model: int, num_injection_tokens: int) -> torch.Tensor:
-    weight = torch.zeros((d_model * num_injection_tokens, d_model), dtype=torch.float32)
-    eye = torch.eye(d_model, dtype=torch.float32) / math.sqrt(num_injection_tokens)
-    for i in range(num_injection_tokens):
-        weight[i * d_model : (i + 1) * d_model].copy_(eye)
-    return weight
+def expected_adapter_weight(activation_dim: int, hidden_size: int, num_injection_tokens: int) -> torch.Tensor:
+    return initial_adapter_weight(activation_dim, hidden_size, num_injection_tokens)
 
 
 def forward_loss(
@@ -303,9 +326,10 @@ def main() -> None:
     model.train()
 
     activation_adapter = None
+    hidden_size = int(model.config.text_config.hidden_size)
+    activation_dim = int(encoded[0]["activation"].numel())
     if args.train_activation_adapter:
-        d_model = int(encoded[0]["activation"].numel())
-        activation_adapter = build_activation_adapter(d_model, args.num_injection_tokens, device)
+        activation_adapter = build_activation_adapter(activation_dim, hidden_size, args.num_injection_tokens, device)
         activation_adapter.train()
 
     model_params = [p for p in model.parameters() if p.requires_grad]
@@ -443,13 +467,16 @@ def main() -> None:
             weight = activation_adapter.weight.detach().float().cpu()
             bias = activation_adapter.bias.detach().float().cpu()
             expected_weight = expected_adapter_weight(
-                int(encoded[0]["activation"].numel()),
+                activation_dim,
+                hidden_size,
                 args.num_injection_tokens,
             )
             activation_adapter_summary = {
                 "path": str(adapter_path),
-                "type": "linear_repeat_identity_init",
-                "d_model": int(encoded[0]["activation"].numel()),
+                "type": "linear_projection_repeat_identity_init",
+                "d_model": hidden_size,
+                "hidden_size": hidden_size,
+                "activation_dim": activation_dim,
                 "num_injection_tokens": args.num_injection_tokens,
                 "out_features": int(weight.shape[0]),
                 "param_count": adapter_trainable,
@@ -459,8 +486,10 @@ def main() -> None:
             }
             torch.save(
                 {
-                    "type": "linear_repeat_identity_init",
-                    "d_model": int(encoded[0]["activation"].numel()),
+                    "type": "linear_projection_repeat_identity_init",
+                    "d_model": hidden_size,
+                    "hidden_size": hidden_size,
+                    "activation_dim": activation_dim,
                     "num_injection_tokens": args.num_injection_tokens,
                     "state_dict": activation_adapter.state_dict(),
                     "summary": activation_adapter_summary,
