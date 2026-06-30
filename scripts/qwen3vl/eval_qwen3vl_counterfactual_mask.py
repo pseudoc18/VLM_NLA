@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -22,6 +23,10 @@ import yaml
 from PIL import Image, ImageFilter, ImageStat
 from peft import PeftModel
 from transformers import AutoProcessor, Qwen3VLForConditionalGeneration
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 from scripts.qwen3vl.eval_qwen3vl_av_candidate_ranking import (
     encode_prompt,
