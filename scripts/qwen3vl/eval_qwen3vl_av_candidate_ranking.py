@@ -268,6 +268,8 @@ def main() -> None:
     correct_raw_scores = []
     correct_reference_scores = []
     examples = []
+    per_query = []
+    unique_label_ranks = []
     all_scores = []
     all_raw_scores = []
     for qi, row in enumerate(query_rows):
@@ -305,7 +307,21 @@ def main() -> None:
         correct_index = candidate_ids.index(correct_id)
         order = torch.argsort(scores)
         rank = int((order == correct_index).nonzero(as_tuple=False)[0].item()) + 1
+        correct_label = row["response"]
+        seen_labels = set()
+        unique_rank = None
+        for idx in order.tolist():
+            label = candidate_rows[int(idx)]["response"]
+            if label in seen_labels:
+                continue
+            seen_labels.add(label)
+            if label == correct_label:
+                unique_rank = len(seen_labels)
+                break
+        if unique_rank is None:
+            raise RuntimeError(f"correct response label not found for {correct_id}")
         ranks.append(rank)
+        unique_label_ranks.append(unique_rank)
         correct_score = float(scores[correct_index].item())
         correct_raw_score = float(raw_scores[correct_index].item())
         best_wrong_score = float(scores[[i for i in range(len(scores)) if i != correct_index]].min().item())
@@ -316,37 +332,41 @@ def main() -> None:
             correct_reference_scores.append(float(reference_scores[correct_index].item()))
         all_scores.append(scores.numpy())
         all_raw_scores.append(raw_scores.numpy())
+        topk = []
+        for r, idx in enumerate(order[:5].tolist()):
+            item = {
+                "rank": r + 1,
+                "candidate_index": int(idx),
+                "sample_id": candidate_ids[int(idx)],
+                "score": float(scores[int(idx)].item()),
+                "raw_nll": float(raw_scores[int(idx)].item()),
+                "is_correct": int(idx) == correct_index,
+                "same_response_label": candidate_rows[int(idx)]["response"] == correct_label,
+                "response": candidate_rows[int(idx)]["response"],
+                "source_description": candidate_rows[int(idx)].get("source_description", ""),
+            }
+            if reference_scores is not None:
+                item["reference_nll"] = float(reference_scores[int(idx)].item())
+            topk.append(item)
+        query_record = {
+            "query_index": qi,
+            "query_sample_id": correct_id,
+            "correct_rank": rank,
+            "unique_label_rank": unique_rank,
+            "correct_score": correct_score,
+            "correct_raw_nll": correct_raw_score,
+            "correct_reference_nll": (
+                float(reference_scores[correct_index].item()) if reference_scores is not None else None
+            ),
+            "source_description": row.get("source_description", ""),
+            "top5": topk,
+        }
+        per_query.append(query_record)
         if qi < 8:
-            topk = []
-            for r, idx in enumerate(order[:5].tolist()):
-                item = {
-                    "rank": r + 1,
-                    "candidate_index": int(idx),
-                    "sample_id": candidate_ids[int(idx)],
-                    "score": float(scores[int(idx)].item()),
-                    "raw_nll": float(raw_scores[int(idx)].item()),
-                    "is_correct": int(idx) == correct_index,
-                    "response": candidate_rows[int(idx)]["response"],
-                }
-                if reference_scores is not None:
-                    item["reference_nll"] = float(reference_scores[int(idx)].item())
-                topk.append(item)
-            examples.append(
-                {
-                    "query_index": qi,
-                    "query_sample_id": correct_id,
-                    "correct_rank": rank,
-                    "correct_score": correct_score,
-                    "correct_raw_nll": correct_raw_score,
-                    "correct_reference_nll": (
-                        float(reference_scores[correct_index].item()) if reference_scores is not None else None
-                    ),
-                    "source_description": row.get("source_description", ""),
-                    "top5": topk,
-                }
-            )
+            examples.append(query_record)
 
     ranks_arr = np.asarray(ranks)
+    unique_label_ranks_arr = np.asarray(unique_label_ranks)
     margins_arr = np.asarray(margins)
     score_mat = np.stack(all_scores, axis=0)
     raw_score_mat = np.stack(all_raw_scores, axis=0)
@@ -368,6 +388,11 @@ def main() -> None:
         "top1_accuracy": float((ranks_arr == 1).mean()),
         "top3_accuracy": float((ranks_arr <= 3).mean()),
         "top5_accuracy": float((ranks_arr <= 5).mean()),
+        "unique_label_mean_rank": float(unique_label_ranks_arr.mean()),
+        "unique_label_median_rank": float(np.median(unique_label_ranks_arr)),
+        "unique_label_top1_accuracy": float((unique_label_ranks_arr == 1).mean()),
+        "unique_label_top3_accuracy": float((unique_label_ranks_arr <= 3).mean()),
+        "unique_label_top5_accuracy": float((unique_label_ranks_arr <= 5).mean()),
         "mean_margin_best_wrong_minus_correct": float(margins_arr.mean()),
         "median_margin_best_wrong_minus_correct": float(np.median(margins_arr)),
         "mean_correct_nll": float(np.mean(correct_scores)),
@@ -378,6 +403,7 @@ def main() -> None:
         "mean_all_nll": float(score_mat.mean()),
         "mean_all_raw_nll": float(raw_score_mat.mean()),
         "examples": examples,
+        "per_query": per_query,
     }
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
