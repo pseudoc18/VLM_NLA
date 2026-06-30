@@ -1,0 +1,796 @@
+{
+  "av_parquet": "outputs/H1_PILOT_Q3VL_COCO_L15_BBOX8_N128_SEED4201/test_short_labels/qwen3vl_coco_L15_object_bbox_mean_short_av_sft.parquet",
+  "adapter": "outputs/H1_PILOT_Q3VL_COCO_L15_BBOX8_N128_SEED4201/adapter/adapter",
+  "activation_adapter": "outputs/H1_PILOT_Q3VL_COCO_L15_BBOX8_N128_SEED4201/adapter/activation_adapter.pt",
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "num_images": 16,
+  "num_absent_probes": 48,
+  "absent_per_image": 3,
+  "max_objects_per_image": 3,
+  "num_hallucinated_absent_probes": 1,
+  "hallucination_rate": 0.020833333333333332,
+  "mean_absent_yes_margin": -0.07552293688058853,
+  "mean_hallucinated_yes_margin": 0.022138595581054688,
+  "num_attributed_hallucinations": 1,
+  "mean_top_region_margin_drop": 0.0045623779296875,
+  "fraction_positive_top_region_margin_drop": 1.0,
+  "mean_nla_hallucinated_minus_actual_nll": 0.6021682024002075,
+  "fraction_nla_prefers_hallucinated": 0.0,
+  "absent_probe_records": [
+    {
+      "image_id": 217753,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000217753.jpg",
+      "absent_category": "tie",
+      "present_categories": [
+        "apple",
+        "orange"
+      ],
+      "yes_nll": 25.086591720581055,
+      "no_nll": 25.023258209228516,
+      "yes_margin": -0.06333351135253906,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 217753,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000217753.jpg",
+      "absent_category": "banana",
+      "present_categories": [
+        "apple",
+        "orange"
+      ],
+      "yes_nll": 25.057254791259766,
+      "no_nll": 24.99808692932129,
+      "yes_margin": -0.05916786193847656,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 217753,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000217753.jpg",
+      "absent_category": "frisbee",
+      "present_categories": [
+        "apple",
+        "orange"
+      ],
+      "yes_nll": 24.914216995239258,
+      "no_nll": 24.839216232299805,
+      "yes_margin": -0.07500076293945312,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 313783,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000313783.jpg",
+      "absent_category": "traffic light",
+      "present_categories": [
+        "carrot",
+        "fork"
+      ],
+      "yes_nll": 22.711761474609375,
+      "no_nll": 22.601083755493164,
+      "yes_margin": -0.11067771911621094,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 313783,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000313783.jpg",
+      "absent_category": "remote",
+      "present_categories": [
+        "carrot",
+        "fork"
+      ],
+      "yes_nll": 22.918588638305664,
+      "no_nll": 22.811819076538086,
+      "yes_margin": -0.10676956176757812,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 313783,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000313783.jpg",
+      "absent_category": "couch",
+      "present_categories": [
+        "carrot",
+        "fork"
+      ],
+      "yes_nll": 22.7447566986084,
+      "no_nll": 22.63017463684082,
+      "yes_margin": -0.11458206176757812,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 251119,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000251119.jpg",
+      "absent_category": "apple",
+      "present_categories": [
+        "hot dog",
+        "sandwich"
+      ],
+      "yes_nll": 24.103612899780273,
+      "no_nll": 24.00335121154785,
+      "yes_margin": -0.10026168823242188,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 251119,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000251119.jpg",
+      "absent_category": "spoon",
+      "present_categories": [
+        "hot dog",
+        "sandwich"
+      ],
+      "yes_nll": 23.953916549682617,
+      "no_nll": 23.909645080566406,
+      "yes_margin": -0.04427146911621094,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 251119,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000251119.jpg",
+      "absent_category": "toothbrush",
+      "present_categories": [
+        "hot dog",
+        "sandwich"
+      ],
+      "yes_nll": 23.81488037109375,
+      "no_nll": 23.76930809020996,
+      "yes_margin": -0.04557228088378906,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 407574,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000407574.jpg",
+      "absent_category": "bird",
+      "present_categories": [
+        "banana"
+      ],
+      "yes_nll": 25.9398250579834,
+      "no_nll": 25.892324447631836,
+      "yes_margin": -0.0475006103515625,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 407574,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000407574.jpg",
+      "absent_category": "backpack",
+      "present_categories": [
+        "banana"
+      ],
+      "yes_nll": 25.871864318847656,
+      "no_nll": 25.825199127197266,
+      "yes_margin": -0.046665191650390625,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 407574,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000407574.jpg",
+      "absent_category": "cup",
+      "present_categories": [
+        "banana"
+      ],
+      "yes_nll": 25.919116973876953,
+      "no_nll": 25.890785217285156,
+      "yes_margin": -0.028331756591796875,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 351810,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000351810.jpg",
+      "absent_category": "laptop",
+      "present_categories": [
+        "backpack",
+        "chair",
+        "dining table",
+        "person",
+        "potted plant",
+        "suitcase"
+      ],
+      "yes_nll": 24.883255004882812,
+      "no_nll": 24.8428955078125,
+      "yes_margin": -0.0403594970703125,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 351810,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000351810.jpg",
+      "absent_category": "cell phone",
+      "present_categories": [
+        "backpack",
+        "chair",
+        "dining table",
+        "person",
+        "potted plant",
+        "suitcase"
+      ],
+      "yes_nll": 24.87010383605957,
+      "no_nll": 24.892242431640625,
+      "yes_margin": 0.022138595581054688,
+      "preferred_answer": "Yes",
+      "hallucinated_absent": true
+    },
+    {
+      "image_id": 351810,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000351810.jpg",
+      "absent_category": "truck",
+      "present_categories": [
+        "backpack",
+        "chair",
+        "dining table",
+        "person",
+        "potted plant",
+        "suitcase"
+      ],
+      "yes_nll": 25.130788803100586,
+      "no_nll": 25.024017333984375,
+      "yes_margin": -0.10677146911621094,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 34257,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000034257.jpg",
+      "absent_category": "knife",
+      "present_categories": [
+        "broccoli",
+        "carrot"
+      ],
+      "yes_nll": 22.914871215820312,
+      "no_nll": 22.79299545288086,
+      "yes_margin": -0.12187576293945312,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 34257,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000034257.jpg",
+      "absent_category": "suitcase",
+      "present_categories": [
+        "broccoli",
+        "carrot"
+      ],
+      "yes_nll": 22.809616088867188,
+      "no_nll": 22.67836570739746,
+      "yes_margin": -0.13125038146972656,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 34257,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000034257.jpg",
+      "absent_category": "bird",
+      "present_categories": [
+        "broccoli",
+        "carrot"
+      ],
+      "yes_nll": 22.92607307434082,
+      "no_nll": 22.791698455810547,
+      "yes_margin": -0.13437461853027344,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 527960,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000527960.jpg",
+      "absent_category": "sandwich",
+      "present_categories": [
+        "bench"
+      ],
+      "yes_nll": 24.021526336669922,
+      "no_nll": 23.938833236694336,
+      "yes_margin": -0.08269309997558594,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 527960,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000527960.jpg",
+      "absent_category": "bed",
+      "present_categories": [
+        "bench"
+      ],
+      "yes_nll": 24.100154876708984,
+      "no_nll": 24.02803611755371,
+      "yes_margin": -0.07211875915527344,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 527960,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000527960.jpg",
+      "absent_category": "cup",
+      "present_categories": [
+        "bench"
+      ],
+      "yes_nll": 24.10597801208496,
+      "no_nll": 24.030014038085938,
+      "yes_margin": -0.07596397399902344,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 410428,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000410428.jpg",
+      "absent_category": "handbag",
+      "present_categories": [
+        "sheep"
+      ],
+      "yes_nll": 24.08305549621582,
+      "no_nll": 23.99843978881836,
+      "yes_margin": -0.08461570739746094,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 410428,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000410428.jpg",
+      "absent_category": "remote",
+      "present_categories": [
+        "sheep"
+      ],
+      "yes_nll": 24.21661376953125,
+      "no_nll": 24.139690399169922,
+      "yes_margin": -0.07692337036132812,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 410428,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000410428.jpg",
+      "absent_category": "spoon",
+      "present_categories": [
+        "sheep"
+      ],
+      "yes_nll": 24.081073760986328,
+      "no_nll": 23.99549674987793,
+      "yes_margin": -0.08557701110839844,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 372260,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000372260.jpg",
+      "absent_category": "surfboard",
+      "present_categories": [
+        "car",
+        "clock",
+        "potted plant"
+      ],
+      "yes_nll": 24.6060733795166,
+      "no_nll": 24.526268005371094,
+      "yes_margin": -0.07980537414550781,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 372260,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000372260.jpg",
+      "absent_category": "toothbrush",
+      "present_categories": [
+        "car",
+        "clock",
+        "potted plant"
+      ],
+      "yes_nll": 24.522693634033203,
+      "no_nll": 24.445770263671875,
+      "yes_margin": -0.07692337036132812,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 372260,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000372260.jpg",
+      "absent_category": "kite",
+      "present_categories": [
+        "car",
+        "clock",
+        "potted plant"
+      ],
+      "yes_nll": 24.592729568481445,
+      "no_nll": 24.516769409179688,
+      "yes_margin": -0.07596015930175781,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 229311,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000229311.jpg",
+      "absent_category": "hair drier",
+      "present_categories": [
+        "bottle",
+        "bowl",
+        "cup",
+        "sink",
+        "vase"
+      ],
+      "yes_nll": 25.134748458862305,
+      "no_nll": 25.044904708862305,
+      "yes_margin": -0.08984375,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 229311,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000229311.jpg",
+      "absent_category": "cake",
+      "present_categories": [
+        "bottle",
+        "bowl",
+        "cup",
+        "sink",
+        "vase"
+      ],
+      "yes_nll": 25.36407470703125,
+      "no_nll": 25.275529861450195,
+      "yes_margin": -0.08854484558105469,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 229311,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000229311.jpg",
+      "absent_category": "mouse",
+      "present_categories": [
+        "bottle",
+        "bowl",
+        "cup",
+        "sink",
+        "vase"
+      ],
+      "yes_nll": 25.374597549438477,
+      "no_nll": 25.2834529876709,
+      "yes_margin": -0.09114456176757812,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 528980,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000528980.jpg",
+      "absent_category": "hot dog",
+      "present_categories": [
+        "car",
+        "stop sign",
+        "umbrella"
+      ],
+      "yes_nll": 25.592866897583008,
+      "no_nll": 25.51690673828125,
+      "yes_margin": -0.07596015930175781,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 528980,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000528980.jpg",
+      "absent_category": "donut",
+      "present_categories": [
+        "car",
+        "stop sign",
+        "umbrella"
+      ],
+      "yes_nll": 25.59412956237793,
+      "no_nll": 25.522014617919922,
+      "yes_margin": -0.07211494445800781,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 528980,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000528980.jpg",
+      "absent_category": "chair",
+      "present_categories": [
+        "car",
+        "stop sign",
+        "umbrella"
+      ],
+      "yes_nll": 25.679485321044922,
+      "no_nll": 25.645830154418945,
+      "yes_margin": -0.03365516662597656,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 175387,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000175387.jpg",
+      "absent_category": "cat",
+      "present_categories": [
+        "toilet"
+      ],
+      "yes_nll": 23.885107040405273,
+      "no_nll": 23.78484535217285,
+      "yes_margin": -0.10026168823242188,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 175387,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000175387.jpg",
+      "absent_category": "toothbrush",
+      "present_categories": [
+        "toilet"
+      ],
+      "yes_nll": 23.55938720703125,
+      "no_nll": 23.457822799682617,
+      "yes_margin": -0.10156440734863281,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 175387,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000175387.jpg",
+      "absent_category": "oven",
+      "present_categories": [
+        "toilet"
+      ],
+      "yes_nll": 23.906539916992188,
+      "no_nll": 23.797164916992188,
+      "yes_margin": -0.109375,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 545129,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000545129.jpg",
+      "absent_category": "sink",
+      "present_categories": [
+        "zebra"
+      ],
+      "yes_nll": 23.455751419067383,
+      "no_nll": 23.35288429260254,
+      "yes_margin": -0.10286712646484375,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 545129,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000545129.jpg",
+      "absent_category": "bed",
+      "present_categories": [
+        "zebra"
+      ],
+      "yes_nll": 23.44988441467285,
+      "no_nll": 23.34441566467285,
+      "yes_margin": -0.10546875,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 545129,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000545129.jpg",
+      "absent_category": "oven",
+      "present_categories": [
+        "zebra"
+      ],
+      "yes_nll": 23.480300903320312,
+      "no_nll": 23.37092399597168,
+      "yes_margin": -0.10937690734863281,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 14439,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000014439.jpg",
+      "absent_category": "umbrella",
+      "present_categories": [
+        "backpack",
+        "chair",
+        "kite",
+        "person"
+      ],
+      "yes_nll": 23.616405487060547,
+      "no_nll": 23.564483642578125,
+      "yes_margin": -0.051921844482421875,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 14439,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000014439.jpg",
+      "absent_category": "boat",
+      "present_categories": [
+        "backpack",
+        "chair",
+        "kite",
+        "person"
+      ],
+      "yes_nll": 23.717754364013672,
+      "no_nll": 23.64179229736328,
+      "yes_margin": -0.07596206665039062,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 14439,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000014439.jpg",
+      "absent_category": "tennis racket",
+      "present_categories": [
+        "backpack",
+        "chair",
+        "kite",
+        "person"
+      ],
+      "yes_nll": 23.574586868286133,
+      "no_nll": 23.501510620117188,
+      "yes_margin": -0.07307624816894531,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 193926,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000193926.jpg",
+      "absent_category": "knife",
+      "present_categories": [
+        "apple",
+        "backpack",
+        "banana",
+        "bicycle",
+        "bowl",
+        "orange",
+        "person"
+      ],
+      "yes_nll": 25.10777473449707,
+      "no_nll": 25.064443588256836,
+      "yes_margin": -0.043331146240234375,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 193926,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000193926.jpg",
+      "absent_category": "dining table",
+      "present_categories": [
+        "apple",
+        "backpack",
+        "banana",
+        "bicycle",
+        "bowl",
+        "orange",
+        "person"
+      ],
+      "yes_nll": 24.885852813720703,
+      "no_nll": 24.873350143432617,
+      "yes_margin": -0.012502670288085938,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 193926,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000193926.jpg",
+      "absent_category": "carrot",
+      "present_categories": [
+        "apple",
+        "backpack",
+        "banana",
+        "bicycle",
+        "bowl",
+        "orange",
+        "person"
+      ],
+      "yes_nll": 25.022958755493164,
+      "no_nll": 24.958791732788086,
+      "yes_margin": -0.06416702270507812,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 393115,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000393115.jpg",
+      "absent_category": "laptop",
+      "present_categories": [
+        "person",
+        "skateboard"
+      ],
+      "yes_nll": 24.477285385131836,
+      "no_nll": 24.42290687561035,
+      "yes_margin": -0.054378509521484375,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 393115,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000393115.jpg",
+      "absent_category": "dog",
+      "present_categories": [
+        "person",
+        "skateboard"
+      ],
+      "yes_nll": 24.531963348388672,
+      "no_nll": 24.478837966918945,
+      "yes_margin": -0.05312538146972656,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    },
+    {
+      "image_id": 393115,
+      "image_path": "/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017/val2017/000000393115.jpg",
+      "absent_category": "donut",
+      "present_categories": [
+        "person",
+        "skateboard"
+      ],
+      "yes_nll": 24.49068832397461,
+      "no_nll": 24.439437866210938,
+      "yes_margin": -0.051250457763671875,
+      "preferred_answer": "No",
+      "hallucinated_absent": false
+    }
+  ],
+  "attribution_records": [
+    {
+      "image_id": 351810,
+      "ann_id": 1168928,
+      "hallucinated_category": "cell phone",
+      "original_yes_margin": 0.022138595581054688,
+      "top_region_category": "backpack",
+      "top_region_position": "center",
+      "top_region_bbox_xywh": [
+        97.03,
+        160.16,
+        158.29,
+        150.55
+      ],
+      "top_region_margin_drop": 0.0045623779296875,
+      "masked_region_records": [
+        {
+          "ann_id": 1828092,
+          "region_category": "backpack",
+          "bbox_xywh": [
+            280.52,
+            173.38,
+            219.48,
+            201.62
+          ],
+          "coarse_position": "bottom-right",
+          "masked_yes_nll": 25.454971313476562,
+          "masked_no_nll": 25.47710609436035,
+          "masked_yes_margin": 0.022134780883789062,
+          "margin_drop": 3.814697265625e-06
+        },
+        {
+          "ann_id": 1168928,
+          "region_category": "backpack",
+          "bbox_xywh": [
+            97.03,
+            160.16,
+            158.29,
+            150.55
+          ],
+          "coarse_position": "center",
+          "masked_yes_nll": 25.643707275390625,
+          "masked_no_nll": 25.661283493041992,
+          "masked_yes_margin": 0.017576217651367188,
+          "margin_drop": 0.0045623779296875
+        },
+        {
+          "ann_id": 1445371,
+          "region_category": "suitcase",
+          "bbox_xywh": [
+            237.33,
+            175.25,
+            133.45,
+            195.95
+          ],
+          "coarse_position": "bottom",
+          "masked_yes_nll": 25.5645809173584,
+          "masked_no_nll": 25.5841121673584,
+          "masked_yes_margin": 0.01953125,
+          "margin_drop": 0.0026073455810546875
+        }
+      ],
+      "nla_actual_response": "<explanation>\nThese image tokens represent a backpack in the center region of the image.\n</explanation>",
+      "nla_hallucinated_response": "<explanation>\nThese image tokens represent a cell phone in the center region of the image.\n</explanation>",
+      "nla_actual_nll": 0.04886629432439804,
+      "nla_hallucinated_nll": 0.6510344743728638,
+      "nla_hallucinated_minus_actual_nll": 0.6021681800484657,
+      "nla_prefers_hallucinated": false
+    }
+  ]
+}

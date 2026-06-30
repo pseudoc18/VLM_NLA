@@ -1,0 +1,631 @@
+{
+  "av_parquet": "outputs/H1_PILOT_Q3VL_COCO_L15_BBOX8_N128_SEED4201/test_short_labels/qwen3vl_coco_L15_object_bbox_mean_short_av_sft.parquet",
+  "adapter": "outputs/H1_PILOT_Q3VL_COCO_L15_BBOX8_N128_SEED4201/adapter/adapter",
+  "activation_adapter": "outputs/H1_PILOT_Q3VL_COCO_L15_BBOX8_N128_SEED4201/adapter/activation_adapter.pt",
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "num_rows": 32,
+  "num_candidates": 64,
+  "layer_index": 15,
+  "target_token": "object_bbox_mean",
+  "mask_mode": "mean",
+  "original_mean_rank": 6.84375,
+  "edited_mean_rank": 21.03125,
+  "mean_rank_delta": 14.1875,
+  "original_top1": 0.40625,
+  "edited_same_label_top1": 0.1875,
+  "original_top5": 0.75,
+  "edited_same_label_top5": 0.3125,
+  "mean_correct_nll_increase": 0.14016298574279062,
+  "fraction_correct_nll_increased": 0.84375,
+  "top_response_changed_fraction": 0.65625,
+  "records": [
+    {
+      "sample_id": "coco_000000217753_1557564",
+      "source_description": "These image tokens represent an orange in the bottom-right region of the image.",
+      "bbox_xywh": [
+        478.7300109863281,
+        302.760009765625,
+        161.27000427246094,
+        158.97999572753906
+      ],
+      "original_rank": 10,
+      "edited_rank": 53,
+      "rank_delta": 43,
+      "original_correct_nll": 0.3537563979625702,
+      "edited_correct_nll": 0.5014892220497131,
+      "correct_nll_increase": 0.14773282408714294,
+      "original_top_response": "<explanation>\nThese image tokens represent a pizza in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a banana in the center region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000313783_688951",
+      "source_description": "These image tokens represent a fork in the top-right region of the image.",
+      "bbox_xywh": [
+        362.3599853515625,
+        3.369999885559082,
+        137.63999938964844,
+        206.4600067138672
+      ],
+      "original_rank": 1,
+      "edited_rank": 61,
+      "rank_delta": 60,
+      "original_correct_nll": 0.23148076236248016,
+      "edited_correct_nll": 0.7356505393981934,
+      "correct_nll_increase": 0.5041697770357132,
+      "original_top_response": "<explanation>\nThese image tokens represent a fork in the top-right region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a vase in the bottom region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000251119_2221191",
+      "source_description": "These image tokens represent a hot dog in the center region of the image.",
+      "bbox_xywh": [
+        59.41999816894531,
+        176.3000030517578,
+        436.3599853515625,
+        145.1300048828125
+      ],
+      "original_rank": 7,
+      "edited_rank": 25,
+      "rank_delta": 18,
+      "original_correct_nll": 0.2789613902568817,
+      "edited_correct_nll": 0.4041283428668976,
+      "correct_nll_increase": 0.12516695261001587,
+      "original_top_response": "<explanation>\nThese image tokens represent a suitcase in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a sink in the bottom region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000407574_1042964",
+      "source_description": "These image tokens represent a banana in the center region of the image.",
+      "bbox_xywh": [
+        93.4800033569336,
+        97.36000061035156,
+        289.0799865722656,
+        339.4100036621094
+      ],
+      "original_rank": 1,
+      "edited_rank": 1,
+      "rank_delta": 0,
+      "original_correct_nll": 0.031336598098278046,
+      "edited_correct_nll": 0.03174688667058945,
+      "correct_nll_increase": 0.00041028857231140137,
+      "original_top_response": "<explanation>\nThese image tokens represent a banana in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a banana in the center region of the image.\n</explanation>",
+      "top_response_changed": false
+    },
+    {
+      "sample_id": "coco_000000351810_1828092",
+      "source_description": "These image tokens represent a backpack in the bottom-right region of the image.",
+      "bbox_xywh": [
+        280.5199890136719,
+        173.3800048828125,
+        219.47999572753906,
+        201.6199951171875
+      ],
+      "original_rank": 3,
+      "edited_rank": 13,
+      "rank_delta": 10,
+      "original_correct_nll": 0.24197955429553986,
+      "edited_correct_nll": 0.32064270973205566,
+      "correct_nll_increase": 0.07866315543651581,
+      "original_top_response": "<explanation>\nThese image tokens represent a suitcase in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a suitcase in the center region of the image.\n</explanation>",
+      "top_response_changed": false
+    },
+    {
+      "sample_id": "coco_000000034257_1564414",
+      "source_description": "These image tokens represent a carrot in the bottom region of the image.",
+      "bbox_xywh": [
+        126.91999816894531,
+        165.14999389648438,
+        247.02999877929688,
+        114.66000366210938
+      ],
+      "original_rank": 1,
+      "edited_rank": 44,
+      "rank_delta": 43,
+      "original_correct_nll": 0.1139303669333458,
+      "edited_correct_nll": 0.47805851697921753,
+      "correct_nll_increase": 0.36412815004587173,
+      "original_top_response": "<explanation>\nThese image tokens represent a carrot in the bottom region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a vase in the bottom region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000527960_575179",
+      "source_description": "These image tokens represent a bench in the bottom region of the image.",
+      "bbox_xywh": [
+        213.77999877929688,
+        216.42999267578125,
+        332.3800048828125,
+        188.7899932861328
+      ],
+      "original_rank": 1,
+      "edited_rank": 14,
+      "rank_delta": 13,
+      "original_correct_nll": 0.02143172360956669,
+      "edited_correct_nll": 0.30209946632385254,
+      "correct_nll_increase": 0.28066774271428585,
+      "original_top_response": "<explanation>\nThese image tokens represent a bench in the bottom region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a bear in the center region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000410428_61196",
+      "source_description": "These image tokens represent a sheep in the left region of the image.",
+      "bbox_xywh": [
+        5.289999961853027,
+        160.9600067138672,
+        243.11000061035156,
+        244.9199981689453
+      ],
+      "original_rank": 35,
+      "edited_rank": 6,
+      "rank_delta": -29,
+      "original_correct_nll": 0.43486204743385315,
+      "edited_correct_nll": 0.2397574782371521,
+      "correct_nll_increase": -0.19510456919670105,
+      "original_top_response": "<explanation>\nThese image tokens represent a bear in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a bear in the center region of the image.\n</explanation>",
+      "top_response_changed": false
+    },
+    {
+      "sample_id": "coco_000000372260_138362",
+      "source_description": "These image tokens represent a car in the left region of the image.",
+      "bbox_xywh": [
+        0.0,
+        315.6499938964844,
+        117.62999725341797,
+        210.85000610351562
+      ],
+      "original_rank": 1,
+      "edited_rank": 30,
+      "rank_delta": 29,
+      "original_correct_nll": 0.04231707379221916,
+      "edited_correct_nll": 0.3856382369995117,
+      "correct_nll_increase": 0.34332116320729256,
+      "original_top_response": "<explanation>\nThese image tokens represent a car in the left region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a suitcase in the center region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000229311_1130747",
+      "source_description": "These image tokens represent a sink in the bottom region of the image.",
+      "bbox_xywh": [
+        130.6199951171875,
+        222.47000122070312,
+        270.5,
+        108.70999908447266
+      ],
+      "original_rank": 1,
+      "edited_rank": 1,
+      "rank_delta": 0,
+      "original_correct_nll": 0.10615896433591843,
+      "edited_correct_nll": 0.10349529981613159,
+      "correct_nll_increase": -0.0026636645197868347,
+      "original_top_response": "<explanation>\nThese image tokens represent a sink in the bottom region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a sink in the bottom region of the image.\n</explanation>",
+      "top_response_changed": false
+    },
+    {
+      "sample_id": "coco_000000528980_280444",
+      "source_description": "These image tokens represent an umbrella in the center region of the image.",
+      "bbox_xywh": [
+        128.86000061035156,
+        83.18000030517578,
+        231.9499969482422,
+        379.4200134277344
+      ],
+      "original_rank": 5,
+      "edited_rank": 21,
+      "rank_delta": 16,
+      "original_correct_nll": 0.2164112776517868,
+      "edited_correct_nll": 0.3447194993495941,
+      "correct_nll_increase": 0.1283082216978073,
+      "original_top_response": "<explanation>\nThese image tokens represent a truck in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a bench in the bottom region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000175387_1094576",
+      "source_description": "These image tokens represent a toilet in the bottom region of the image.",
+      "bbox_xywh": [
+        168.4499969482422,
+        197.25,
+        103.56999969482422,
+        149.0399932861328
+      ],
+      "original_rank": 1,
+      "edited_rank": 1,
+      "rank_delta": 0,
+      "original_correct_nll": 0.054528139531612396,
+      "edited_correct_nll": 0.09900390356779099,
+      "correct_nll_increase": 0.04447576403617859,
+      "original_top_response": "<explanation>\nThese image tokens represent a toilet in the bottom region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a toilet in the bottom region of the image.\n</explanation>",
+      "top_response_changed": false
+    },
+    {
+      "sample_id": "coco_000000545129_1822824",
+      "source_description": "These image tokens represent a zebra in the left region of the image.",
+      "bbox_xywh": [
+        0.0,
+        105.5999984741211,
+        189.88999938964844,
+        172.4499969482422
+      ],
+      "original_rank": 2,
+      "edited_rank": 1,
+      "rank_delta": -1,
+      "original_correct_nll": 0.10150084644556046,
+      "edited_correct_nll": 0.12385263293981552,
+      "correct_nll_increase": 0.022351786494255066,
+      "original_top_response": "<explanation>\nThese image tokens represent an elephant in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a zebra in the left region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000014439_622491",
+      "source_description": "These image tokens represent a kite in the center region of the image.",
+      "bbox_xywh": [
+        163.4199981689453,
+        85.33999633789062,
+        458.4700012207031,
+        255.11000061035156
+      ],
+      "original_rank": 1,
+      "edited_rank": 43,
+      "rank_delta": 42,
+      "original_correct_nll": 0.02218538336455822,
+      "edited_correct_nll": 0.4401111602783203,
+      "correct_nll_increase": 0.4179257769137621,
+      "original_top_response": "<explanation>\nThese image tokens represent a kite in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a suitcase in the center region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000193926_1535126",
+      "source_description": "These image tokens represent a bowl in the top-left region of the image.",
+      "bbox_xywh": [
+        18.5,
+        12.979999542236328,
+        331.0,
+        214.39999389648438
+      ],
+      "original_rank": 40,
+      "edited_rank": 44,
+      "rank_delta": 4,
+      "original_correct_nll": 0.46911385655403137,
+      "edited_correct_nll": 0.4607352018356323,
+      "correct_nll_increase": -0.008378654718399048,
+      "original_top_response": "<explanation>\nThese image tokens represent a banana in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a banana in the center region of the image.\n</explanation>",
+      "top_response_changed": false
+    },
+    {
+      "sample_id": "coco_000000393115_642476",
+      "source_description": "These image tokens represent a skateboard in the center region of the image.",
+      "bbox_xywh": [
+        47.689998626708984,
+        135.74000549316406,
+        517.4600219726562,
+        435.3999938964844
+      ],
+      "original_rank": 2,
+      "edited_rank": 20,
+      "rank_delta": 18,
+      "original_correct_nll": 0.16170108318328857,
+      "edited_correct_nll": 0.37699374556541443,
+      "correct_nll_increase": 0.21529266238212585,
+      "original_top_response": "<explanation>\nThese image tokens represent a truck in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a toilet in the bottom region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000089670_1576668",
+      "source_description": "These image tokens represent a cake in the center region of the image.",
+      "bbox_xywh": [
+        125.0199966430664,
+        116.37000274658203,
+        396.2300109863281,
+        241.38999938964844
+      ],
+      "original_rank": 1,
+      "edited_rank": 2,
+      "rank_delta": 1,
+      "original_correct_nll": 0.0479716956615448,
+      "edited_correct_nll": 0.1653963029384613,
+      "correct_nll_increase": 0.1174246072769165,
+      "original_top_response": "<explanation>\nThese image tokens represent a cake in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a vase in the bottom region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000308799_1642442",
+      "source_description": "These image tokens represent an oven in the right region of the image.",
+      "bbox_xywh": [
+        264.0400085449219,
+        152.8800048828125,
+        68.54000091552734,
+        102.25
+      ],
+      "original_rank": 3,
+      "edited_rank": 20,
+      "rank_delta": 17,
+      "original_correct_nll": 0.2610107958316803,
+      "edited_correct_nll": 0.5214863419532776,
+      "correct_nll_increase": 0.2604755461215973,
+      "original_top_response": "<explanation>\nThese image tokens represent a refrigerator in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a refrigerator in the center region of the image.\n</explanation>",
+      "top_response_changed": false
+    },
+    {
+      "sample_id": "coco_000000001353_170940",
+      "source_description": "These image tokens represent a train in the bottom region of the image.",
+      "bbox_xywh": [
+        66.29000091552734,
+        323.6000061035156,
+        189.88999938964844,
+        139.32000732421875
+      ],
+      "original_rank": 3,
+      "edited_rank": 18,
+      "rank_delta": 15,
+      "original_correct_nll": 0.16380569338798523,
+      "edited_correct_nll": 0.3054656386375427,
+      "correct_nll_increase": 0.1416599452495575,
+      "original_top_response": "<explanation>\nThese image tokens represent a suitcase in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a suitcase in the center region of the image.\n</explanation>",
+      "top_response_changed": false
+    },
+    {
+      "sample_id": "coco_000000334521_595628",
+      "source_description": "These image tokens represent a giraffe in the center region of the image.",
+      "bbox_xywh": [
+        77.02999877929688,
+        75.97000122070312,
+        196.38999938964844,
+        209.08999633789062
+      ],
+      "original_rank": 1,
+      "edited_rank": 1,
+      "rank_delta": 0,
+      "original_correct_nll": 0.010311209596693516,
+      "edited_correct_nll": 0.03935539349913597,
+      "correct_nll_increase": 0.029044183902442455,
+      "original_top_response": "<explanation>\nThese image tokens represent a giraffe in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a giraffe in the center region of the image.\n</explanation>",
+      "top_response_changed": false
+    },
+    {
+      "sample_id": "coco_000000456143_310735",
+      "source_description": "These image tokens represent a sandwich in the right region of the image.",
+      "bbox_xywh": [
+        301.239990234375,
+        123.63999938964844,
+        302.8500061035156,
+        197.8699951171875
+      ],
+      "original_rank": 6,
+      "edited_rank": 47,
+      "rank_delta": 41,
+      "original_correct_nll": 0.25862282514572144,
+      "edited_correct_nll": 0.5160927176475525,
+      "correct_nll_increase": 0.25746989250183105,
+      "original_top_response": "<explanation>\nThese image tokens represent a hot dog in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a suitcase in the center region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000403584_647430",
+      "source_description": "These image tokens represent a surfboard in the center region of the image.",
+      "bbox_xywh": [
+        125.20999908447266,
+        287.42999267578125,
+        315.0199890136719,
+        84.44000244140625
+      ],
+      "original_rank": 23,
+      "edited_rank": 35,
+      "rank_delta": 12,
+      "original_correct_nll": 0.3449908196926117,
+      "edited_correct_nll": 0.4615218937397003,
+      "correct_nll_increase": 0.11653107404708862,
+      "original_top_response": "<explanation>\nThese image tokens represent a bear in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a suitcase in the center region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000060855_1548656",
+      "source_description": "These image tokens represent an apple in the bottom-left region of the image.",
+      "bbox_xywh": [
+        24.260000228881836,
+        208.0399932861328,
+        177.0399932861328,
+        176.1300048828125
+      ],
+      "original_rank": 1,
+      "edited_rank": 59,
+      "rank_delta": 58,
+      "original_correct_nll": 0.2113654762506485,
+      "edited_correct_nll": 0.6558216214179993,
+      "correct_nll_increase": 0.44445614516735077,
+      "original_top_response": "<explanation>\nThese image tokens represent an apple in the bottom-left region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a vase in the bottom region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000304545_1183046",
+      "source_description": "These image tokens represent a suitcase in the center region of the image.",
+      "bbox_xywh": [
+        1.0399999618530273,
+        1.9900000095367432,
+        638.9600219726562,
+        520.010009765625
+      ],
+      "original_rank": 5,
+      "edited_rank": 9,
+      "rank_delta": 4,
+      "original_correct_nll": 0.2218191772699356,
+      "edited_correct_nll": 0.29128944873809814,
+      "correct_nll_increase": 0.06947027146816254,
+      "original_top_response": "<explanation>\nThese image tokens represent a bird in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a toilet in the bottom region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000226171_34605",
+      "source_description": "These image tokens represent a tv in the top region of the image.",
+      "bbox_xywh": [
+        245.9499969482422,
+        5.880000114440918,
+        349.0899963378906,
+        238.02000427246094
+      ],
+      "original_rank": 23,
+      "edited_rank": 7,
+      "rank_delta": -16,
+      "original_correct_nll": 0.3501822054386139,
+      "edited_correct_nll": 0.281780868768692,
+      "correct_nll_increase": -0.06840133666992188,
+      "original_top_response": "<explanation>\nThese image tokens represent a truck in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a keyboard in the center region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000499266_321924",
+      "source_description": "These image tokens represent a cell phone in the center region of the image.",
+      "bbox_xywh": [
+        62.41999816894531,
+        94.27999877929688,
+        529.510009765625,
+        303.5
+      ],
+      "original_rank": 25,
+      "edited_rank": 22,
+      "rank_delta": -3,
+      "original_correct_nll": 0.3630959987640381,
+      "edited_correct_nll": 0.37108513712882996,
+      "correct_nll_increase": 0.00798913836479187,
+      "original_top_response": "<explanation>\nThese image tokens represent a suitcase in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a sink in the bottom region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000250205_39009",
+      "source_description": "These image tokens represent a bird in the center region of the image.",
+      "bbox_xywh": [
+        197.97000122070312,
+        126.55999755859375,
+        182.2100067138672,
+        199.94000244140625
+      ],
+      "original_rank": 3,
+      "edited_rank": 2,
+      "rank_delta": -1,
+      "original_correct_nll": 0.18164803087711334,
+      "edited_correct_nll": 0.10986799001693726,
+      "correct_nll_increase": -0.07178004086017609,
+      "original_top_response": "<explanation>\nThese image tokens represent a giraffe in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a giraffe in the center region of the image.\n</explanation>",
+      "top_response_changed": false
+    },
+    {
+      "sample_id": "coco_000000079651_89208",
+      "source_description": "These image tokens represent a bottle in the left region of the image.",
+      "bbox_xywh": [
+        150.99000549316406,
+        0.0,
+        110.41999816894531,
+        390.2699890136719
+      ],
+      "original_rank": 4,
+      "edited_rank": 5,
+      "rank_delta": 1,
+      "original_correct_nll": 0.15987716615200043,
+      "edited_correct_nll": 0.20179574191570282,
+      "correct_nll_increase": 0.04191857576370239,
+      "original_top_response": "<explanation>\nThese image tokens represent a bear in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a suitcase in the center region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000133233_1377370",
+      "source_description": "These image tokens represent a boat in the right region of the image.",
+      "bbox_xywh": [
+        504.79998779296875,
+        165.72000122070312,
+        131.0,
+        90.04000091552734
+      ],
+      "original_rank": 2,
+      "edited_rank": 20,
+      "rank_delta": 18,
+      "original_correct_nll": 0.15818271040916443,
+      "edited_correct_nll": 0.3784677982330322,
+      "correct_nll_increase": 0.2202850878238678,
+      "original_top_response": "<explanation>\nThese image tokens represent a bus in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a truck in the center region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000173033_586679",
+      "source_description": "These image tokens represent a bear in the center region of the image.",
+      "bbox_xywh": [
+        182.24000549316406,
+        205.67999267578125,
+        216.67999267578125,
+        288.42999267578125
+      ],
+      "original_rank": 1,
+      "edited_rank": 1,
+      "rank_delta": 0,
+      "original_correct_nll": 0.027633149176836014,
+      "edited_correct_nll": 0.0375186987221241,
+      "correct_nll_increase": 0.009885549545288086,
+      "original_top_response": "<explanation>\nThese image tokens represent a bear in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a bear in the center region of the image.\n</explanation>",
+      "top_response_changed": false
+    },
+    {
+      "sample_id": "coco_000000248980_1059472",
+      "source_description": "These image tokens represent a broccoli in the left region of the image.",
+      "bbox_xywh": [
+        92.6500015258789,
+        107.6500015258789,
+        106.76000213623047,
+        108.52999877929688
+      ],
+      "original_rank": 5,
+      "edited_rank": 45,
+      "rank_delta": 40,
+      "original_correct_nll": 0.21636463701725006,
+      "edited_correct_nll": 0.5407913327217102,
+      "correct_nll_increase": 0.32442669570446014,
+      "original_top_response": "<explanation>\nThese image tokens represent a pizza in the center region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a refrigerator in the center region of the image.\n</explanation>",
+      "top_response_changed": true
+    },
+    {
+      "sample_id": "coco_000000480944_2059941",
+      "source_description": "These image tokens represent a traffic light in the top-right region of the image.",
+      "bbox_xywh": [
+        342.3800048828125,
+        46.529998779296875,
+        57.209999084472656,
+        197.42999267578125
+      ],
+      "original_rank": 1,
+      "edited_rank": 2,
+      "rank_delta": 1,
+      "original_correct_nll": 0.18499574065208435,
+      "edited_correct_nll": 0.30288857221603394,
+      "correct_nll_increase": 0.11789283156394958,
+      "original_top_response": "<explanation>\nThese image tokens represent a traffic light in the top-right region of the image.\n</explanation>",
+      "edited_top_response": "<explanation>\nThese image tokens represent a stop sign in the center region of the image.\n</explanation>",
+      "top_response_changed": true
+    }
+  ]
+}

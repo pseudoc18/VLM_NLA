@@ -1,0 +1,21 @@
+# Commands for H4_PILOT_HARDNEG_SHORTCUT_Q3VL_L15_BBOX8_N32_SEED4702
+# Append exact shell commands and important stdout/stderr paths here.
+# H4 hallucination shortcut probe start 2026-06-30T04:49:31-04:00
+git_commit=a837be63074e488b1c6609d75d3fa807d68e222e
+RUN_ID=H4_PILOT_HARDNEG_SHORTCUT_Q3VL_L15_BBOX8_N32_SEED4702
+AV_PARQUET=outputs/H1_PILOT_Q3VL_COCO_L15_BBOX8_N128_SEED4201/test_short_labels/qwen3vl_coco_L15_object_bbox_mean_short_av_sft.parquet
+ADAPTER=outputs/H1_PILOT_Q3VL_COCO_L15_BBOX8_N128_SEED4201/adapter/adapter
+ACTIVATION_ADAPTER=outputs/H1_PILOT_Q3VL_COCO_L15_BBOX8_N128_SEED4201/adapter/activation_adapter.pt
+GPU=0
+COCO_ROOT=/common/users/lc1279/Projects/nla_llava15_experiment/data/coco2017
+MAX_IMAGES=32
+ABSENT_PER_IMAGE=5
+ABSENT_SAMPLING=cooccurrence
+MAX_OBJECTS_PER_IMAGE=4
+MAX_HALLUCINATIONS=32
+LAYER_INDEX=15
+MAX_BBOX_TOKENS=8
+NUM_INJECTION_TOKENS=8
+INJECTION_SCALE=57.75
+SEED=4702
+# H4 hallucination shortcut probe finished 2026-06-30T04:50:37-04:00

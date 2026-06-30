@@ -49,6 +49,7 @@ Pilot runs:
 | `H2_PILOT_Q3VL_COCO_L28_BBOX8_N128_SEED4301` | L28, 8 tokens | 0.1764 | 0.3750 | 0.5938 | 0.5312 | 0.7344 |
 | `H2_PILOT_Q3VL_COCO_L34_BBOX8_N128_SEED4301` | L34, 8 tokens | -0.0000 | 0.0156 | 0.0781 | 0.0156 | 0.1094 |
 | `H2_PILOT_Q3VL_COCO_L15_BBOX8_12TOK_N128_SEED4301` | L15, 12 tokens | 0.3512 | 0.4219 | 0.6875 | 0.6250 | 0.8281 |
+| `H2_PILOT_Q3VL_COCO_L10_L15_L20_BBOX8_CONCAT8_N128_SEED4801` | L10+L15+L20 concat, 8 tokens | 0.1909 | 0.3438 | 0.6406 | 0.4219 | 0.7656 |
 
 Pilot interpretation:
 
@@ -56,7 +57,9 @@ Pilot interpretation:
 - Middle layers are much more interpretable for local object tokens than very late layer L34.
 - L15 gives the best sensitivity/top5 balance in this pilot; L10 is also strong.
 - The 12-token L15 capacity control does not beat the 8-token L15 baseline on topK retrieval, even though its sensitivity delta is slightly higher. This suggests extra injected tokens alone are not a guaranteed improvement.
-- Multi-layer AV itself is not yet implemented in this pilot. The next H2 step is to train true multi-layer activation tuples such as L10+L15+L20 and compare against this L15 12-token capacity control.
+- A first true multi-layer concat AV is now implemented. It concatenates L10, L15, and L20 object-region activations into a 12288-dimensional vector, then learns a projection into the same 8 AV injection tokens.
+- This naive concat run does **not** outperform single-layer L15 or L10. It has lower sensitivity and lower ranking accuracy than the best single-layer conditions.
+- This is evidence against the simple version of "more layers automatically help." The next H2 design should use per-layer token blocks, gated/low-rank fusion, or layer-specific losses instead of one large undifferentiated concat projection.
 
 ## H3: AR Closed-Loop Pilot
 
@@ -88,20 +91,76 @@ Pilot interpretation:
 - Retrieval remains low, so this ridge AR should be treated as a lower-bound diagnostic, not a full NLA AR.
 - Next H3 step: train a neural AR with LoRA and evaluate round-trip `activation -> AV text -> AR activation`.
 
-## Current Status of H4 and H5
+## H4: Hallucination / Shortcut Token Pilot
 
-H4 and H5 have not yet been validated.
+H4 asks whether local image-token explanations can help diagnose hallucinated object claims. Two forced-choice absent-object probes were run with the trained L15 bbox8 AV.
 
-- H4 needs a hallucination-token pipeline: POPE/CHAIR-style hallucination labeling, high-impact image-token discovery by ablation or patching, and then VLM-NLA scoring of those tokens.
-- H5 needs counterfactual visual pairs: synthetic shape/diagram/COCO-edit pairs where the visual evidence changes while the prompt stays fixed, followed by explanation-change scoring.
+Method:
 
-These should not be inferred from H1-H3. They require separate causal/counterfactual experiments.
+- For each COCO image, choose categories absent from the ground-truth annotations.
+- Ask Qwen3-VL a forced-choice question: whether that category exists in the image.
+- A false-positive "Yes" preference is treated as an absent-object hallucination probe.
+- For hallucinated probes, mask each large visible object region and measure whether the false-positive yes-margin drops.
+- For the region with the largest margin drop, use the trained AV to compare two explanations: the true visible object label vs the hallucinated absent label.
+
+Pilot runs:
+
+| Run | Absent Sampling | Images | Probes | False-Positive Probes | Rate | Mean Top-Region Margin Drop | Positive Drop Fraction | AV Prefers Hallucinated |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| `H4_PILOT_HALLUCINATION_SHORTCUT_Q3VL_L15_BBOX8_N16_SEED4701` | random absent categories | 16 | 48 | 1 | 0.0208 | 0.0046 | 1.0000 | 0.0000 |
+| `H4_PILOT_HARDNEG_SHORTCUT_Q3VL_L15_BBOX8_N32_SEED4702` | COCO co-occurrence hard negatives | 32 | 160 | 7 | 0.0438 | 0.0141 | 0.7143 | 0.1429 |
+
+Metric interpretation:
+
+- `yes_margin = NLL(No) - NLL(Yes)`. Positive means the model prefers "Yes".
+- `false-positive probe` means the category is absent in COCO annotations but the model prefers "Yes".
+- `top-region margin drop` means how much the false-positive yes-margin decreases after masking the most influential visible object region. Positive is evidence that the visible region supports the hallucinated claim.
+- `AV prefers hallucinated` means the AV assigns lower NLL to the hallucinated object explanation than to the true visible object explanation for that region.
+
+Pilot interpretation:
+
+- Random absent categories are too easy; Qwen3-VL rarely says "Yes".
+- Co-occurrence hard negatives produce more false positives, but the margins are still small. This is a useful pilot setup, not yet a strong hallucination benchmark.
+- In 5/7 hard-negative false positives, masking the top visible region reduces the false-positive margin, so there is some shortcut-like visual support.
+- The AV usually still prefers the true visible object label over the hallucinated label. That is encouraging for faithfulness: the AV is not merely copying the model's final hallucinated answer.
+- H4 remains only weakly supported. The next version should use POPE/CHAIR-style caption hallucination, larger hard-negative pools, and object-level image-token attribution beyond the few largest COCO boxes.
+
+## H5: Counterfactual Mask Pilot
+
+H5 asks whether the AV explanation changes when the visual evidence for the target local token group is removed.
+
+Method:
+
+- Use the trained H1 L15 bbox8 AV.
+- For each test row, mask the COCO target object's bbox with the image mean color.
+- Re-extract the same target-region activation from the edited image.
+- Score whether the original object explanation is still preferred by the AV.
+
+Pilot run:
+
+| Run | Rows | Candidates | Original Mean Rank | Edited Mean Rank | Mean Rank Delta | Original Top1 | Edited Same-Label Top1 | Original Top5 | Edited Same-Label Top5 | Mean Correct NLL Increase | Correct NLL Increased | Top Response Changed |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `H5_PILOT_COUNTERFACTUAL_MASK_Q3VL_L15_BBOX8_N32_SEED4601` | 32 | 64 | 6.8438 | 21.0312 | 14.1875 | 0.4062 | 0.1875 | 0.7500 | 0.3125 | 0.1402 | 0.8438 | 0.6562 |
+
+Metric interpretation:
+
+- Lower rank is better. Rank 1 means the original correct explanation has the lowest NLL among candidates.
+- `mean_rank_delta = edited_rank - original_rank`; positive means masking made the original explanation less preferred.
+- `correct_nll_increase` is the NLL increase for the original correct explanation after masking; positive means the original explanation became harder for the AV to support.
+- `top_response_changed` means the best-scoring explanation changed after the visual edit.
+
+Pilot interpretation:
+
+- H5 is supported at pilot scale.
+- Masking the target object strongly hurts the original explanation: mean rank worsens by 14.19 places, top5 drops from 75.0% to 31.25%, and 84.38% of rows have increased correct NLL.
+- This suggests the AV is grounded in local visual-token activation, not only in the response template.
+- This is still a coarse counterfactual: mean-color masking can introduce artifacts, and it tests removal rather than clean object replacement. The next step is to use synthetic controlled edits and real image-edit pairs.
 
 ## Immediate Next Steps
 
-1. Scale H1 to 1024/256/512 with 3 seeds.
-2. Implement random same-area region and segmentation-mask controls for H1.
-3. Implement true multi-layer AV for H2.
-4. Upgrade H3 from ridge AR to neural AR.
-5. Implement H4 hallucination-token intervention.
-6. Implement H5 counterfactual shortcut evaluation.
+1. Scale H1/H2/H5 to 1024/256/512 with at least 3 seeds.
+2. Add random same-area region and segmentation-mask controls for H1.
+3. Replace naive H2 concat with per-layer AV token blocks, gated/low-rank fusion, and capacity-matched controls.
+4. Upgrade H3 from ridge AR to neural AR and evaluate the full round trip `activation -> AV text -> AR activation`.
+5. Upgrade H4 to POPE/CHAIR-style caption hallucination and larger co-occurrence hard-negative probes.
+6. Upgrade H5 from mean-color masking to controlled synthetic edits and real counterfactual image pairs.

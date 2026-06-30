@@ -1,0 +1,2 @@
+# Commands for H5_PILOT_COUNTERFACTUAL_MASK_Q3VL_L15_BBOX8_N32_SEED4601
+# Append exact shell commands and important stdout/stderr paths here.
