@@ -79,31 +79,23 @@ def allocate_stratified(
     for ids in by_category.values():
         rng.shuffle(ids)
 
-    splits: dict[str, list[int]] = {name: [] for name in desired}
-    leftovers: list[int] = []
-    split_names = list(desired)
-    for category in sorted(by_category):
-        ids = by_category[category]
-        n = len(ids)
-        quotas = {
-            name: min(desired[name] - len(splits[name]), int(n * desired[name] / total_needed))
-            for name in split_names
-        }
-        used = 0
-        for name in split_names:
-            take = max(0, quotas[name])
-            splits[name].extend(ids[used : used + take])
-            used += take
-        leftovers.extend(ids[used:])
+    def take_balanced(size: int) -> list[int]:
+        selected: list[int] = []
+        categories = list(by_category)
+        while len(selected) < size:
+            active = [category for category in categories if by_category[category]]
+            if not active:
+                break
+            rng.shuffle(active)
+            for category in active:
+                selected.append(by_category[category].pop())
+                if len(selected) >= size:
+                    break
+        return selected
 
-    rng.shuffle(leftovers)
-    for image_id in leftovers:
-        open_splits = [name for name in split_names if len(splits[name]) < desired[name]]
-        if not open_splits:
-            break
-        # Fill the most underfull split first.
-        name = min(open_splits, key=lambda split: len(splits[split]) / desired[split])
-        splits[name].append(image_id)
+    splits: dict[str, list[int]] = {}
+    for name, size in desired.items():
+        splits[name] = take_balanced(size)
 
     for name, size in desired.items():
         if len(splits[name]) != size:
