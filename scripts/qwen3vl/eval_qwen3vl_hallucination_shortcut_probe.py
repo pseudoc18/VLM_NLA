@@ -20,6 +20,7 @@ import argparse
 import json
 import random
 import sys
+from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 from types import SimpleNamespace
@@ -89,7 +90,7 @@ def load_coco_regions(
     image_rows: list[dict],
     min_area_frac: float,
     max_objects_per_image: int,
-) -> tuple[list[str], dict[int, set[str]], dict[int, list[RegionProbe]]]:
+) -> tuple[list[str], dict[int, set[str]], dict[int, list[RegionProbe]], dict[str, dict[str, int]]]:
     instances_path, _captions_path, _image_dir = ensure_coco(coco_root)
     instances = json.loads(instances_path.read_text(encoding="utf-8"))
     categories = {int(cat["id"]): str(cat["name"]) for cat in instances["categories"]}
@@ -98,13 +99,17 @@ def load_coco_regions(
     wanted = {int(row["coco_image_id"]): row for row in image_rows}
     present_by_image: dict[int, set[str]] = {image_id: set() for image_id in wanted}
     regions_by_image: dict[int, list[RegionProbe]] = {image_id: [] for image_id in wanted}
+    full_present_by_image: dict[int, set[str]] = defaultdict(set)
 
     for ann in instances["annotations"]:
         image_id = int(ann["image_id"])
-        if image_id not in wanted or int(ann.get("iscrowd", 0)) != 0:
+        if int(ann.get("iscrowd", 0)) != 0:
+            continue
+        category = categories[int(ann["category_id"])]
+        full_present_by_image[image_id].add(category)
+        if image_id not in wanted:
             continue
         image = images[image_id]
-        category = categories[int(ann["category_id"])]
         present_by_image[image_id].add(category)
         area = float(ann.get("area", 0.0))
         min_area = min_area_frac * float(image["width"] * image["height"])
@@ -130,7 +135,34 @@ def load_coco_regions(
     for image_id, regions in regions_by_image.items():
         regions.sort(key=lambda region: region.area, reverse=True)
         regions_by_image[image_id] = regions[:max_objects_per_image]
-    return all_categories, present_by_image, regions_by_image
+
+    cooccurrence: dict[str, Counter[str]] = {category: Counter() for category in all_categories}
+    for cats in full_present_by_image.values():
+        for category in cats:
+            cooccurrence[category].update(other for other in cats if other != category)
+    cooccurrence_json = {category: dict(counter) for category, counter in cooccurrence.items()}
+    return all_categories, present_by_image, regions_by_image, cooccurrence_json
+
+
+def choose_absent_categories(
+    *,
+    all_categories: list[str],
+    present: set[str],
+    cooccurrence: dict[str, dict[str, int]],
+    sampling: str,
+    count: int,
+    rng: random.Random,
+) -> list[tuple[str, int]]:
+    absent = [category for category in all_categories if category not in present]
+    if sampling == "random":
+        rng.shuffle(absent)
+        return [(category, 0) for category in absent[:count]]
+    scored = []
+    for category in absent:
+        score = sum(int(cooccurrence.get(present_category, {}).get(category, 0)) for present_category in present)
+        scored.append((category, score, rng.random()))
+    scored.sort(key=lambda item: (-item[1], item[2], item[0]))
+    return [(category, score) for category, score, _tie in scored[:count]]
 
 
 def presence_prompt(processor, image: Image.Image, category: str) -> str:
@@ -330,6 +362,7 @@ def main() -> None:
     parser.add_argument("--out", required=True)
     parser.add_argument("--max-images", type=int, default=16)
     parser.add_argument("--absent-per-image", type=int, default=3)
+    parser.add_argument("--absent-sampling", choices=["random", "cooccurrence"], default="random")
     parser.add_argument("--max-objects-per-image", type=int, default=3)
     parser.add_argument("--max-hallucinations", type=int, default=24)
     parser.add_argument("--min-area-frac", type=float, default=0.015)
@@ -356,7 +389,7 @@ def main() -> None:
         if len(image_rows) >= args.max_images:
             break
 
-    all_categories, present_by_image, regions_by_image = load_coco_regions(
+    all_categories, present_by_image, regions_by_image, cooccurrence = load_coco_regions(
         coco_root=Path(args.coco_root),
         image_rows=image_rows,
         min_area_frac=args.min_area_frac,
@@ -390,10 +423,16 @@ def main() -> None:
     for row in image_rows:
         image_id = int(row["coco_image_id"])
         present = present_by_image.get(image_id, set())
-        absent = [category for category in all_categories if category not in present]
-        rng.shuffle(absent)
+        absent = choose_absent_categories(
+            all_categories=all_categories,
+            present=present,
+            cooccurrence=cooccurrence,
+            sampling=args.absent_sampling,
+            count=args.absent_per_image,
+            rng=rng,
+        )
         image = Image.open(row["source_image_path"]).convert("RGB")
-        for category in absent[: args.absent_per_image]:
+        for category, cooccurrence_score in absent:
             score = score_yes_no(
                 model=model,
                 processor=processor,
@@ -406,6 +445,8 @@ def main() -> None:
                 "image_id": image_id,
                 "image_path": row["source_image_path"],
                 "absent_category": category,
+                "absent_sampling": args.absent_sampling,
+                "cooccurrence_score": int(cooccurrence_score),
                 "present_categories": sorted(present),
                 "yes_nll": score["yes_nll"],
                 "no_nll": score["no_nll"],
@@ -531,6 +572,7 @@ def main() -> None:
         "num_images": len(image_rows),
         "num_absent_probes": len(absent_probe_records),
         "absent_per_image": args.absent_per_image,
+        "absent_sampling": args.absent_sampling,
         "max_objects_per_image": args.max_objects_per_image,
         "num_hallucinated_absent_probes": len(hallucinated),
         "hallucination_rate": float(len(hallucinated) / max(1, len(absent_probe_records))),

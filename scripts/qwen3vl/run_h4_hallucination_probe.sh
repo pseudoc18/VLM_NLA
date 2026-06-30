@@ -14,6 +14,7 @@ set -euo pipefail
 #   COCO_ROOT               default data/coco2017
 #   MAX_IMAGES              default 16
 #   ABSENT_PER_IMAGE        default 3
+#   ABSENT_SAMPLING         default random; use cooccurrence for hard negatives
 #   MAX_OBJECTS_PER_IMAGE   default 3
 #   MAX_HALLUCINATIONS      default 24
 #   LAYER_INDEX             default 15
@@ -43,6 +44,7 @@ GPU="${GPU:-0}"
 COCO_ROOT="${COCO_ROOT:-data/coco2017}"
 MAX_IMAGES="${MAX_IMAGES:-16}"
 ABSENT_PER_IMAGE="${ABSENT_PER_IMAGE:-3}"
+ABSENT_SAMPLING="${ABSENT_SAMPLING:-random}"
 MAX_OBJECTS_PER_IMAGE="${MAX_OBJECTS_PER_IMAGE:-3}"
 MAX_HALLUCINATIONS="${MAX_HALLUCINATIONS:-24}"
 LAYER_INDEX="${LAYER_INDEX:-15}"
@@ -66,6 +68,7 @@ python tools/init_experiment_run.py --run-id "${RUN_ID}" --hypothesis H4 --study
   echo "COCO_ROOT=${COCO_ROOT}"
   echo "MAX_IMAGES=${MAX_IMAGES}"
   echo "ABSENT_PER_IMAGE=${ABSENT_PER_IMAGE}"
+  echo "ABSENT_SAMPLING=${ABSENT_SAMPLING}"
   echo "MAX_OBJECTS_PER_IMAGE=${MAX_OBJECTS_PER_IMAGE}"
   echo "MAX_HALLUCINATIONS=${MAX_HALLUCINATIONS}"
   echo "LAYER_INDEX=${LAYER_INDEX}"
@@ -83,6 +86,7 @@ CUDA_VISIBLE_DEVICES="${GPU}" python scripts/qwen3vl/eval_qwen3vl_hallucination_
   --out "${RUN_DIR}/hallucination_shortcut_probe.json" \
   --max-images "${MAX_IMAGES}" \
   --absent-per-image "${ABSENT_PER_IMAGE}" \
+  --absent-sampling "${ABSENT_SAMPLING}" \
   --max-objects-per-image "${MAX_OBJECTS_PER_IMAGE}" \
   --max-hallucinations "${MAX_HALLUCINATIONS}" \
   --layer-index "${LAYER_INDEX}" \
