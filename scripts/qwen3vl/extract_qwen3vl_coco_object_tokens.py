@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import random
 import urllib.request
 import zipfile
@@ -51,10 +52,18 @@ def download_file(url: str, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     if path.exists() and path.stat().st_size > 0:
         return
-    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp = path.with_suffix(path.suffix + f".{os.getpid()}.tmp")
     print(f"downloading {url} -> {path}")
-    urllib.request.urlretrieve(url, tmp)
-    tmp.replace(path)
+    try:
+        urllib.request.urlretrieve(url, tmp)
+        tmp.replace(path)
+    except Exception:
+        if path.exists() and path.stat().st_size > 0:
+            return
+        raise
+    finally:
+        if tmp.exists():
+            tmp.unlink()
 
 
 def ensure_coco(root: Path) -> tuple[Path, Path, Path]:
